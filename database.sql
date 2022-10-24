@@ -25,7 +25,6 @@ SET time_zone = "+00:00";
 --
 -- Structure de la table `item`
 --
-IF NOT EXISTS CREATE DATABASE papys45;
 
 
 CREATE TABLE `item` (
