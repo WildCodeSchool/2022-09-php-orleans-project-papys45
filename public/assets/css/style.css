@@ -1,3 +1,43 @@
+@font-face {
+    font-family: 'Syncopate';
+    src: url("../font/Syncopate/Syncopate-Regular.ttf") format("truetype"),
+        url("../font/Syncopate/Syncopate-Bold.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: 'Paytone_One';
+    src: url("../font/Paytone_One/PaytoneOne-Regular.ttf") format("truetype")
+}
+
+@font-face {
+    font-family: 'Telex';
+    src: url("../font/Telex/Telex-Regular.ttf") format("truetype")
+}
+
+
+
+:root {
+
+    --tool-font: 'Syncopate';
+    --content-font: 'Telex';
+    --title-font: 'Paytone_One';
+
+    --primary-color: rgba(231, 0, 0, 1);
+    --light-color: rgba(255, 253, 253, 1);
+    --dark-color: rgba(13, 0, 0, 1);
+
+    --spacing: 8px;
+    --spacing-x2: calc(var(--spcacing * 2));
+    --spacing-x3: calc(var(--spcacing * 3));
+    --spacing-x4: calc(var(--spcacing * 4));
+    --spacing-x5: calc(var(--spcacing * 5));
+}
+
+* {
+    box-sizing: border-box;
+}
+
 body {
-    color: #f76c6c;
+    color: var(--dark-color);
+    font-family: var(--tool-font);
 }
