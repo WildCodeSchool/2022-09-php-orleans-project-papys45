@@ -1,5 +1,3 @@
-
-
 @font-face {
     font-family: 'Syncopate';
     src: url("../font/Syncopate/Syncopate-Regular.ttf") format("truetype"),
@@ -16,9 +14,6 @@
     src: url("../font/Telex/Telex-Regular.ttf") format("truetype")
 }
 
-
-
-
 :root {
 
     --bs-font-sans-serif: 'Syncopate';
@@ -29,10 +24,6 @@
     --bs-light: rgba(255, 253, 253, 1);
     --bs-dark: rgba(13, 0, 0, 1);
 }
-
-
-
-
 
 * {
     box-sizing: border-box;
