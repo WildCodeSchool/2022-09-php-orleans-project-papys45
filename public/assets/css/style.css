@@ -26,11 +26,6 @@
     --light-color: rgba(255, 253, 253, 1);
     --dark-color: rgba(13, 0, 0, 1);
 
-    --spacing: 8px;
-    --spacing-x2: calc(var(--spcacing * 2));
-    --spacing-x3: calc(var(--spcacing * 3));
-    --spacing-x4: calc(var(--spcacing * 4));
-    --spacing-x5: calc(var(--spcacing * 5));
 }
 
 * {
