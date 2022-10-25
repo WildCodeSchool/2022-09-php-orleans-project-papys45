@@ -19,10 +19,6 @@
     --bs-font-sans-serif: 'Syncopate';
     --content-font: 'Telex';
     --title-font: 'Paytone_One';
-
-    --primary: rgba(231, 0, 0, 1);
-    --bs-light: rgba(255, 253, 253, 1);
-    --bs-dark: rgba(13, 0, 0, 1);
 }
 
 * {
