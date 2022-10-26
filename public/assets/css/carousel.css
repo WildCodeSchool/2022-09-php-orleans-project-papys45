@@ -1,0 +1,7 @@
+.carousel_title {
+    font-family: var(--title-font);
+}
+
+.carousel_content{
+    font-family: var(--content-font);
+}
