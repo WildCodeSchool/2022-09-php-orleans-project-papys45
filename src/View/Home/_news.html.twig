@@ -1,0 +1,36 @@
+<div class="container mt-5">
+	<div class="row d-flex justify-content-center">
+		<div class="col-10 col-md-8 col-lg-6">
+			<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+				<div class="carousel-indicators">
+					{% for actuality in actualities %}
+						{% if loop.first %}
+							<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{loop.index0}}" class="active" aria-current="true" aria-label="Slide {{loop.index}}"></button>
+						{% else %}
+							<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{loop.index0}}" aria-label="Slide {{loop.index}}"></button>
+						{% endif %}
+					{% endfor %}
+				</div>
+				<div class="carousel-inner w-100">
+					{% for actuality in actualities %}
+						<div class="carousel-item active" data-bs-interval="3000">
+							<img src="/assets/images/actu{{loop.index0}}.png" class="d-block w-100" alt="une image en lien avec le vélo" >
+							<div class="carousel-caption d-none d-md-block bg-danger rounded">
+								<h3 class="carousel_title">{{ actuality.title }}</h3>
+								<p class="carousel_content p-2">{{ actuality.content}}</p>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon danger" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

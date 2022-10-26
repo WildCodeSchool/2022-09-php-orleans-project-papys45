@@ -4,55 +4,7 @@
 {% endblock %}
 
 {% block content %}
-	<h1>Hello Wilder !</h1>
-	<p>Find a complete CRUD example on
-		<a href="/items">/items</a>
-		page.</p>
-        
-	{# -----------------beginning carousel------------------------------------ #}
-	<div class="container">
-		<div class="row d-flex justify-content-center">
-			<div class="col-10 col-sm-10 col-md-8 col-lg-6">
-				<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-					<div class="carousel-indicators">
-						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-						<button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-					</div>
-					<div class="carousel-inner w-100">
-						<div class="carousel-item active" data-bs-interval="3000">
-							<img src="../../../../assets/images/actu_bloc_note.png" class="d-block w-100" alt="un repas de fête">
-							<div class="carousel-caption d-none d-md-block bg-danger rounded">
-								<h5 class="carousel_title">{{ actualities[0].title }}</h5>
-								<p class="carousel_content">{{ actualities[0].content }}</p>
-							</div>
-						</div>
-						<div class="carousel-item" data-bs-interval="3000">
-							<img src="../../../../assets/images/actu_diner.png" class="d-block w-100" alt="un bloc note">
-							<div class="carousel-caption d-none d-md-block bg-danger rounded">
-								<h5 class="carousel_title">{{ actualities[1].title }}</h5>
-								<p class="carousel_content">{{ actualities[1].content }}</p>
-							</div>
-						</div>
-						<div class="carousel-item" data-bs-interval="3000">
-							<img src="../../../../assets/images/actu_map.png" class="d-block w-100" alt="une carte avec un tracé">
-							<div class="carousel-caption d-none d-md-block bg-danger rounded">
-								<h5 class="carousel_title">{{ actualities[2].title }}</h5>
-								<p class="carousel_content">{{ actualities[2].content }}</p>
-							</div>
-						</div>
-					</div>
-					<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-						<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Previous</span>
-					</button>
-					<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-						<span class="carousel-control-next-icon" aria-hidden="true"></span>
-						<span class="visually-hidden">Next</span>
-					</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	{# -----------------end of carousel------------------------------------ #}
+
+{% include 'Home/_news.html.twig' %}
+
 {% endblock %}

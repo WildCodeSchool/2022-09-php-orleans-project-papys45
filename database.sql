@@ -124,4 +124,10 @@ VALUES (
     ), (
         'L\'hiver vient !',
         'Dernière sortie avant clôture, le 27 novembre 2022.'
+    ), (
+        'Vive les PR !',
+        'Grâce à mon formateur préféré, j\'aime les PR.'
+    ), (
+        'C\'est qui ton meilleur ami ?',
+        'Mon meilleur ami c\'est GRUMP.'
     );
