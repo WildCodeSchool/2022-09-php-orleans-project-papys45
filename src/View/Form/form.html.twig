@@ -1,0 +1,47 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/form.css">
+{% endblock %}
+
+{% block content %}
+
+	<div class="container mt-5">
+		<div class="row d-flex justify-content-center">
+			<div class="col-lg-8 ">
+				<h1 class="formTitle text-danger text-center fs-1">FORMULAIRE DE CONTACT</h1>
+			</div>
+		</div>
+	</div>
+	<div class="container mt-5">
+		<div class="row d-flex justify-content-center">
+			<div class="col-lg-6 ">
+
+
+				<form action="" method="post">
+					<div class="form-group mt-2">
+						<label class="formLabel" for="formGroupExampleInput mt5">Nom :</label>
+						<input type="text" class="form-control formContent" id="formGroupExampleInput" placeholder="Jean Albert">
+					</div>
+					<div class="form-group mt-2">
+						<label class="formLabel" for="inputEmail4" placeholder="jean-albert@gmail.com">Email :</label>
+						<input type="email" class="form-control formContent" id="inputEmail4" placeholder="jean.albert@gmail.com">
+					</div>
+					<div class="form-group mt-2">
+						<label class="formLabel" for="exampleFormControlSelect">Objet de votre demande :</label>
+						<select class="form-control formContent text-muted" id="exampleFormControlSelect" placeholder="Choisissez dans la liste">
+							<option value="info">Demande d'informations</option>
+							<option value="remove">Annuler une inscription à une sortie</option>
+							<option value="register">Demande d'adhésion</option>
+						</select>
+					</div>
+					<div class="form-group mt-2">
+						<label class="formLabel" for="exampleFormControlTextarea1">Votre message :</label>
+						<textarea class="form-control formContent" id="exampleFormControlTextarea1" rows="3" placeholder="Ecrivez votre message ici ..."></textarea>
+					</div>
+					<button type="submit" class="btn btn-danger mt-2">Envoyez</button>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock %}
