@@ -1,0 +1,21 @@
+.card-body{
+    width: 15rem;
+}
+
+.card-img {
+    display: block;
+    max-width: 8rem;
+    height: auto;
+  }
+
+.card-img-top {
+    display: block;
+    max-width: 3.5rem;
+    height: auto;
+}
+
+.icon {
+    display: block;
+    max-width: 3rem;
+    height: auto;
+}
