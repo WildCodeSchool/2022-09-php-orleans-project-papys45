@@ -1,10 +1,10 @@
-:root{
+:root {
     --font-size: 1.5em;
     --text-size: calc(var(--font-size));
     --padding: 0;
 }
 
-.navbar{
+.navbar {
     margin-block: 0;
     padding: var(--padding);
     font-family: var(--title-font);
@@ -15,11 +15,15 @@
     padding-inline-start: 0;
     --bs-gutter-x: 0;
     padding-left: var(--padding);
-    padding-right: 1.5em;
-
+    padding-right: 1em;
 }
 
-.title{
+.d-inline-block {
+    align-content: center;
+}
+
+.title {
     font-family: var(--tool-font);
-    vertical-align: middle;
+    inline-size: 100px;
+    overflow-wrap: break-word;
 }
