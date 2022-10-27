@@ -35,11 +35,12 @@
     font-weight: bold;
 }
 
-.custom-border-right {
-    border-right: 0.4px solid rgb(9, 16, 36);
+@media screen and (min-width: 768px) {
+    .custom-border-right {
+        border-right: 0.4px solid rgb(9, 16, 36);
         
+    }
 }
-
 
 @media screen and (max-width: 768px) {
     .custorm-border-bottom {
