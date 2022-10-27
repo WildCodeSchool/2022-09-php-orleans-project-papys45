@@ -6,40 +6,40 @@
 
 {% block content %}
 
-	<h1 class="display-4 fw-bold text-danger text-center">
+	<h1 class="display-4 fw-bold text-danger text-center py-5">
 		LISTE SORTIES</h1>
 
-
+	<div class="pb-5 ">
 	{% for route in routes %}
 	
-	<div class="cardh">
+	<div class="cardh pb-2">
 		<div class="container">
 			<div class="row">
-				<div {% if "now"|date("Y-m-d") < route.date|date('Y-m-d') %}class="card p-2 rounded-3 mt-3 border-danger"
-				{% else %}class="card p-2 rounded-3 mt-3"
+				<div {% if "now"|date("Y-m-d") < route.date|date('Y-m-d') %}class="card p-2 rounded-3 mt-3 border-danger shadow"
+				{% else %}class="card p-2 rounded-3 mt-3 shadow"
 				{% endif %}>
 					<div class="container text-center">
 						<div class="container text-center">
 							<div class="row row-cols-1 row-cols-sm-3 row-cols-md-3">
-								<div class="col">
-									<div class="row justify-content-center">{{route.distance}} KM</div>
+
+								<div class="col custom-border-right custorm-border-bottom">
+									<div class="row justify-content-center tool-font fs-3 pt-4">{{route.distance}} KM</div>
 									<div class="row justify-content-center"><img class="card-img" 
 									src={% if route.difficulty is same as 1 %}"/assets/images/montagnes.png" alt="green mountain icon"
 									{% elseif route.difficulty is same as 2 %} "/assets/images/montagnes-o.png" alt="orange mountain icon" 
 									{% else %} "/assets/images/montagnes-r.png" alt="red mountain icon" 
 									{% endif %}></div>
-
-									<div class="row justify-content-center">Difficulté {{route.difficulty}}</div>
+									<div class="row justify-content-center tool-font fs-5 pb-3">Difficulté {{route.difficulty}}</div>
+								</div>
+								<div class="col custom-border-right custorm-border-bottom">
+									<div class="row justify-content-center title-font pt-3 fs-6"><img class="icon" src="/assets/images/epingle.png" alt="pin icon"><p>{{route.start}}</p></div>
+									<div class="row justify-content-center title-font pt-2 fs-6"><img class="icon" src="/assets/images/drapeau-darrivee.png" alt="arrived flag icon"><p>{{route.finish}}</p></div>
+									<div class="row justify-content-center title-font pt-2  fs-6"><img class="icon" src="/assets/images/du-jus-dorange.png" alt="cocktail icon"><p>{{route.ravito}}</p></div>
 								</div>
 								<div class="col">
-									<div class="row justify-content-center pt-4"><img class="icon" src="/assets/images/epingle.png" alt="pin icon">{{route.start}}</div>
-									<div class="row justify-content-center pt-2"><img class="icon" src="/assets/images/drapeau-darrivee.png" alt="arrived flag icon">{{route.finish}}Eglise d'Orléans</div>
-									<div class="row justify-content-center pt-2 pb-4"><img class="icon" src="/assets/images/du-jus-dorange.png" alt="cocktail icon">{{route.ravito}}Jardin des plantes</div>
-								</div>
-								<div class="col">
-									<div class="row justify-content-center pt-4"><img class="card-img-top" src="/assets/images/31.png" alt="calendar icon"></div>
-									<div class="row justify-content-center pt-2">{{route.date}}</div>
-									<div class="row justify-content-center pt-2">{{route.time}}</div>
+									<div class="row justify-content-center pt-5 tool-font "><img class="card-img-top" src="/assets/images/31.png" alt="calendar icon"></div>
+									<div class="row justify-content-center pt-2 tool-font fs-4">{{route.date}}</div>
+									<div class="row justify-content-center pt-2 tool-font fs-4 pb-4">{{route.time}}</div> 
 								</div>
 							</div>
 						</div>
@@ -49,5 +49,8 @@
 		</div>
 	</div>
 {% endfor %}
+</div>
 
 {% endblock %}
+ 
+ 

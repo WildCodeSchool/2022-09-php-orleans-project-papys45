@@ -1,3 +1,9 @@
+
+.display-4{
+    font-family: var(--title-font);
+}
+
+
 .card-body{
     width: 15rem;
 }
@@ -10,7 +16,7 @@
 
 .card-img-top {
     display: block;
-    max-width: 3.5rem;
+    max-width: 5rem;
     height: auto;
 }
 
@@ -18,4 +24,26 @@
     display: block;
     max-width: 3rem;
     height: auto;
+}
+
+.title-font {
+    font-family: var(--content-font);
+}
+
+.tool-font {
+    font-family: var(--tool-font);
+    font-weight: bold;
+}
+
+@media screen and (min-width: 990px) {
+    .custom-border-right {
+        border-right: 0.4px solid rgb(9, 16, 36);
+        
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .custorm-border-bottom {
+        border-bottom: 0.4px solid rgb(9, 16, 36);;
+    }
 }
