@@ -1,5 +1,5 @@
 .header {
-    --header-size: 500px;
+    --header-size: 400px;
     height: var(--header-size);
     background-image: url('../images/cyclistes-dans-course-velo.webp');
     background-repeat: no-repeat;
