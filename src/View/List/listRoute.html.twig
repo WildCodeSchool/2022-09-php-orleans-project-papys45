@@ -12,6 +12,7 @@
 	<div class="pb-5 ">
 	{% for route in routes %}
 	
+	
 	<div class="cardh pb-2">
 		<div class="container">
 			<div class="row">
@@ -40,6 +41,7 @@
 									<div class="row justify-content-center pt-5 tool-font "><img class="card-img-top" src="/assets/images/31.png" alt="calendar icon"></div>
 									<div class="row justify-content-center pt-2 tool-font fs-4">{{route.date}}</div>
 									<div class="row justify-content-center pt-2 tool-font fs-4 pb-4">{{route.time}}</div> 
+									<a href="#"{# Don't forget to change with items/show?id={{ route.id }} after making the detail page #} class="stretched-link"></a>
 								</div>
 							</div>
 						</div>
@@ -47,7 +49,9 @@
 				</div>
 			</div>
 		</div>
+		
 	</div>
+
 {% endfor %}
 </div>
 
