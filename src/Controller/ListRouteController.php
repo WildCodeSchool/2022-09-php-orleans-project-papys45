@@ -2,17 +2,13 @@
 
 namespace App\Controller;
 
-use App\Model\RouteManager;
+use App\Controller\AbstractController;
 
-class RouteController extends AbstractController
+class ListRouteController extends AbstractController
 {
     public function index()
     {
-        $routeManager = new routeManager();
-        $routes = $routeManager->selectAll();
 
-        return $this->twig->render('list_route/list_route.html.twig', [
-            'routes' => $routes,
-        ]);
+        return $this->twig->render('List/listRoute.html.twig');
     }
 }
