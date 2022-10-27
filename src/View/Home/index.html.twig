@@ -1,6 +1,32 @@
 {% extends 'layout.html.twig' %}
 
+{% block stylesheet %}
+	<link link rel="stylesheet" href="/assets/css/speech.css">
+{% endblock %}
+
 {% block content %}
-    <h1>Hello Wilder !</h1>
-    <p>Find a complete CRUD example on <a href="/items">/items</a> page.</p>
+	<div class="speech d-flex flex-column align-items-center container mt-5">
+		<h2 class="text-danger fs-1">LE MOT DU PRESIDENT</h2>
+
+		<div class="story col-10 col-md-8 col-lg-6 mt-5 position-relative pt-3">
+			<div class="image">
+				<img class="rounded-circle float-sm-left img-fluid" width="100px" height="100px" src="../assets/images/C10.png" alt="Président">
+			</div>
+			<p class="m-2 px-4">
+				Le concept des Papys45, consiste à rénir deux fois la semaine, des cyclistes qui ont la même passion : la petite
+										reine, mais surtout de leur donner la possibilité de pouvoir faire du vélo autrement.
+										En peloton sans faire la course mais de manière plutôt cyclosportive, et à chaque sortie, sur des parcours différents autant que faire se peut (actuellement entre 40 à 50 participants à chaque sortie).
+										Pour des problèmes de sécurité, des pelotons de 15 cyclistes sont réalisés avec pour chacun d'eux un capitaine de route.
+										L'un des principes fondamentaux est celui de partir et de rentrer ensemble.
+										Convivialité, respect, humilité et une attitude altruiste sont les valeurs qui doivent être partagées par tous.</p>
+
+			<p class="m-2 px-4">
+				Pourquoi "Papys45" ? Le terme Papys a été retenu car la très grande majorité des cyclistes qui composent le groupe sont majoritairement des retraités (de 55 à 80 ans). Attention derrière ce mot Papys se cachent des sportifs aguerris. Il est donc demandé à ceux qui viennent rouler avec nous, un minimum de condition physique.
+									Chacun peut venir s'intégrer et venir rouler avec le groupe constitué, dès l'instant où il respecte une charte qui est la colonne vertébrale du groupe, sans qu'il soit besoin de créer une structure officielle.</p>
+		</div>
+	</div>
+	<p>Find a complete CRUD example on
+		<a href="/items">/items</a>
+		page.</p>
+
 {% endblock %}
