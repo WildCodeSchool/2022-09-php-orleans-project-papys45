@@ -53,6 +53,13 @@ class FormController extends AbstractController
         if (!key_exists($contact['subject'], self::SUBJECTS)) {
             $errors[] = 'Le sujet est incorrect.';
         }
+
+        $errors = $this->verifEmpty($contact, $errors);
+        return $errors;
+    }
+
+    private function verifEmpty(array $contact, array $errors): array
+    {
         if (empty($contact['fullName'])) {
             $errors[] = 'Le nom est obligatoire';
         }
@@ -63,6 +70,10 @@ class FormController extends AbstractController
 
         if (empty($contact['subject'])) {
             $errors[] = 'Le sujet est obligatoire';
+        }
+
+        if (empty($contact['message'])) {
+            $errors[] = 'Le message est obligatoire';
         }
 
         return $errors;
