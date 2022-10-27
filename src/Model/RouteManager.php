@@ -10,7 +10,6 @@ class RouteManager extends AbstractManager
 
     public function selectAll(string $orderBy = 'date', string $direction = 'DESC'): array
     {
-    
         $query = 'SELECT * FROM ' . static::TABLE;
         if ($orderBy) {
             $query .= ' ORDER BY ' . $orderBy . ' ' . $direction;

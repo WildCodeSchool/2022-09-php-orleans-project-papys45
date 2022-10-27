@@ -14,6 +14,7 @@
 		
 	
 
+
 	<div class="cardh">
 		<div class="container">
 			<div class="row">
@@ -23,7 +24,12 @@
 							<div class="row row-cols-1 row-cols-sm-3 row-cols-md-3">
 								<div class="col">
 									<div class="row justify-content-center">{{route.distance}} KM</div>
-									<div class="row justify-content-center"><img class="card-img" src="/assets/images/montagnes.png" alt="mountain icon"></div>
+									<div class="row justify-content-center"><img class="card-img" 
+									src={% if route.difficulty is same as 1 %}"/assets/images/montagnes.png" alt="green mountain icon"
+									{% elseif route.difficulty is same as 2 %} "/assets/images/montagnes-o.png" alt="orange mountain icon" 
+									{% else %} "/assets/images/montagnes-r.png" alt="red mountain icon" 
+									{% endif %}></div>
+									
 									<div class="row justify-content-center">Difficulté {{route.difficulty}}</div>
 								</div>
 								<div class="col">
