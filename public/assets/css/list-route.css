@@ -42,7 +42,7 @@
     }
 }
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 768px) {
     .custorm-border-bottom {
         border-bottom: 0.4px solid rgb(9, 16, 36);;
     }
