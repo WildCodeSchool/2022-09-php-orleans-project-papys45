@@ -11,14 +11,13 @@
 
 
 	{% for route in routes %}
-		
 	
-
-
 	<div class="cardh">
 		<div class="container">
 			<div class="row">
-				<div class="card p-2 rounded-3 mt-3 ">
+				<div {% if "now"|date("Y-m-d") < route.date|date('Y-m-d') %}class="card p-2 rounded-3 mt-3 border-danger"
+				{% else %}class="card p-2 rounded-3 mt-3"
+				{% endif %}>
 					<div class="container text-center">
 						<div class="container text-center">
 							<div class="row row-cols-1 row-cols-sm-3 row-cols-md-3">
@@ -29,7 +28,7 @@
 									{% elseif route.difficulty is same as 2 %} "/assets/images/montagnes-o.png" alt="orange mountain icon" 
 									{% else %} "/assets/images/montagnes-r.png" alt="red mountain icon" 
 									{% endif %}></div>
-									
+
 									<div class="row justify-content-center">Difficulté {{route.difficulty}}</div>
 								</div>
 								<div class="col">
