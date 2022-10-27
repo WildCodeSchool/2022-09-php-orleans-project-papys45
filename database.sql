@@ -140,3 +140,23 @@ VALUES (
         80,
         1
     );
+
+	INSERT INTO
+    `route` (
+        `date`,
+        `time`,
+        `start`,
+        `finish`,
+        `ravito`,
+        `distance`,
+        `difficulty`
+    )
+VALUES (
+        '2004-08-12',
+        '08:00:00',
+        '66 avenue de la figue, Fleury-Les-Aubrays',
+        '13 rue de Babylone , St Cyr en Val',
+        '48 faubourg du bourg, Olivet',
+        100,
+        2
+    );
