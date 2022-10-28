@@ -10,7 +10,7 @@ class ListRouteController extends AbstractController
     public function index()
     {
         $itemManager = new RouteManager();
-        $routes = $itemManager->selectAll();
+        $routes = $itemManager->selectAll('date', 'DESC');
 
         return $this->twig->render('List/listRoute.html.twig', ['routes' => $routes]);
     }
