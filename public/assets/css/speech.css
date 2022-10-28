@@ -1,0 +1,25 @@
+.speech h2 {
+    --shadow: #b4b6b7;
+    font-family: var(--title-font);
+    text-shadow: 1px 1px 1px var(--shadow);
+}
+
+.story p {
+    font-family: var(--content-font);
+    line-height: 2;
+}
+
+.image img {
+    width: 90px;
+    height: 90px;
+}
+
+.story p::first-letter {
+    color: var(--bs-danger);
+    font-size: 130%;
+}
+
+.story {
+    border: 1px solid var(--bs-danger);
+    border-radius: 4px;
+}
