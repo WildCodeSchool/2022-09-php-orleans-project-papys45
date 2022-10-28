@@ -1,0 +1,24 @@
+.header {
+    --header-size: 400px;
+    height: var(--header-size);
+    background-image: url('../images/cyclistes-dans-course-velo.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header h1 {
+    --main-title-size: 150px;
+    font-size: clamp(60px, 10vw, var(--main-title-size));
+    font-family: var(--title-font);
+}
+
+.header h2 {
+    --secondary-title-size: 50px;
+    font-size: clamp(30px, 5vw, var(--secondary-title-size));
+    font-family: var(--title-font);
+}
+
+.header h1,
+.header h2 {
+    text-align: end;
+}
