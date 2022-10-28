@@ -1,0 +1,7 @@
+.footer {
+    font-family: var(--tool-font);
+}
+
+.source, .links{
+    font-size: 0.75em;
+}

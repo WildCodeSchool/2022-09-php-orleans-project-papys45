@@ -1,10 +1,20 @@
 {% extends 'layout.html.twig' %}
 
 {% block stylesheet %}
+
+<link rel="stylesheet" href="../../assets/css/carousel.css">
+	<link rel="stylesheet" href="assets/css/home.css">
 	<link link rel="stylesheet" href="/assets/css/speech.css">
 {% endblock %}
 
 {% block content %}
+ <header class="header d-flex justify-content-end align-items-end">
+		<div class="m-5">
+			<h1 class="text-light">LES PAPYS 45</h1>
+			<h2 class="text-light">Association cycliste</h2>
+		</div>
+	</header>
+  {% include 'Home/_news.html.twig' %}
 	<div class="speech d-flex flex-column align-items-center container mt-5">
 		<h2 class="text-danger fs-1 d-none d-sm-block">LE MOT DU PRESIDENT</h2>
 		<div class="story col-10 col-md-8 col-lg-6 mt-5 position-relative pt-3 shadow">
@@ -28,4 +38,5 @@
 			</div>
 		</div>
 	</div>
+	
 {% endblock %}
