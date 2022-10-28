@@ -11,9 +11,9 @@
 					{% for actuality in actualities %}
 						<div class="carousel-item {{ loop.first ? 'active' : '' }}" data-bs-interval="5000">
 							<img src="/assets/images/actu{{loop.index0 % 3}}.png" class="d-block w-100" alt="une image en lien avec le vélo">
-							<div class="carousel-caption d-none d-md-block bg-danger rounded">
+							<div class="carousel-caption d-md-block bg-danger rounded">
 								<h3 class="carousel_title">{{ actuality.title }}</h3>
-								<p class="carousel_content p-2">{{ actuality.content}}</p>
+								<p class="carousel_content px-2">{{ actuality.content }}</p>
 							</div>
 						</div>
 					{% endfor %}
