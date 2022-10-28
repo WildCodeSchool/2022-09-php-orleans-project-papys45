@@ -1,0 +1,11 @@
+.formLabel {
+    font-family: var(--title-font);
+}
+
+.formContent {
+    font-family: var(--content-font);
+}
+
+.formTitle {
+    font-family: var(--title-font); 
+}
