@@ -1,6 +1,7 @@
 .speech h2 {
+    --shadow: #b4b6b7;
     font-family: var(--title-font);
-    text-shadow: 1px 1px 2px #7d868d;
+    text-shadow: 1px 1px 1px var(--shadow);
 }
 
 .story p {
@@ -8,15 +9,9 @@
     line-height: 2;
 }
 
-.image {
-    position: relative;
-}
-
 .image img {
-    position: absolute;
     width: 90px;
     height: 90px;
-    filter: drop-shadow(1px 1px 1px #7d868d);
 }
 
 .story p::first-letter {
@@ -27,7 +22,6 @@
 .story {
     border: 1px solid var(--bs-danger);
     border-radius: 4px;
-    box-shadow: 0 5px 5px -2px #7d868d;
 }
 
 @media screen and (max-width: 575px) {
