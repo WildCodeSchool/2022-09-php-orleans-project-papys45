@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Model\ActualityManager;
+use App\Controller\AbstractController;
+
 class HomeController extends AbstractController
 {
     /**
@@ -9,6 +12,10 @@ class HomeController extends AbstractController
      */
     public function index(): string
     {
-        return $this->twig->render('Home/index.html.twig');
+
+        $actualityManager = new ActualityManager();
+        $actualities = $actualityManager->selectAll('title');
+
+        return $this->twig->render('Home/index.html.twig', ['actualities' => $actualities]);
     }
 }
