@@ -1,0 +1,17 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="../../assets/css/carousel.css">
+	<link rel="stylesheet" href="assets/css/home.css">
+{% endblock %}
+
+{% block content %}
+	<header class="header d-flex justify-content-end align-items-end">
+		<div class="m-5">
+			<h1 class="text-light">LES PAPYS 45</h1>
+			<h2 class="text-light">Association cycliste</h2>
+		</div>
+	</header>
+	{% include 'Home/_news.html.twig' %}
+
+{% endblock %}
