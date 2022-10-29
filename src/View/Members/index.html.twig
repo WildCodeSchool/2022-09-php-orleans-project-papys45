@@ -7,12 +7,12 @@
 {% block content %}
 	<div class="container mt-5">
 		<div class="row d-flex justify-content-center">
-			<div class="col-12">
+			<div class="col-10">
 				<h1 class="officeTitle text-danger text-center mt-5">LE BUREAU</h1>
-				<div class="detailOffice mt-5 d-flex justify-content-between align-items-center">
+				<div class="detailOffice mt-5 d-flex flex-wrap justify-content-center align-items-center">
 					{% for member in members %}
 						{% if member.role is not empty %}
-							<div class="officeCard card border-0">
+							<div class="officeCard card border-0 mx-4">
 								<img src="/assets/images/{{member.photo}}" class="card-img-top d-flex rounded-circle" alt="photo d'un membre du bureau">
 								<div class="card-body">
 									<p class="officeContent card-text text-center m-0 p-0 fw-bold">{{ member.firstname }}
@@ -30,19 +30,23 @@
 				</div>
 
 				<h2 class="membersTitle text-danger text-center fs-1 mt-5">Les membres actifs</h1>
-				<div class=" detailMembers   w-100">
+				<div class=" detailMembers mt-5 d-flex flex-wrap justify-content-center align-items-center">
 					{% for member in members %}
 						{% if member.role is empty %}
-							<div class="card" style="width: 18rem;">
-								<img src="..." class="card-img-top" alt="...">
+							<div class="membersCard card border-0 mx-4">
+								<img src="/assets/images/{{member.photo}}" class="card-img-top d-flex rounded-circle " alt="photo d'un membre actif">
 								<div class="card-body">
-									<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+									<p class="officeContent card-text text-center m-0 p-0 fw-bold">{{ member.firstname }}
+										{{ member.lastname }}</p>
+									<p class="officeContent card-text text-center m-0 p-0">
+										{% set difference = date( now | date() ).diff(date(member.dateOfBirth)) %}
+										{% set years = difference.y %}
+										{{ years }}
+										ans</p>
 								</div>
 							</div>
 						{% endif %}
 					{% endfor %}
-
-
 				</div>
 
 			</div>

@@ -195,5 +195,89 @@ VALUES (
         '',
         '1980-12-02',
         'john@doe.fr',
-        'default.png'
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        '',
+        '1979-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        '',
+        '1978-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        '',
+        '1977-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        '',
+        '1976-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        '',
+        '1975-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        '',
+        '1974-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        '',
+        '1973-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        '',
+        '1972-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        '',
+        '1971-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        '',
+        '1970-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        '',
+        '1969-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'Serge',
+        'Moreau',
+        '',
+        '1959-12-02',
+        'john@doe.fr',
+        'SergeMoreau.png'
     );
