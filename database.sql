@@ -131,3 +131,69 @@ VALUES (
         'C\'est qui ton meilleur ami ?',
         'Mon meilleur ami c\'est GRUMP.'
     );
+
+/*----------------------------------------------------------------*/
+
+CREATE TABLE
+    `member` (
+        `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+        `firstname` VARCHAR(80) NOT NULL,
+        `lastname` VARCHAR(80) NOT NULL,
+        `role` CHAR(20),
+        `dateOfBirth` DATE NOT NULL,
+        `mail` VARCHAR(255) NOT NULL,
+        `photo` TEXT
+    );
+
+INSERT INTO
+    `member` (
+        `firstname`,
+        `lastname`,
+        `role`,
+        `dateOfBirth`,
+        `mail`,
+        `photo`
+    )
+VALUES (
+        'Roger',
+        'Edarde',
+        'Président',
+        '1944-10-30',
+        'roger@edarde.fr',
+        'RogerEdarde.png'
+    ), (
+        'Frédéric',
+        'Milier',
+        'Vice-Président',
+        '1964-03-28',
+        'fred@milier.fr',
+        'FredMilier.png'
+    ), (
+        'Guy',
+        'Hauger',
+        'Secrétaire',
+        '1967-12-02',
+        'guy@hauger.fr',
+        'GuyHauger.png'
+    ), (
+        'Pierre',
+        'Bernard',
+        'Secrétaire-Adjoint',
+        '1945-08-18',
+        'pierre@bernard.fr',
+        'PierreBernard.png'
+    ), (
+        'Raymond',
+        'Poulidor',
+        'Comptable',
+        '1968-08-28',
+        'raymond@poulidor.fr',
+        'RaymondPoulidor.png'
+    ), (
+        'John',
+        'Doe',
+        '',
+        '1980-12-02',
+        'john@doe.fr',
+        'default.png'
+    );
