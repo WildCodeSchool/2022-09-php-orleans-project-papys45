@@ -167,28 +167,28 @@ VALUES (
         'Vice-Président',
         '1964-03-28',
         'fred@milier.fr',
-        'FredMilier.png'
+        'RogerEdarde.png'
     ), (
         'Guy',
         'Hauger',
         'Secrétaire',
         '1967-12-02',
         'guy@hauger.fr',
-        'GuyHauger.png'
+        'RogerEdarde.png'
     ), (
         'Pierre',
         'Bernard',
         'Secrétaire-Adjoint',
         '1945-08-18',
         'pierre@bernard.fr',
-        'PierreBernard.png'
+        'RogerEdarde.png'
     ), (
         'Raymond',
         'Poulidor',
         'Comptable',
         '1968-08-28',
         'raymond@poulidor.fr',
-        'RaymondPoulidor.png'
+        'RogerEdarde.png'
     ), (
         'John',
         'Doe',
