@@ -1,0 +1,7 @@
+.officeTitle {
+    font-family: var(--title-font);
+}
+
+.membersTitle {
+    font-family: var(--content-font);
+}
