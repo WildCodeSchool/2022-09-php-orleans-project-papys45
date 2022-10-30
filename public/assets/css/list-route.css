@@ -1,4 +1,3 @@
-
 .display-4{
     font-family: var(--title-font);
 }
@@ -36,10 +35,9 @@
     font-weight: bold;
 }
 
-
 .icon-green {
     filter: invert(40%) sepia(91%) saturate(374%) hue-rotate(100deg) brightness(87%) contrast(92%);
-}
+} 
 
 .icon-orange {
     filter: invert(64%) sepia(72%) saturate(3828%) hue-rotate(351deg) brightness(101%) contrast(98%);
