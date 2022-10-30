@@ -21,7 +21,7 @@ class AdminMembersController extends AbstractController
             $adminMembersManager = new AdminMembersManager();
             $adminMembersManager->delete((int)$id);
 
-            header('Location:/');
+            header('Location:/admin/membres');
         }
     }
 }
