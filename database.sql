@@ -158,14 +158,14 @@ VALUES (
         'Roger',
         'Edarde',
         'Président',
-        '1944-10-30',
+        (STR_TO_DATE("30.10.1944",'%d.%m.%Y')),
         'roger@edarde.fr',
         'RogerEdarde.png'
     ), (
-        'Frédéric',
+        'Frédérick',
         'Milier',
         'Vice-Président',
-        '1964-03-28',
+        (STR_TO_DATE("28.03.1968",'%d.%m.%Y')),
         'fred@milier.fr',
         'RogerEdarde.png'
     ), (
