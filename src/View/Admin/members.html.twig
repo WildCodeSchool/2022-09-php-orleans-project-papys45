@@ -46,9 +46,10 @@
 									</a>
 								</td>
 								<td>
-									<a href="/Admin/membersDelete?id={{ member.id }}">
-										<button type="button" class="btn btn-outline-danger btn-sm">Supprimer</button>
-									</a>
+									<form action="/admin/membres/delete" method="post">
+										<input type="hidden" name="id" value="{{ member.id }}">
+										<button class="btn btn-outline-danger btn-sm">Supprimer</button>
+									</form>
 								</td>
 							</tr>
 
