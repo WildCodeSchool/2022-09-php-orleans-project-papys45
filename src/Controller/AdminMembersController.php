@@ -39,6 +39,16 @@ class AdminMembersController extends AbstractController
 
             $errors = $this->verification($member);
 
+            $dateOfBirth = str_replace('.', '-', $member['dateOfBirth']);
+            $dateOfBirth = date("Y-m-d", strtotime($dateOfBirth));
+            $date = explode("-", $dateOfBirth);
+
+            if (!$this->checkDateOfBirth($date)) {
+                $errors[] = 'La date d\'anniversaire est incorrecte.';
+            } else {
+                $member['dateOfBirth'] = implode('-', $date);
+            }
+
             if (empty($errors)) {
                 $adminMembersManager->update($member);
                 header('location: /Admin/membersEdit?id=' . $id . '&message=success');
@@ -69,10 +79,6 @@ class AdminMembersController extends AbstractController
             $errors[] = 'Le nom doit être inférieur à ' . self::MAX_LASTNAME_LENGTH . ' caractères';
         }
 
-        if (!$this->checkDateOfBirth($member)) {
-            $errors[] = 'La date d\'anniversaire est incorrecte.';
-        }
-
         if (!key_exists($member['role'], self::ROLES)) {
             $errors[] = 'Le role dans l\'association est incorrect.';
         }
@@ -88,12 +94,8 @@ class AdminMembersController extends AbstractController
         return $errors;
     }
 
-    private function checkDateOfBirth(array $member): bool
+    private function checkDateOfBirth(array $date): bool
     {
-        $dateOfBirth = str_replace('.', '-', $member['dateOfBirth']);
-        $dateOfBirth = date("Y-m-d", strtotime($dateOfBirth));
-        $date = explode("-", $dateOfBirth);
-
         return checkdate(intval($date[1]), intval($date[2]), intval($date[0]));
     }
 
