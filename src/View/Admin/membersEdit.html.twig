@@ -8,14 +8,24 @@
 {% endblock %}
 
 {% block content %}
+
+
 	<div class="container mt-5">
 		<div class="row d-flex justify-content-center">
 			<div class="col-10">
 				<h1 class="adminMembersTitle text-danger text-center fs-1 mt-5">Administration du membre</h1>
-
+				<ul class="text-center mt-5">
+					{% for error in errors %}
+						<li class="text-danger">
+							{{ error }}</li>
+					{% endfor %}
+				</ul>
 				<div class="container mt-2">
 					<div class="row d-flex justify-content-center">
 						<div class="col-lg-6 ">
+							{% if message == 'success' %}
+								<div class="alert alert-success text-center" role="alert">Vos modifications ont bien été prises en compte.</div>
+							{% endif %}
 							<div class="d-flex justify-content-center h-25">
 								<picture class="d-flex align-items-center justify-content-center border-none">
 									<img src="/assets/images/{{ member.photo }}" class="rounded-circle w-75" alt="photo d'un membre du bureau">
@@ -34,7 +44,7 @@
 								<div class="form-group mt-2">
 									<label for="date" class="formLabel">Date de naissance :</label>
 									<div class="datepicker input-group date p-0" id="datepicker">
-										<input type="text" placeholder="Choisir une date" class="form-control" name="dateOfBirth" id="date" value="{{ member.dateOfBirth ?? '' }}" required/>
+										<input type="text" placeholder="Choisir une date" class="form-control" name="dateOfBirth" id="date" value="{{ member.dateOfBirth|date("d.m.Y") }}" required/>
 										<div class="input-group-append">
 											<span class="input-group-text text-light bg-danger d-block">
 												<i class="fa fa-calendar"></i>
@@ -80,7 +90,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 		<script type="text/javascript">
 			$(function () {
-$('.datepicker').datepicker({format: 'd-mm-yyyy'});
+$('.datepicker').datepicker({format: 'd.mm.yyyy'});
 });
 		</script>
 	{% endblock %}
