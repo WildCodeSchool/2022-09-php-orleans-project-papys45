@@ -13,4 +13,15 @@ class AdminMembersController extends AbstractController
 
         return $this->twig->render('Admin/members.html.twig', ['members' => $members]);
     }
+
+    public function delete(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $adminMembersManager = new AdminMembersManager();
+            $adminMembersManager->delete((int)$id);
+
+            header('Location:/');
+        }
+    }
 }
