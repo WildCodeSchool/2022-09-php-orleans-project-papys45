@@ -6,19 +6,19 @@
 
 {% block content %}
 
-	<h1 class="display-4 fw-bold text-danger text-center py-5">
-		LISTE SORTIES</h1>
+		<h1 class="display-4 fw-bold text-danger text-center py-5">
+			LISTE SORTIES</h1>
 
-	<div class="pb-5 ">
-	{% for route in routes %}
+<div class="pb-5 ">
+		{% for route in routes %}
 	
 	
 	<div class="cardh pb-2">
 		<div class="container">
 			<div class="row">
-				<div {% if "now"|date("Y-m-d") < route.date|date('Y-m-d') %}class="card p-2 rounded-3 mt-3 border-danger shadow"
-				{% else %}class="card p-2 rounded-3 mt-3 shadow"
-				{% endif %}>
+				{% if "now"|date("Y-m-d") < route.date|date('Y-m-d') %}<div class="card p-2 rounded-3 mt-3 border-danger shadow">
+				{% else %}<div class="card p-2 rounded-3 mt-3 shadow">
+				{% endif %}
 					<div class="container text-center">
 						
 							<div class="row row-cols-1 row-cols-sm-1 row-cols-md-3">
@@ -46,16 +46,16 @@
 									<a href="#"{# Don't forget to change with items/show?id={{ route.id }} after making the detail page #} class="stretched-link"></a>
 								</div>
 							</div>
-						
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		
 	</div>
-
-{% endfor %}
 </div>
+{% endfor %}
+
 
 {% endblock %}
  
