@@ -23,14 +23,14 @@
 							{% if message == 'success' %}
 								<div class="alert alert-success text-center" role="alert">Le membre a bien été ajouté.</div>
 							{% endif %}
-							<div class="d-flex justify-content-center h-25">
-								<picture class="d-flex align-items-center justify-content-center border-none">
-									<img src="/assets/images/{{ member.photo ?? 'default.svg' }}" class="rounded-circle w-75" alt="photo d'un membre du bureau">
+							<div class="d-flex justify-content-center mt-2">
+								<picture class="d-flex align-items-center h-50 w-50 justify-content-center border-none">
+									<img src="/assets/images/default.svg" class="rounded-circle w-50" alt="photo d'un membre du bureau">
 								</picture>
 							</div>
 							<form action="" method="post">
 								<input type="hidden" name="id" value="{{ member.id ?? '' }}">
-								<div class="form-group mt-2">
+								<div class="form-group">
 									<label class="formLabel" for="firstname">Prénom :</label>
 									<input type="text" class="form-control formContent" name="firstname" id="firstname" placeholder="Jean" value="{{ member.firstname ?? '' }}" required>
 								</div>
