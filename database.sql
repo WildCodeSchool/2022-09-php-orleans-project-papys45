@@ -157,126 +157,126 @@ INSERT INTO
 VALUES (
         'Roger',
         'Edarde',
-        'Président',
+        'president',
         (STR_TO_DATE("30.10.1944",'%d.%m.%Y')),
         'roger@edarde.fr',
         'RogerEdarde.png'
     ), (
         'Frédérick',
         'Milier',
-        'Vice-Président',
+        'vice-president',
         (STR_TO_DATE("28.03.1968",'%d.%m.%Y')),
         'fred@milier.fr',
         'RogerEdarde.png'
     ), (
         'Guy',
         'Hauger',
-        'Secrétaire',
+        'secretary',
         '1967-12-02',
         'guy@hauger.fr',
         'RogerEdarde.png'
     ), (
         'Pierre',
         'Bernard',
-        'Secrétaire-Adjoint',
+        'vice-secretary',
         '1945-08-18',
         'pierre@bernard.fr',
         'RogerEdarde.png'
     ), (
         'Raymond',
         'Poulidor',
-        'Comptable',
+        'accoutant',
         '1968-08-28',
         'raymond@poulidor.fr',
         'RogerEdarde.png'
     ), (
         'John',
         'Doe',
-        '',
+        'member',
         '1980-12-02',
         'john@doe.fr',
         'default.svg'
     ), (
         'John',
         'Doe',
-        '',
+        'member',
         '1979-12-02',
         'john@doe.fr',
         'default.svg'
     ), (
         'John',
         'Doe',
-        '',
+        'member',
         '1978-12-02',
         'john@doe.fr',
         'default.svg'
     ), (
         'John',
         'Doe',
-        '',
+        'member',
         '1977-12-02',
         'john@doe.fr',
         'default.svg'
     ), (
         'John',
         'Doe',
-        '',
+        'member',
         '1976-12-02',
         'john@doe.fr',
         'default.svg'
     ), (
         'John',
         'Doe',
-        '',
+        'member',
         '1975-12-02',
         'john@doe.fr',
         'default.svg'
     ), (
         'John',
         'Doe',
-        '',
+        'member',
         '1974-12-02',
         'john@doe.fr',
         'default.svg'
     ), (
         'John',
         'Doe',
-        '',
+        'member',
         '1973-12-02',
         'john@doe.fr',
         'default.svg'
     ), (
         'John',
         'Doe',
-        '',
+        'member',
         '1972-12-02',
         'john@doe.fr',
         'default.svg'
     ), (
         'John',
         'Doe',
-        '',
+        'member',
         '1971-12-02',
         'john@doe.fr',
         'default.svg'
     ), (
         'John',
         'Doe',
-        '',
+        'member',
         '1970-12-02',
         'john@doe.fr',
         'default.svg'
     ), (
         'John',
         'Doe',
-        '',
+        'member',
         '1969-12-02',
         'john@doe.fr',
         'default.svg'
     ), (
         'Serge',
         'Moreau',
-        '',
+        'member',
         '1959-12-02',
         'john@doe.fr',
         'SergeMoreau.png'
