@@ -107,7 +107,6 @@ ALTER TABLE
 ;
 
 CREATE TABLE
-
     `route` (
         `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `date` DATE NOT NULL,
@@ -180,4 +179,29 @@ VALUES (
         '48 rue de la rue, Chécy',
         20,
         3
+    );
+
+    `actuality` (
+        `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+        `title` VARCHAR(80),
+        `content` VARCHAR(140)
+    );
+
+INSERT INTO
+    `actuality` (`title`, `content`)
+VALUES (
+        'A vos agendas !',
+        'La prochaine réunion aura lieu le 8 novembre 2022 à la salle Jean Bernard'
+    ), (
+        'A vos agendas !',
+        'Samedi 17 décembre 2022, repas de fin d\'année du club'
+    ), (
+        'L\'hiver vient !',
+        'Dernière sortie avant clôture, le 27 novembre 2022.'
+    ), (
+        'Vive les PR !',
+        'Grâce à mon formateur préféré, j\'aime les PR.'
+    ), (
+        'C\'est qui ton meilleur ami ?',
+        'Mon meilleur ami c\'est GRUMP.'
     );
