@@ -11,12 +11,12 @@ class AdminMembersController extends AbstractController
     public const MAX_ROLE_LENGTH = 20;
     public const MAX_MAIL_LENGTH = 255;
     public const ROLES = [
-        'President' => 'Président',
-        'vice' => 'Vice-président',
+        'president' => 'Président',
+        'vice_president' => 'Vice-président',
         'accountant' => 'Comptable',
         'secretary' => 'Secrétaire',
-        'adjSecretary' => 'Secrétaire-adjoint',
-        'activeMember' => 'Membre actif'
+        'vice_secretary' => 'Secrétaire-adjoint',
+        'member' => 'Membre actif'
     ];
     public function index(): string
     {
