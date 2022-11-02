@@ -10,6 +10,9 @@ class AdminMembersController extends AbstractController
     public const MAX_LASTNAME_LENGTH = 80;
     public const MAX_ROLE_LENGTH = 20;
     public const MAX_MAIL_LENGTH = 255;
+    public const MAX_FILE_SIZE = 1000000;
+    public const AUTH_EXTENSION = ['jpg', 'png', 'jpeg'];
+    public const UPLOAD_DIR = '../public/assets/images/';
     public const ROLES = [
         'President' => 'Président',
         'vice' => 'Vice-président',
@@ -18,6 +21,7 @@ class AdminMembersController extends AbstractController
         'adjSecretary' => 'Secrétaire-adjoint',
         'activeMember' => 'Membre actif'
     ];
+
 
     public function index(): string
     {
@@ -31,11 +35,32 @@ class AdminMembersController extends AbstractController
     {
         $adminMembersManager = new AdminMembersManager();
         $member = $adminMembersManager->selectOneById($id);
+        $photoTemp = $member['photo'];
 
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $member = array_map('trim', $_POST);
+
+            if (!empty($_FILES['photo']['name'])) {
+                $extension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
+                $errorsUpload = $this->verifUpload($extension);
+
+                if (empty($errorsUpload)) {
+                    $uniqName = uniqid('', true) . '.' . $extension;
+                    $uploadFile = self::UPLOAD_DIR . $uniqName;
+
+                    if (!move_uploaded_file($_FILES['photo']['tmp_name'], $uploadFile)) {
+                        $errors[] = $_FILES['photo']['name'] . 'n\'a pas pu être uploadé. Veuillez réessayer.';
+                    } else {
+                        $member['photo'] = $uniqName;
+                    }
+                } else {
+                    $errors = array_merge($errorsUpload, $errors);
+                }
+            } else {
+                $member['photo'] = $photoTemp;
+            }
 
             $errors = $this->verification($member);
 
@@ -51,7 +76,7 @@ class AdminMembersController extends AbstractController
 
             if (empty($errors)) {
                 $adminMembersManager->update($member);
-                header('location: /Admin/membersEdit?id=' . $id . '&message=success');
+                header('location: /admin/membres/edit?id=' . $id . '&message=success');
 
                 return '';
             }
@@ -63,6 +88,26 @@ class AdminMembersController extends AbstractController
             'errors' => $errors,
             'message' => $message,
         ]);
+    }
+
+    private function verifUpload(string $extension): array
+    {
+        $errors = [];
+
+        if (file_exists($_FILES['photo']['tmp_name']) && filesize($_FILES['photo']['tmp_name']) > self::MAX_FILE_SIZE) {
+            $errors[] = 'Votre fichier doit être inférieur à ' . self::MAX_FILE_SIZE / 1000000 . 'Mo.';
+        }
+
+        if ((!in_array($extension, self::AUTH_EXTENSION))) {
+            $extString = implode(', ', self::AUTH_EXTENSION);
+            $errors[] = 'Veuillez sélectionner une image de type ' . $extString . '.';
+        }
+
+        if (!empty($_FILES['error'])) {
+            $errors[] = 'Erreur d \'upload : ' . $_FILES['error'] . '.';
+        }
+
+        return $errors;
     }
 
     private function verification(array $member): array
