@@ -27,9 +27,9 @@
 									<div class="row justify-content-center tool-font fs-3 pt-4 pb-1">{{route.distance}} KM</div>
 
 									<div class="row justify-content-center">
-									{% if route.difficulty is same as 1 %}<img class="card-img icon-green" 
+									{% if  constant('App\\Controller\\RouteController::EASY_ROUTE') is same as route.difficulty %}<img class="card-img icon-green" 
 									src="/assets/images/mountain.svg" alt="green mountain icon">
-									{% elseif route.difficulty is same as 2 %}<img class="card-img icon-orange" src="/assets/images/mountain.svg" alt="orange mountain icon">
+									{% elseif constant('App\\Controller\\RouteController::MEDIUM_ROUTE') is same as route.difficulty %}<img class="card-img icon-orange" src="/assets/images/mountain.svg" alt="orange mountain icon">
 									{% else %}<img class="card-img icon-red" src="/assets/images/mountain.svg" alt="red mountain icon"> 
 									{% endif %}</div>
 									<div class="row justify-content-center tool-font fs-5 pb-3 pt-3">Difficulté {{route.difficulty}}</div>
