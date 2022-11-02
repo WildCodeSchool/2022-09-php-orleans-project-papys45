@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Controller\AbstractController;
 use App\Model\RouteManager;
 
-class ListRouteController extends AbstractController
+class RouteController extends AbstractController
 {
     public function index()
     {
