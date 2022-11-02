@@ -1,0 +1,10 @@
+.navbar {
+    font-family: var(--tool-font);
+}
+
+
+.title {
+    --inline-size: 150px;
+    inline-size: var(--inline-size);
+    font-family: var(--tool-font);
+}
