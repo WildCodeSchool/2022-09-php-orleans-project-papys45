@@ -107,6 +107,81 @@ ALTER TABLE
 ;
 
 CREATE TABLE
+
+    `route` (
+        `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        `date` DATE NOT NULL,
+        `time` TIME NOT NULL,
+        `start` VARCHAR(255) NOT NULL,
+        `finish` VARCHAR(255) NOT NULL,
+        `ravito` VARCHAR(255),
+        `distance` INT NOT NULL,
+        `difficulty` INT NOT NULL,
+        `gpx` VARCHAR(255),
+        `description` VARCHAR(255),
+        `rapport` VARCHAR(255)
+    );
+
+INSERT INTO
+    `route` (
+        `date`,
+        `time`,
+        `start`,
+        `finish`,
+        `ravito`,
+        `distance`,
+        `difficulty`
+    )
+VALUES (
+        '2022-10-27',
+        '16:00:00',
+        '45 rue de la voiture gauche, Orléans',
+        '20 rue du velo en mer, Chécy',
+        '250 avenue du raton',
+        80,
+        1
+    );
+
+	INSERT INTO
+    `route` (
+        `date`,
+        `time`,
+        `start`,
+        `finish`,
+        `ravito`,
+        `distance`,
+        `difficulty`
+    )
+VALUES (
+        '2022-10-28',
+        '08:00:00',
+        '66 avenue de la figue, Fleury-Les-Aubrays',
+        '13 rue de Babylone , St Cyr en Val',
+        '48 faubourg du bourg, Olivet',
+        100,
+        2
+    );
+
+		INSERT INTO
+    `route` (
+        `date`,
+        `time`,
+        `start`,
+        `finish`,
+        `ravito`,
+        `distance`,
+        `difficulty`
+    )
+VALUES (
+        '2023-01-03',
+        '08:00:00',
+        '66 avenue du chimpanzé, Orléans',
+        '13 rue du couteau de Cécile, Beaugency',
+        '48 rue de la rue, Chécy',
+        20,
+        3
+    );
+
     `actuality` (
         `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL,
         `title` VARCHAR(80),
@@ -131,3 +206,153 @@ VALUES (
         'C\'est qui ton meilleur ami ?',
         'Mon meilleur ami c\'est GRUMP.'
     );
+
+
+CREATE TABLE
+    `member` (
+        `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+        `firstname` VARCHAR(80) NOT NULL,
+        `lastname` VARCHAR(80) NOT NULL,
+        `role` CHAR(20),
+        `dateOfBirth` DATE NOT NULL,
+        `mail` VARCHAR(255) NOT NULL,
+        `photo` TEXT
+    );
+
+INSERT INTO
+    `member` (
+        `firstname`,
+        `lastname`,
+        `role`,
+        `dateOfBirth`,
+        `mail`,
+        `photo`
+    )
+VALUES (
+        'Roger',
+        'Edarde',
+        'president',
+        (STR_TO_DATE("30.10.1944",'%d.%m.%Y')),
+        'roger@edarde.fr',
+        'RogerEdarde.png'
+    ), (
+        'Frédérick',
+        'Milier',
+        'vice-president',
+        (STR_TO_DATE("28.03.1968",'%d.%m.%Y')),
+        'fred@milier.fr',
+        'RogerEdarde.png'
+    ), (
+        'Guy',
+        'Hauger',
+        'secretary',
+        '1967-12-02',
+        'guy@hauger.fr',
+        'RogerEdarde.png'
+    ), (
+        'Pierre',
+        'Bernard',
+        'vice-secretary',
+        '1945-08-18',
+        'pierre@bernard.fr',
+        'RogerEdarde.png'
+    ), (
+        'Raymond',
+        'Poulidor',
+        'accoutant',
+        '1968-08-28',
+        'raymond@poulidor.fr',
+        'RogerEdarde.png'
+    ), (
+        'John',
+        'Doe',
+        'member',
+        '1980-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        'member',
+        '1979-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        'member',
+        '1978-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        'member',
+        '1977-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        'member',
+        '1976-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        'member',
+        '1975-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        'member',
+        '1974-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        'member',
+        '1973-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        'member',
+        '1972-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        'member',
+        '1971-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        'member',
+        '1970-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'John',
+        'Doe',
+        'member',
+        '1969-12-02',
+        'john@doe.fr',
+        'default.svg'
+    ), (
+        'Serge',
+        'Moreau',
+        'member',
+        '1959-12-02',
+        'john@doe.fr',
+        'SergeMoreau.png'
+    );
+
