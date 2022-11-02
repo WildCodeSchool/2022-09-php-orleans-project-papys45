@@ -181,7 +181,7 @@ VALUES (
         20,
         3
     );
-
+CREATE TABLE
     `actuality` (
         `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL,
         `title` VARCHAR(80),
