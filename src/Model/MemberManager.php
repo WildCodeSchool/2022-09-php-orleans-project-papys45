@@ -4,7 +4,7 @@ namespace App\Model;
 
 use PDO;
 
-class MembersManager extends AbstractManager
+class MemberManager extends AbstractManager
 {
     public const TABLE = 'member';
 }
