@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
-use App\Model\AdminMembersManager;
+use App\Model\AdminMemberManager;
 
-class AdminMembersController extends AbstractController
+class AdminMemberController extends AbstractController
 {
     public function index(): string
     {
-        $adminMembersManager = new AdminMembersManager();
+        $adminMembersManager = new AdminMemberManager();
         $members = $adminMembersManager->selectAll();
 
         return $this->twig->render('Admin/members.html.twig', ['members' => $members]);
