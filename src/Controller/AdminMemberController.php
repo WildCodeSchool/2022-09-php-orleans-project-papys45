@@ -2,9 +2,9 @@
 
 namespace App\Controller;
 
-use App\Model\AdminMembersManager;
+use App\Model\AdminMemberManager;
 
-class AdminMembersController extends AbstractController
+class AdminMemberController extends AbstractController
 {
     public const MAX_FIRSTNAME_LENGTH = 80;
     public const MAX_LASTNAME_LENGTH = 80;
@@ -12,7 +12,7 @@ class AdminMembersController extends AbstractController
     public const MAX_MAIL_LENGTH = 255;
     public const MAX_FILE_SIZE = 1000000;
     public const AUTH_EXTENSION = ['jpg', 'png', 'jpeg'];
-    public const UPLOAD_DIR = '../public/assets/images/';
+    public const UPLOAD_DIR = 'upload/';
     public const ROLES = [
         'President' => 'Président',
         'vice' => 'Vice-président',
@@ -25,7 +25,7 @@ class AdminMembersController extends AbstractController
 
     public function index(): string
     {
-        $adminMembersManager = new AdminMembersManager();
+        $adminMembersManager = new AdminMemberManager();
         $members = $adminMembersManager->selectAll();
 
         return $this->twig->render('Admin/members.html.twig', ['members' => $members]);
@@ -33,9 +33,9 @@ class AdminMembersController extends AbstractController
 
     public function edit(int $id, string $message = ''): ?string
     {
-        $adminMembersManager = new AdminMembersManager();
+        $adminMembersManager = new AdminMemberManager();
         $member = $adminMembersManager->selectOneById($id);
-        $photoTemp = $member['photo'];
+        $lastPhoto = $member['photo'];
 
         $errors = [];
 
@@ -54,12 +54,16 @@ class AdminMembersController extends AbstractController
                         $errors[] = $_FILES['photo']['name'] . 'n\'a pas pu être uploadé. Veuillez réessayer.';
                     } else {
                         $member['photo'] = $uniqName;
+
+                        if (file_exists('upload/' . $lastPhoto)) {
+                            unlink('upload/' . $lastPhoto);
+                        }
                     }
                 } else {
                     $errors = array_merge($errorsUpload, $errors);
                 }
             } else {
-                $member['photo'] = $photoTemp;
+                $member['photo'] = $lastPhoto;
             }
 
             $errors = $this->verification($member);
