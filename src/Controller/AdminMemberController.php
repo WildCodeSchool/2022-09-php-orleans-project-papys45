@@ -22,9 +22,8 @@ class AdminMemberController extends AbstractController
             $idPhoto = $adminMembersManager->idPhoto((int) $id);
             $adminMembersManager->delete((int)$id);
 
-            if (file_exists('upload/' . $idPhoto[0])) {
-                unlink('upload/' . $idPhoto[0]);
-                echo "Le fichier a été supprimé";
+            if (file_exists('upload/' . $idPhoto['photo'])) {
+                unlink('upload/' . $idPhoto['photo']);
             }
 
             header('Location:/admin/membres');
