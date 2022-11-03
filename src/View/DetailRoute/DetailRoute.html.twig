@@ -1,5 +1,5 @@
 {% extends "layout.html.twig" %}
-{% block stylesheet %}<link rel="stylesheet" href="/assets/css/DetaisRouteBefore.css">
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/DetailRoute.css">
 {% endblock %}
 {% block title %}Détails de la sortie à venir
 {% endblock %}
@@ -69,7 +69,7 @@
 				</div>
 				<div class="row flex-row pt-3">
 					<div class="col-2">
-						<img class="icon" src="/assets/images/dist.svg" alt="distance icon">
+						<img class="icon" src="/assets/images/distance.svg" alt="distance icon">
 					</div>
 					<div class="col-10 fs-2">
 						<p>{{routeid.distance}}
@@ -78,10 +78,11 @@
 				</div>
 				<div class="row flex-row pt-3">
 					<div class="col-2">
-						{% if routeid.difficulty is same as 1 %}<img class="card-img icon-green" src="/assets/images/mountain.svg" alt="green mountain icon">
-							{% elseif routeid.difficulty is same as 2 %}<img class="card-img icon-orange" src="/assets/images/mountain.svg" alt="orange mountain icon">
-							{% else %}<img class="card-img icon-red" src="/assets/images/mountain.svg" alt="red mountain icon">
-						{% endif %}
+						{% if  constant('App\\Controller\\RouteController::EASY_ROUTE') is same as route.difficulty %}<img class="card-img icon-green" 
+									src="/assets/images/mountain.svg" alt="green mountain icon">
+									{% elseif constant('App\\Controller\\RouteController::MEDIUM_ROUTE') is same as route.difficulty %}<img class="card-img icon-orange" src="/assets/images/mountain.svg" alt="orange mountain icon">
+									{% else %}<img class="card-img icon-red" src="/assets/images/mountain.svg" alt="red mountain icon"> 
+									{% endif %}
 
 					</div>
 					<div class="col-10 fs-2 pt-3">
