@@ -2,36 +2,58 @@
 
 namespace App\Controller;
 
-use App\Model\AdminMembersManager;
+use App\Model\AdminMemberManager;
 
-class AdminMembersController extends AbstractController
+class AdminMemberController extends AbstractController
 {
     public const MAX_FIRSTNAME_LENGTH = 80;
     public const MAX_LASTNAME_LENGTH = 80;
     public const MAX_ROLE_LENGTH = 20;
     public const MAX_MAIL_LENGTH = 255;
+    public const MAX_FILE_SIZE = 1000000;
+    public const AUTH_EXTENSION = ['jpg', 'png', 'jpeg'];
+    public const UPLOAD_DIR = 'upload/';
     public const ROLES = [
-        'president' => 'Président',
-        'vice_president' => 'Vice-président',
+        'President' => 'Président',
+        'vice' => 'Vice-président',
         'accountant' => 'Comptable',
         'secretary' => 'Secrétaire',
-        'vice_secretary' => 'Secrétaire-adjoint',
-        'member' => 'Membre actif'
+        'adjSecretary' => 'Secrétaire-adjoint',
+        'activeMember' => 'Membre actif'
     ];
     public function index(): string
     {
-        $adminMembersManager = new AdminMembersManager();
+        $adminMembersManager = new AdminMemberManager();
         $members = $adminMembersManager->selectAll();
 
         return $this->twig->render('Admin/members.html.twig', ['members' => $members]);
     }
 
-    public function add($message = '', array $member = ['photo' => 'default.svg']): ?string
+    public function add(string $message = '', array $member = ['photo' => 'default.svg']): ?string
     {
         $errors = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $member = array_map('trim', $_POST);
+
+            if (!empty($_FILES['photo']['name'])) {
+                $extension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
+                $errorsUpload = $this->verifUpload($extension);
+
+                if (empty($errorsUpload)) {
+                    $uniqName = uniqid('', true) . '.' . $extension;
+                    $uploadFile = self::UPLOAD_DIR . $uniqName;
+
+                    if (!move_uploaded_file($_FILES['photo']['tmp_name'], $uploadFile)) {
+                        $errors[] = $_FILES['photo']['name'] . 'n\'a pas pu être uploadé. Veuillez réessayer.';
+                    } else {
+                        $member['photo'] = $uniqName;
+                    }
+                } else {
+                    $errors = array_merge($errorsUpload, $errors);
+                }
+            }
+
 
             $errors = $this->verification($member);
 
@@ -45,7 +67,7 @@ class AdminMembersController extends AbstractController
                 $member['dateOfBirth'] = implode('-', $date);
             }
             if (empty($errors)) {
-                $adminMembersManager = new AdminMembersManager();
+                $adminMembersManager = new AdminMemberManager();
                 $adminMembersManager->insert($member);
 
                 header('location: /admin/membres/add?message=success');
@@ -59,6 +81,25 @@ class AdminMembersController extends AbstractController
             'errors' => $errors,
             'message' => $message,
         ]);
+    }
+    private function verifUpload(string $extension): array
+    {
+        $errors = [];
+
+        if (file_exists($_FILES['photo']['tmp_name']) && filesize($_FILES['photo']['tmp_name']) > self::MAX_FILE_SIZE) {
+            $errors[] = 'Votre fichier doit être inférieur à ' . self::MAX_FILE_SIZE / 1000000 . 'Mo.';
+        }
+
+        if ((!in_array($extension, self::AUTH_EXTENSION))) {
+            $extString = implode(', ', self::AUTH_EXTENSION);
+            $errors[] = 'Veuillez sélectionner une image de type ' . $extString . '.';
+        }
+
+        if (!empty($_FILES['error'])) {
+            $errors[] = 'Erreur d \'upload : ' . $_FILES['error'] . '.';
+        }
+
+        return $errors;
     }
 
     private function verification(array $member): array
