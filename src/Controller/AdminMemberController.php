@@ -6,6 +6,7 @@ use App\Model\AdminMemberManager;
 
 class AdminMemberController extends AbstractController
 {
+
     public const MAX_FIRSTNAME_LENGTH = 80;
     public const MAX_LASTNAME_LENGTH = 80;
     public const MAX_ROLE_LENGTH = 20;
@@ -24,7 +25,7 @@ class AdminMemberController extends AbstractController
     public function index(): string
     {
         $adminMembersManager = new AdminMemberManager();
-        $members = $adminMembersManager->selectAll();
+        $members = $adminMembersManager->selectAll('firstname');
 
         return $this->twig->render('Admin/members.html.twig', ['members' => $members]);
     }
@@ -162,4 +163,5 @@ class AdminMemberController extends AbstractController
 
         return $errors;
     }
+
 }
