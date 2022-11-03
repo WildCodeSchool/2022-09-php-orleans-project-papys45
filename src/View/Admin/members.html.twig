@@ -40,12 +40,35 @@
 								<a href="/admin/membres/edit?id={{ member.id }}">
 									<button type="button" class="btn btn-outline-warning btn-sm">Modifier</button>
 								</a>
+
 							</td>
 							<td>
-								<form action="/admin/membres/delete" method="post">
-									<input type="hidden" name="id" value="{{ member.id }}">
-									<button type="submit" class="btn btn-outline-danger btn-sm" method="post">Supprimer</button>
-								</form>
+								<button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ member.id}}">
+									supprimer
+								</button>
+								<div class="modal fade" id="exampleModal{{ member.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<h1 class="modal-title fs-5" id="exampleModalLabel">Avertissement</h1>
+												<button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<div class="modal-body">
+												Veuillez confirmer la suppression du membre :
+												{{ member.firstname }}
+												{{ member.lastname }}
+											</div>
+											<div class="modal-footer">
+												<button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Annuler</button>
+												<form action="/admin/membres/delete" method="post">
+													<input type="hidden" name="id" value="{{ member.id }}">
+													<button type="submit" class="btn btn-outline-danger btn-sm" method="post">Supprimer</button>
+												</form>
+
+											</div>
+										</div>
+									</div>
+								</div>
 							</td>
 						</tr>
 					</td>
@@ -54,26 +77,3 @@
 		</tbody>
 	</div>
 </tbody></div></div></div>{% endfor %}</tbody></table></div></div></div> {% endblock %}
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
