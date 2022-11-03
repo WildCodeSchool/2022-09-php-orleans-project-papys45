@@ -92,6 +92,7 @@ p {
 
 @media screen and (max-width: 768px) {
     .custom-border-bottom {
-        border-bottom: 0.4px solid rgb(9, 16, 36);;
+        border-bottom: 0.4px solid rgb(9, 16, 36);
+        padding-block-start: 2rem;
     }
 }
