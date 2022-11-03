@@ -16,3 +16,7 @@
     --content-font: 'Telex';
     --title-font: 'Paytone_One';
 }
+
+body { 
+    padding-top: 6rem; 
+}
