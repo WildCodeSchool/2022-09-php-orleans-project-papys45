@@ -22,10 +22,8 @@
 							<th scope="col">#</th>
 							<th scope="col">Prénom</th>
 							<th scope="col">Nom</th>
-							<th scope="col">Date de naissance</th>
 							<th scope="col">Statut</th>
 							<th scope="col">Mail</th>
-							<th scope="col">Photo</th>
 							<th scope="col"></th>
 							<th scope="col"></th>
 						</tr>
@@ -36,10 +34,8 @@
 								<th scope="row">{{ member.id}}</th>
 								<td>{{ member.firstname }}</td>
 								<td>{{ member.lastname }}</td>
-								<td>{{ member.dateOfBirth }}</td>
 								<td>{{ member.role }}</td>
 								<td>{{ member.mail }}</td>
-								<td>{{ member.photo }}</td>
 								<td>
 									<a href="/admin/membres/edit?id={{ member.id }}">
 										<button type="button" class="btn btn-outline-warning btn-sm">Modifier</button>
