@@ -21,6 +21,11 @@
     
   }
 
+ .date {
+    max-height: 5rem;
+
+ } 
+
 .icon {
     max-width: 3rem;
     height: auto;
