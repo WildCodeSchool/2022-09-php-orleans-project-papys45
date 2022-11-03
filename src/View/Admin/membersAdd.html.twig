@@ -62,8 +62,8 @@
 									<input type="email" class="form-control formContent" name="mail" id="email" placeholder="Dupont@gmail.com" value="{{ member.mail ?? '' }}" required>
 								</div>
 								<div class="form-group mt-2">
-									<label class="formLabel" for="photo">Photo ou avatar :</label>
-									<textarea class="form-control formContent" name="photo" id="photo" rows="1" placeholder="Lien de la photo ..." required>{{ member.photo ?? '' }}</textarea>
+									<label for="formFile" class="formLabel">Photo ou avatar :</label>
+									<input class="form-control" type="file" id="formFile" name="photo">
 								</div>
 								<div class="d-flex align-items-center justify-content-between ">
 									<button type="submit" class="btn btn-danger mt-2">Ajouter</button>
