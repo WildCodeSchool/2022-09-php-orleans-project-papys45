@@ -1,0 +1,23 @@
+.officeTitle {
+    font-family: var(--title-font);
+}
+
+.membersTitle,
+.detailOffice {
+    font-family: var(--content-font);
+}
+
+.officeContent {
+    --font-size: 0.75rem;
+    font-size: var(--font-size);
+}
+
+.officeCard {
+    --officeCardWidth: 150px;
+    width: var(--officeCardWidth);
+}
+
+.membersCard {
+    --membersCardWidth: 100px;
+    width: var(--membersCardWidth);
+}
