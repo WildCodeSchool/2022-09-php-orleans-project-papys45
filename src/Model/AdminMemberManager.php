@@ -26,5 +26,4 @@ class AdminMemberManager extends AbstractManager
 
         return (int)$this->pdo->lastInsertId();
     }
-
 }
