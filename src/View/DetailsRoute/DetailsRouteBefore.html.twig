@@ -1,0 +1,209 @@
+{% extends "layout.html.twig" %}
+{% block stylesheet %}<link rel="stylesheet" href="/assets/css/DetailRoute.css">
+{% endblock %}
+{% block title %}Détails de la sortie
+{% endblock %}
+
+
+{% block content %}
+
+	{% if "now"|date("Y-m-d") > routeid.date|date('Y-m-d') %}
+		<h1 class="display-4 fw-bold text-danger text-center py-5">DETAILS DE LA SORTIE PASSEE</h1>
+	{% else %}
+		<h1 class="display-4 fw-bold text-danger text-center py-5">
+			DETAILS DE LA SORTIE A VENIR
+		</h1>
+	{% endif %}
+
+	<div class="container text-center pt-4 pb-5 fs-6 tool-font ">
+
+		<div class="row row-flex">
+
+			<div class="col-6">
+			<img class="icon" src="/assets/images/calendar.svg" alt="calendar icon">
+			<p class="fs-2">{{routeid.date}}</p>
+			</div>
+
+			<div class="col-6">
+			<img class="icon" src="/assets/images/clock.svg" alt="clock icon">
+			<p class="fs-2">{{routeid.time}}</p>
+			</div>
+		</div>
+
+
+	</div>
+
+
+	<div class="container fs-3">
+		<div class="row pt-4">
+			<div class="col-md-8 order-md-1 ps-3 border-end">
+
+				<div>
+					<h3 class=" display-6 text-center pb-4 text-danger">Points important</h3>
+				</div>
+
+				<div class="row flex-row pt-5">
+					<div class="col-2">
+						<img class="icon" src="/assets/images/pin.svg" alt="pin icon">
+					</div>
+					<div class="col-10">
+						<p class="">{{routeid.start}}</p>
+					</div>
+				</div>
+
+				<div class="row flex-row pt-2">
+					<div class="col-2">
+						<img class="icon" src="/assets/images/flag.svg" alt="flag icon">
+					</div>
+					<div class="col-10">
+						<p>{{routeid.finish}}</p>
+					</div>
+				</div>
+				<div class="row flex-row pt-2">
+					<div class="col-2">
+						<img class="icon" src="/assets/images/ravito.svg" alt="ravito icon">
+					</div>
+					<div class="col-10">
+						<p>{{routeid.ravito}}</p>
+					</div>
+				</div>
+				<div class="row flex-row pt-3">
+					<div class="col-2">
+						<img class="icon" src="/assets/images/dist.svg" alt="distance icon">
+					</div>
+					<div class="col-10 fs-2">
+						<p>{{routeid.distance}}
+							KM</p>
+					</div>
+				</div>
+				<div class="row flex-row pt-3">
+					<div class="col-2">
+						{% if routeid.difficulty is same as 1 %}<img class="card-img icon-green" src="/assets/images/mountain.svg" alt="green mountain icon">
+							{% elseif routeid.difficulty is same as 2 %}<img class="card-img icon-orange" src="/assets/images/mountain.svg" alt="orange mountain icon">
+							{% else %}<img class="card-img icon-red" src="/assets/images/mountain.svg" alt="red mountain icon">
+						{% endif %}
+
+					</div>
+					<div class="col-10 fs-2 pt-3">
+						<p>Difficulté
+							{{routeid.difficulty}}</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="col-4 order-md-2 d-none d-md-block">
+				<div>
+					<h3 class="text-center pb-4 text-danger display-6">Déja inscrit</h3>
+				</div>
+
+				{# for here to call member table #}
+
+				<div class="row g-3 py-1">
+					<img src="../../assets/images/neon.jpeg" {# replace memberid.img#} class="h-25 w-25 rounded-circle" alt="{# replace memberid.alt #}"/>
+					<img src="../../assets/images/neon.jpeg" {# replace memberid.img#} class="h-25 w-25 rounded-circle" alt="{# replace memberid.alt #}"/>
+					<img src="../../assets/images/neon.jpeg" {# replace memberid.img#} class="h-25 w-25 rounded-circle" alt="{# replace memberid.alt #}"/>
+					<img src="../../assets/images/neon.jpeg" {# replace memberid.img#} class="h-25 w-25 rounded-circle" alt="{# replace memberid.alt #}"/>
+				</div>
+				<div class="row g-3 py-1">
+					<img src="../../assets/images/neon.jpeg" {# replace memberid.img#} class="h-25 w-25 rounded-circle" alt="{# replace memberid.alt #}"/>
+					<img src="../../assets/images/neon.jpeg" {# replace memberid.img#} class="h-25 w-25 rounded-circle" alt="{# replace memberid.alt #}"/>
+					<img src="../../assets/images/neon.jpeg" {# replace memberid.img#} class="h-25 w-25 rounded-circle" alt="{# replace memberid.alt #}"/>
+					<img src="../../assets/images/neon.jpeg" {# replace memberid.img#} class="h-25 w-25 rounded-circle" alt="{# replace memberid.alt #}"/>
+				</div>
+				<div class="row g-3 py-1">
+					<img src="../../assets/images/neon.jpeg" {# replace memberid.img#} class="h-25 w-25 rounded-circle" alt="{# replace memberid.alt #}"/>
+					<img src="../../assets/images/neon.jpeg" {# replace memberid.img#} class="h-25 w-25 rounded-circle" alt="{# replace memberid.alt #}"/>
+					<img src="../../assets/images/neon.jpeg" {# replace memberid.img#} class="h-25 w-25 rounded-circle" alt="{# replace memberid.alt #}"/>
+					<img src="../../assets/images/neon.jpeg" {# replace memberid.img#} class="h-25 w-25 rounded-circle" alt="{# replace memberid.alt #}"/>
+				</div>
+				<div class="row g-3 py-1">
+					<img src="../../assets/images/neon.jpeg" {# replace memberid.img#} class="h-25 w-25 rounded-circle" alt="{# replace memberid.alt #}"/>
+					<img src="../../assets/images/neon.jpeg" {# replace memberid.img#} class="h-25 w-25 rounded-circle" alt="{# replace memberid.alt #}"/>
+					<img src="../../assets/images/neon.jpeg" {# replace memberid.img#} class="h-25 w-25 rounded-circle" alt="{# replace memberid.alt #}"/>
+					<img src="../../assets/images/neon.jpeg" {# replace memberid.img#} class="h-25 w-25 rounded-circle" alt="{# replace memberid.alt #}"/>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="container py-5">
+
+		<div class="row pt-4">
+
+			<div class="col-md-8">
+
+				<div class="row pe-5 shadow-sm">
+					<p>{{routeid.description}} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, quasi odit accusantium quae, sed laborum porro labore excepturi facere ducimus alias illo! Maxime accusamus totam dignissimos molestias aut culpa adipisci!
+					Hic laudantium dolorum sed non sequi nihil, dolorem officiis quo culpa asperiores omnis aperiam, consectetur reprehenderit ex a quibusdam, sunt possimus consequuntur id impedit velit animi voluptatum atque. Veritatis, asperiores?</p>
+				</div>
+			</div>
+
+
+			<div class="col-md-4">
+				<div class="row">
+					<form>
+						<fieldset>
+							<legend>Inscrivez-vous à cette sortie</legend>
+							<label for="exampleDataList" class="form-label">Tapez votre nom</label>
+							<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Ecrivez votre nom ici">
+							<datalist id="datalistOptions">
+								<option value=""></option>
+							</datalist>
+							<button type="submit" class="btn btn-danger mt-2">S'inscrire</button>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
+		Parcours
+	</h2>
+	<div class="container pb-5 shadow">
+		<iframe src="https://www.visugpx.com/7oy3KJ4XqY?iframe" {# {{routeid.gpx}} #} id="ivisugpx" scrolling="no"></iframe>
+	</div>
+
+
+	{% if "now"|date("Y-m-d") > routeid.date|date('Y-m-d') %}
+
+	<h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
+		Photos
+	</h2>
+
+	<div
+		class="container">
+
+		{# Call the photo table#}
+
+		<div class="row">
+			<div class="col-md-7 pb-2 ">
+				<img src="../../assets/images/neon.jpeg" {# replace photoid.img #} class=" rounded gallery1" alt="{# replace photoid.alt #}"/>
+			</div>
+
+			<div class="col-md-5 mb-3">
+				<img src="../../assets/images/butterfly.jpeg" {# replace photoid.img #} class=" rounded gallery2 mb-2" alt="{# replace photoid.alt #}"/>
+
+				<img src="../../assets/images/butterfly2.jpeg" {# replace photoid.img #} class="rounded gallery2 mb-2" alt="{# replace photoid.alt #}"/>
+			</div>
+		</div>
+
+
+
+		<h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
+			Compte rendu
+		</h2>
+
+		<div class="container pb-5">
+			<div class="card shadow">
+				<div class="card-body">
+					<p class="card-text px-4 py-2">
+						{{routeid.rapport}}</p>
+				</div>
+			</div>
+		</div>
+{% endif %}
+
+	{% endblock %}
