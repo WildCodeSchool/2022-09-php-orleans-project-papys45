@@ -21,12 +21,12 @@
 
 			<div class="col-6">
 				<img class="date" src="/assets/images/calendar.svg" alt="calendar icon">
-				<p class="fs-2">{{routeid.date}}</p>
+				<p class="fs-2">{{routeid.date|date("m/d/Y")}}</p>
 			</div>
 
 			<div class="col-6">
 				<img class="date" src="/assets/images/clock.svg" alt="clock icon">
-				<p class="fs-2">{{routeid.time}}</p>
+				<p class="fs-2">{{routeid.time|date('H\\hi')}}</p>
 			</div>
 		</div>
 
