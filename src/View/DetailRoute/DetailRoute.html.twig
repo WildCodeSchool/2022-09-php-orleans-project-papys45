@@ -20,13 +20,13 @@
 		<div class="row row-flex">
 
 			<div class="col-6">
-			<img class="icon" src="/assets/images/calendar.svg" alt="calendar icon">
-			<p class="fs-2">{{routeid.date}}</p>
+				<img class="icon" src="/assets/images/calendar.svg" alt="calendar icon">
+				<p class="fs-2">{{routeid.date}}</p>
 			</div>
 
 			<div class="col-6">
-			<img class="icon" src="/assets/images/clock.svg" alt="clock icon">
-			<p class="fs-2">{{routeid.time}}</p>
+				<img class="icon" src="/assets/images/clock.svg" alt="clock icon">
+				<p class="fs-2">{{routeid.time}}</p>
 			</div>
 		</div>
 
@@ -134,8 +134,9 @@
 			<div class="col-md-8">
 
 				<div class="row pe-5 shadow-sm">
-					<p>{{routeid.description}} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, quasi odit accusantium quae, sed laborum porro labore excepturi facere ducimus alias illo! Maxime accusamus totam dignissimos molestias aut culpa adipisci!
-					Hic laudantium dolorum sed non sequi nihil, dolorem officiis quo culpa asperiores omnis aperiam, consectetur reprehenderit ex a quibusdam, sunt possimus consequuntur id impedit velit animi voluptatum atque. Veritatis, asperiores?</p>
+					<p>{{routeid.description}}
+						Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam, quasi odit accusantium quae, sed laborum porro labore excepturi facere ducimus alias illo! Maxime accusamus totam dignissimos molestias aut culpa adipisci!
+											Hic laudantium dolorum sed non sequi nihil, dolorem officiis quo culpa asperiores omnis aperiam, consectetur reprehenderit ex a quibusdam, sunt possimus consequuntur id impedit velit animi voluptatum atque. Veritatis, asperiores?</p>
 				</div>
 			</div>
 
@@ -169,40 +170,39 @@
 
 	{% if "now"|date("Y-m-d") > routeid.date|date('Y-m-d') %}
 
-	<h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
-		Photos
-	</h2>
-
-	<div
-		class="container">
-
-		{# Call the photo table#}
-
-		<div class="row">
-			<div class="col-md-7 pb-2 ">
-				<img src="../../assets/images/neon.jpeg" {# replace photoid.img #} class=" rounded gallery1" alt="{# replace photoid.alt #}"/>
-			</div>
-
-			<div class="col-md-5 mb-3">
-				<img src="../../assets/images/butterfly.jpeg" {# replace photoid.img #} class=" rounded gallery2 mb-2" alt="{# replace photoid.alt #}"/>
-
-				<img src="../../assets/images/butterfly2.jpeg" {# replace photoid.img #} class="rounded gallery2 mb-2" alt="{# replace photoid.alt #}"/>
-			</div>
-		</div>
-
-
-
 		<h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
-			Compte rendu
+			Photos
 		</h2>
 
-		<div class="container pb-5">
-			<div class="card shadow">
-				<div class="card-body">
-					<p class="card-text px-4 py-2">
-						{{routeid.rapport}}</p>
+		<div
+			class="container">
+
+			{# Call the photo table#}
+
+			<div class="row">
+				<div class="col-md-7 pb-2 ">
+					<img src="../../assets/images/neon.jpeg" {# replace photoid.img #} class=" rounded gallery1" alt="{# replace photoid.alt #}"/>
+				</div>
+
+				<div class="col-md-5 mb-3">
+					<img src="../../assets/images/butterfly.jpeg" {# replace photoid.img #} class=" rounded gallery2 mb-2" alt="{# replace photoid.alt #}"/>
+
+					<img src="../../assets/images/butterfly2.jpeg" {# replace photoid.img #} class="rounded gallery2 mb-2" alt="{# replace photoid.alt #}"/>
 				</div>
 			</div>
-		</div>
-{% endif %}
-{% endblock %}
+
+
+			<h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
+				Compte rendu
+			</h2>
+
+			<div class="container pb-5">
+				<div class="card shadow">
+					<div class="card-body">
+						<p class="card-text px-4 py-2">
+							{{routeid.rapport}}</p>
+					</div>
+				</div>
+			</div>
+		{% endif %}
+	{% endblock %}
