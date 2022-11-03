@@ -80,3 +80,18 @@ p {
 .icon-red {
     filter: invert(23%) sepia(95%) saturate(1510%) hue-rotate(331deg) brightness(107%) contrast(93%);
 }
+
+
+@media screen and (min-width: 768px) {
+    .custom-border-left {
+        border-left: 0.5px solid rgb(49, 52, 57);
+ 
+
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .custom-border-bottom {
+        border-bottom: 0.4px solid rgb(9, 16, 36);;
+    }
+}
