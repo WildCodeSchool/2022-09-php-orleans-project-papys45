@@ -1,0 +1,72 @@
+.display-4, .display-3, .display-6{
+    font-family: var(--title-font);
+}
+
+
+.card-img-top {
+
+    max-width: 8rem;
+    height: auto;
+}
+
+.card-img {
+    display: block;
+    max-width: 8rem;
+    height: auto;
+    
+  }
+
+.icon {
+    max-width: 3rem;
+    height: auto;
+}
+
+p {
+    font-family: var(--content-font);
+}
+
+#ivisugpx {
+    width:100%; 
+    height:535px;
+}
+
+.gallery1 {
+    width: 100%;
+    height: 100%;
+    
+}
+
+.gallery2 {
+    width: 100%;
+    height: 50%
+    
+}
+
+.btn-danger {
+    width:100%;
+}
+
+.gallery1, .gallery2 {
+	-webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+    box-shadow: 0px 5px 10px rgb(94, 94, 94);
+}
+.gallery1:hover, .gallery2:hover {
+	-webkit-transform: scale(0.9);
+	transform: scale(0.9);
+    box-shadow: 0px 5px 50px rgb(26, 26, 26);
+}
+
+.icon-green {
+    filter: invert(40%) sepia(91%) saturate(374%) hue-rotate(100deg) brightness(87%) contrast(92%);
+} 
+
+.icon-orange {
+    filter: invert(64%) sepia(72%) saturate(3828%) hue-rotate(351deg) brightness(101%) contrast(98%);
+}
+
+.icon-red {
+    filter: invert(23%) sepia(95%) saturate(1510%) hue-rotate(331deg) brightness(107%) contrast(93%);
+}
