@@ -1,94 +1,18 @@
 {% extends 'layout.html.twig' %}
 {% block stylesheet %}
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/assets/css/adminMembers.css">
 {% endblock %}
 
 
 {% block content %}
-	<div class="container mt-5">
-		<div class="row d-flex justify-content-center">
-			<div class="col-10">
-				<h1 class="adminMembersTitle text-danger text-center fs-1 mt-5">Administration ajout d'un membre</h1>
-				<ul class="text-center mt-5">
-					{% for error in errors %}
-						<li class="text-danger">
-							{{ error }}</li>
-					{% endfor %}
-				</ul>
-				<div class="container mt-2">
-					<div class="row d-flex justify-content-center">
-						<div class="col-lg-6 ">
-							{% if message == 'success' %}
-								<div class="alert alert-success text-center" role="alert">Le membre a bien été ajouté.</div>
-							{% endif %}
-							<div class="d-flex justify-content-center mt-2">
-								<picture class="d-flex align-items-center h-50 w-50 justify-content-center border-none">
-									<img src="/assets/images/default.svg" class="rounded-circle w-50" alt="photo d'un membre du bureau">
-								</picture>
-							</div>
-							<form action="" method="post" enctype="multipart/form-data">
-								<input type="hidden" name="id" value="{{ member.id ?? '' }}">
-								<div class="form-group">
-									<label class="formLabel" for="firstname">Prénom :</label>
-									<input type="text" class="form-control formContent" name="firstname" id="firstname" placeholder="Jean" value="{{ member.firstname ?? '' }}" required>
-								</div>
-								<div class="form-group mt-2">
-									<label class="formLabel " for="lastname">Nom :</label>
-									<input type="text" class="form-control formContent" name="lastname" id="lastname" placeholder="Dupont" value="{{ member.lastname ?? '' }}" required>
-								</div>
-								<div class="form-group mt-2">
-									<label for="date" class="formLabel">Date de naissance :</label>
-									<div class="datepicker input-group date p-0" id="datepicker">
-										<input type="text" placeholder="Choisir une date" class="form-control" name="dateOfBirth" id="date" value="{{ member.dateOfBirth|date("d.m.Y") }}" required/>
-										<div class="input-group-append">
-											<span class="input-group-text text-light bg-danger d-block">
-												<i class="fa fa-calendar"></i>
-											</span>
-										</div>
-									</div>
-								</div>
-								<div class="form-group mt-2">
-									<label class="formLabel" for="role">Rôle dans l'association :</label>
-									<select class="form-control form-select formContent" name="role" id="role" placeholder="Choisissez dans la liste">
-										{% for roleKey, role in roles %}
-											<option value="{{ roleKey }}" {% if member.role is defined and member.role is same as roleKey %} selected {% endif %}>{{role}}</option>
-										{% endfor %}
-									</select>
-								</div>
-								<div class="form-group mt-2">
-									<label class="formLabel" for="email" placeholder="Dupont@gmail.com">Email :</label>
-									<input type="email" class="form-control formContent" name="mail" id="email" placeholder="Dupont@gmail.com" value="{{ member.mail ?? '' }}" required>
-								</div>
-								<div class="form-group mt-2">
-									<label for="formFile" class="formLabel">Photo ou avatar :</label>
-									<input class="form-control" type="file" id="formFile" name="photo">
-								</div>
-								<div class="d-flex align-items-center justify-content-between ">
-									<button type="submit" class="btn btn-danger mt-2">Ajouter</button>
-									<a href="/admin/membres">
-										<button type="button" class="btn btn-outline-secondary mt-2">Retour</button>
-									</a>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
 
-
-			</div>
-		</div>
-	</div>
+	{% include "Admin/_formAdminMember.html.twig" %}
 
 	{% block javascript %}
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 		<script type="text/javascript">
-			$(function () {
-$('.datepicker').datepicker({format: 'd.mm.yyyy'});
-});
+			function preview() {
+thumb.src = URL.createObjectURL(event.target.files[0]);
+}
 		</script>
 	{% endblock %}
 {% endblock %}

@@ -1,0 +1,69 @@
+<div class="container mt-5">
+	<div class="row d-flex justify-content-center">
+		<div class="col-10">
+			<h1 class="adminMembersTitle text-danger text-center fs-1 mt-5">Administration ajout d'un membre</h1>
+			<ul class="text-center mt-5">
+				{% for error in errors %}
+					<li class="text-danger">
+						{{ error }}</li>
+				{% endfor %}
+			</ul>
+			<div class="container mt-2">
+				<div class="row d-flex justify-content-center">
+					<div class="col-lg-6 ">
+						{% if message == 'success' %}
+							<div class="alert alert-success text-center" role="alert">Opération réalisée avec succès.</div>
+						{% endif %}
+							<form action="" method="post" enctype="multipart/form-data"  runat="server">
+						<div class="d-flex justify-content-center mt-2">
+							<picture class="d-flex align-items-center h-50 w-50 justify-content-center border-none">
+								<img src="/upload/{{ member.photo ?? 'default.svg' }}" class="rounded-circle w-50" alt="photo d'un membre du bureau" id="thumb" >
+							</picture>
+						</div>
+								<div class="form-group mt-2 text-center">
+									<label for="formFile" class="btn btn-sm">Changer de photo</label>
+									<input class="form-control d-none" type="file" id="formFile" name="photo" onchange="preview()">
+								</div>
+							<input type="hidden" name="id" value="{{ member.id ?? '' }}">
+							<div class="form-group">
+								<label class="formLabel" for="firstname">Prénom :</label>
+								<input type="text" class="form-control formContent" name="firstname" id="firstname" placeholder="Jean" value="{{ member.firstname ?? '' }}" required>
+							</div>
+							<div class="form-group mt-2">
+								<label class="formLabel " for="lastname">Nom :</label>
+								<input type="text" class="form-control formContent" name="lastname" id="lastname" placeholder="Dupont" value="{{ member.lastname ?? '' }}" required>
+							</div>
+							<div class="form-group mt-2">
+								<label for="date" class="formLabel">Date de naissance :</label>
+								<input type="date" placeholder="Choisir une date" class="form-control" name="dateOfBirth" id="date" value="{{ member.dateOfBirth ?? "now"|date("Y-m-d") }}" required/>
+							</div>
+							<div class="form-group mt-2">
+								<label class="formLabel" for="role">Rôle dans l'association :</label>
+								<select class="form-control form-select formContent" name="role" id="role" placeholder="Choisissez dans la liste">
+									{% for roleKey, role in roles %}
+										<option value="{{ roleKey }}" {% if member.role is defined and member.role is same as roleKey %} selected {% endif %}>{{role}}</option>
+									{% endfor %}
+								</select>
+							</div>
+							<div class="form-group mt-2">
+								<label class="formLabel" for="email" placeholder="Dupont@gmail.com">Email :</label>
+								<input type="email" class="form-control formContent" name="mail" id="email" placeholder="Dupont@gmail.com" value="{{ member.mail ?? '' }}" required>
+							</div>
+							<div class="d-flex align-items-center justify-content-between ">
+								<button type="submit" class="btn btn-danger mt-2">{{ labelButton }}</button>
+								<a href="/admin/membres">
+									<button type="button" class="btn btn-outline-secondary mt-2">Retour</button>
+								</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+	</div>
+</div>
+
+
+
