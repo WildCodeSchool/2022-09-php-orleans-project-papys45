@@ -1,0 +1,54 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/adminRoute.css">
+{% endblock %}
+
+{% block content %}
+	<div class="container mt-5">
+		<div class="row d-flex justify-content-center">
+			<div class="col-10">
+				<h1 class="text-danger text-center fs-1 mt-5">Administration des sorties</h1>
+				<div class="text-end">
+					<a href="">
+						<button class="btn btn-danger align-self-right">Ajouter une sortie</button>
+					</a>
+				</div>
+				<table>
+					<thead>
+						<tr>
+							<th scope="col">Date de sortie</th>
+							<th scope="col">Heure de départ</th>
+							<th scope="col">Lieu de départ</th>
+							<th scope="col">Lieu d'arrivé</th>
+							<th scope="col">Ravito</th>
+							<th scope="col">Distance</th>
+							<th scope="col">Difficulté</th>
+							<th scope="col"></th>
+							<th scope="col"></th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Date de sortie</td>
+							<td>Heure de départ</td>
+							<td>Lieu de départ</td>
+							<td>Lieu d'arrivé</td>
+							<td>Ravito</td>
+							<td>Distance</td>
+							<td>Difficulté</td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+
+				</table>
+
+
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
