@@ -19,8 +19,8 @@ class AdminMemberController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
             $adminMembersManager = new AdminMemberManager();
-            $idPhoto = $adminMembersManager->idPhoto((int) $id);
-            $adminMembersManager->delete((int)$id);
+            $idPhoto = $adminMembersManager->idPhoto(intval($id));
+            $adminMembersManager->delete(intval($id));
 
             if (file_exists('upload/' . $idPhoto['photo'])) {
                 unlink('upload/' . $idPhoto['photo']);
