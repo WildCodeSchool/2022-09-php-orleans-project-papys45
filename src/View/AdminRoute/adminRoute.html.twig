@@ -8,13 +8,13 @@
 	<div class="container mt-5">
 		<div class="row d-flex justify-content-center">
 			<div class="col-10">
-				<h1 class="text-danger text-center fs-1 mt-5">Administration des sorties</h1>
+				<h1 class="AdminRouteTitle text-danger text-center fs-1 mt-5">Administration des sorties</h1>
 				<div class="text-end">
 					<a href="">
 						<button class="btn btn-danger align-self-right">Ajouter une sortie</button>
 					</a>
 				</div>
-				<table>
+				<table class="table table-striped table-hover">
 					<thead>
 						<tr>
 							<th scope="col">Date de sortie</th>
@@ -30,18 +30,33 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>Date de sortie</td>
-							<td>Heure de départ</td>
-							<td>Lieu de départ</td>
-							<td>Lieu d'arrivé</td>
-							<td>Ravito</td>
-							<td>Distance</td>
-							<td>Difficulté</td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
+						{% for routes in route %}
+							<tr>
+								<td>{{routes.date}}</td>
+								<td>{{routes.time}}</td>
+								<td>{{routes.start}}</td>
+								<td>{{routes.finish}}</td>
+								<td>{{routes.ravito}}</td>
+								<td>{{routes.distance}}</td>
+								<td>{{routes.difficulty}}</td>
+								<td>
+									<a>
+										<button class="btn btn-outline-warning btn-sm">Ajouter membre</button>
+									</a>
+								</td>
+								<td>
+									<a>
+										<button class="btn btn-outline-warning btn-sm">Editer</button>
+									</a>
+								</td>
+								<td>
+									<a>
+										<button class="btn btn-outline-danger btn-sm">Supprimer</button>
+									</a>
+								</td>
+							</tr>
+
+						{% endfor %}
 					</tbody>
 
 				</table>

@@ -1,3 +1,5 @@
+-- Active: 1665561486420@@127.0.0.1@3306@papys45
+
 -- phpMyAdmin SQL Dump
 
 -- version 4.5.4.1deb2ubuntu2
@@ -107,7 +109,6 @@ ALTER TABLE
 ;
 
 CREATE TABLE
-
     `route` (
         `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
         `date` DATE NOT NULL,
@@ -142,7 +143,7 @@ VALUES (
         1
     );
 
-	INSERT INTO
+INSERT INTO
     `route` (
         `date`,
         `time`,
@@ -162,7 +163,7 @@ VALUES (
         2
     );
 
-		INSERT INTO
+INSERT INTO
     `route` (
         `date`,
         `time`,
@@ -182,11 +183,11 @@ VALUES (
         3
     );
 
-    `actuality` (
-        `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL,
-        `title` VARCHAR(80),
-        `content` VARCHAR(140)
-    );
+`actuality` (
+    `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    `title` VARCHAR(80),
+    `content` VARCHAR(140)
+);
 
 INSERT INTO
     `actuality` (`title`, `content`)
