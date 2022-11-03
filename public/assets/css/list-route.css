@@ -1,0 +1,78 @@
+.display-4{
+    font-family: var(--title-font);
+}
+
+
+.card-body{
+    width: 15rem;
+}
+
+.card-img {
+    display: block;
+    max-width: 8rem;
+    height: auto;
+    
+  }
+
+.card-img-top {
+    display: block;
+    max-width: 5rem;
+    height: auto;
+}
+
+.icon {
+    display: block;
+    max-width: 3rem;
+    height: auto;
+}
+
+.title-font {
+    font-family: var(--content-font);
+}
+
+.tool-font {
+    font-family: var(--tool-font);
+    font-weight: bold;
+}
+
+.icon-green {
+    filter: invert(40%) sepia(91%) saturate(374%) hue-rotate(100deg) brightness(87%) contrast(92%);
+} 
+
+.icon-orange {
+    filter: invert(64%) sepia(72%) saturate(3828%) hue-rotate(351deg) brightness(101%) contrast(98%);
+}
+
+.icon-red {
+    filter: invert(23%) sepia(95%) saturate(1510%) hue-rotate(331deg) brightness(107%) contrast(93%);
+}
+
+
+
+.card {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+    box-shadow: 0px 5px 10px rgb(94, 94, 94);
+}
+.card:hover {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    box-shadow: 0px 5px 50px rgb(26, 26, 26);
+}
+
+
+
+@media screen and (min-width: 768px) {
+    .custom-border-right {
+        border-right: 0.4px solid rgb(9, 16, 36);
+        
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .custorm-border-bottom {
+        border-bottom: 0.4px solid rgb(9, 16, 36);;
+    }
+}
