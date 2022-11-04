@@ -16,12 +16,12 @@ class MemberController extends AbstractController
     public const AUTH_EXTENSION = ['jpg', 'png', 'jpeg'];
     public const UPLOAD_DIR = 'upload/';
     public const ROLES = [
-        'President' => 'Président',
+        'president' => 'Président',
         'vice' => 'Vice-président',
         'accountant' => 'Comptable',
         'secretary' => 'Secrétaire',
         'adjSecretary' => 'Secrétaire-adjoint',
-        'activeMember' => 'Membre actif'
+        'member' => 'Membre actif'
     ];
     public function index(): string
     {
