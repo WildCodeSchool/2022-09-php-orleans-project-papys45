@@ -9,7 +9,11 @@
 return [
     '' => ['HomeController', 'index',],
     'contact' => ['FormController', 'index', ['message']],
+    'admin/membres' => ['AdminMemberController', 'index',],
+    'admin/membres/add' => ['AdminMemberController', 'add', ['message']],
+    'membres' => ['MemberController', 'index'],
     'items' => ['ItemController', 'index',],
+    'listRoute' => ['RouteController', 'index',],
     'items/edit' => ['ItemController', 'edit', ['id']],
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
