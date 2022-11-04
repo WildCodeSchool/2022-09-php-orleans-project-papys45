@@ -11,6 +11,7 @@ return [
     'contact' => ['FormController', 'index', ['message']],
     'admin/membres' => ['AdminMemberController', 'index',['message']],
     'admin/membres/delete' => ['AdminMemberController', 'delete'],
+    'admin/membres/add' => ['AdminMemberController', 'add', ['message']],
     'membres' => ['MemberController', 'index'],
     'items' => ['ItemController', 'index',],
     'listRoute' => ['RouteController', 'index',],

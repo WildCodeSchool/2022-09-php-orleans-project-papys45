@@ -41,8 +41,8 @@
 								</div>
 								<div class="col">
 									<div class="row justify-content-center pt-5 tool-font "><img class="card-img-top" src="/assets/images/calendar.svg" alt="calendar icon"></div>
-									<div class="row justify-content-center pt-2 tool-font fs-4">{{route.date}}</div>
-									<div class="row justify-content-center pt-2 tool-font fs-4 pb-4">{{route.time}}</div> 
+									<div class="row justify-content-center pt-2 tool-font fs-4">{{route.date|date("d/m/Y")}}</div>
+									<div class="row justify-content-center pt-2 tool-font fs-4 pb-4">{{route.time|date('H\\hi')}}</div> 
 									<a href="#"{# Don't forget to change with items/show?id={{ route.id }} after making the detail page #} class="stretched-link"></a>
 								</div>
 							</div>
