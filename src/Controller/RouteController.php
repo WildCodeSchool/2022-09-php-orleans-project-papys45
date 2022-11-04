@@ -22,8 +22,8 @@ class RouteController extends AbstractController
     public function showRoute(int $id): string
     {
         $itemRouteManager = new RouteManager();
-        $routeid = $itemRouteManager->selectOneById($id);
+        $route = $itemRouteManager->selectOneById($id);
 
-        return $this->twig->render('DetailRoute/DetailRoute.html.twig', ['routeid' => $routeid]);
+        return $this->twig->render('DetailRoute/DetailRoute.html.twig', ['route' => $route]);
     }
 }
