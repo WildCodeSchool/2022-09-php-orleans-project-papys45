@@ -2,13 +2,13 @@
 
 namespace App\Controller;
 
-use App\Model\AdminMemberManager;
+use App\Model\MemberManager;
 
 class AdminMemberController extends AbstractController
 {
     public function index(): string
     {
-        $adminMembersManager = new AdminMemberManager();
+        $adminMembersManager = new MemberManager();
         $members = $adminMembersManager->selectAll('firstname');
 
         return $this->twig->render('Admin/members.html.twig', ['members' => $members]);
@@ -18,11 +18,11 @@ class AdminMemberController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
-            $adminMembersManager = new AdminMemberManager();
+            $adminMembersManager = new MemberManager();
             $idPhoto = $adminMembersManager->idPhoto(intval($id));
             $adminMembersManager->delete(intval($id));
 
-            if (file_exists('upload/' . $idPhoto['photo'])) {
+            if (!empty($idPhoto['photo']) && file_exists('upload/' . $idPhoto['photo'])) {
                 unlink('upload/' . $idPhoto['photo']);
             }
 
