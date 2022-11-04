@@ -9,8 +9,8 @@
 return [
     '' => ['HomeController', 'index',],
     'contact' => ['FormController', 'index', ['message']],
-    'admin/membres' => ['AdminMemberController', 'index',],
-    'admin/membres/add' => ['AdminMemberController', 'add', ['message']],
+    'admin/membres' => ['MemberController', 'index',],
+    'admin/membres/add' => ['MemberController', 'add', ['message']],
     'membres' => ['MemberController', 'index'],
     'items' => ['ItemController', 'index',],
     'listRoute' => ['RouteController', 'index',],
