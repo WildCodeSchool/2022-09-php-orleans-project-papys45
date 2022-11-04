@@ -1,14 +1,30 @@
 {% extends 'layout.html.twig' %}
 
-{% block stylesheet %}{% endblock %}
+{% block stylesheet %}
+<link rel="stylesheet" href="/assets/css/form.css">
+{% endblock %}
+
+{% block title %}PAPYS45 - ADMIN ACTUALITES{% endblock %}
 
 {% block content %}
 
-	<h1>ADMINISTRATION - LISTE DES MEMBRES</h1>
+<h1 class="text-center text-danger mt-5 p-5">ADMINISTRATION - ACTUALITES</h1>
+    <a class="add m-2" href="#">Ajouter</a>
+    <a class="delete m-2" href="#">Supprimer</a>
 
 	<div class="container">
-		<div class="row"></div>
-	</div>
-{% endblock %}
+		<div class="row m-4">
+			<div class="col-md-6 p-3">
+				<div class="row overflow-auto flex-md-row border rounded shadow-sm">
+					<div class="col d-flex flex-column justify-content-center m-3">
+                    <h2 class="card-title m-2">Actualité n°1</h2>
+                    <p class="card-text ms-2">Du texte pour que ça s'affiche correctement. Du texte pour que ça s'affiche correctement. Du texte pour que ça s'affiche correctement. Du texte pour que ça s'affiche correctement.</p>
+                    <a class="edit ms-2 mb-2" href="#">Editer</a>
+                    </div>
+                    </div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
 
-{% block javascript %}{% endblock %}
+	{% block javascript %}{% endblock %}
