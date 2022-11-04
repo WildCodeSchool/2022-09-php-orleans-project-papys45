@@ -1,0 +1,8 @@
+.adminMembersTitle {
+    font-family: var(--title-font);
+}
+
+.adminMembersList{
+    font-family: var(--content-font);
+}
+
