@@ -12,8 +12,12 @@ class MemberManager extends AbstractManager
     {
         $statement = $this->pdo->prepare("SELECT photo FROM " . self::TABLE . " WHERE id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
+
+        $statement->execute();
+
+        return $statement->fetch();
     }
-    
+
     public function insert(array $member): int
     {
         $statement = $this->pdo->prepare(

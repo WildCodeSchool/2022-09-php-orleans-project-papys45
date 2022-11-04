@@ -23,7 +23,7 @@ class AdminMemberController extends AbstractController
         'adjSecretary' => 'Secrétaire-adjoint',
         'member' => 'Membre actif'
     ];
-    public function index(): string
+    public function index(string $message = ''): string
     {
         $membersManager = new MemberManager();
         $members = $membersManager->selectAll('firstname');
@@ -44,10 +44,11 @@ class AdminMemberController extends AbstractController
             }
 
             header('Location:/admin/membres/?message=success');
+        }
 
-            return '';
+        return '';
     }
-        
+
     public function add(string $message = ''): ?string
     {
         $member = [];
