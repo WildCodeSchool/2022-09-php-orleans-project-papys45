@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
-use App\Model\AdminMemberManager;
+use DateTime;
+use App\Model\MemberManager;
+use App\Controller\AbstractController;
 
 class AdminMemberController extends AbstractController
 {
@@ -14,72 +16,130 @@ class AdminMemberController extends AbstractController
     public const AUTH_EXTENSION = ['jpg', 'png', 'jpeg'];
     public const UPLOAD_DIR = 'upload/';
     public const ROLES = [
-        'President' => 'Président',
+        'president' => 'Président',
         'vice' => 'Vice-président',
         'accountant' => 'Comptable',
         'secretary' => 'Secrétaire',
         'adjSecretary' => 'Secrétaire-adjoint',
-        'activeMember' => 'Membre actif'
+        'member' => 'Membre actif'
     ];
 
 
     public function index(): string
     {
-        $adminMembersManager = new AdminMemberManager();
+        $adminMembersManager = new MemberManager();
         $members = $adminMembersManager->selectAll();
 
         return $this->twig->render('Admin/members.html.twig', ['members' => $members]);
     }
 
-    public function edit(int $id, string $message = ''): ?string
+    private function controlForAddOrEdit(string $lastPhoto): array
     {
-        $adminMembersManager = new AdminMemberManager();
-        $member = $adminMembersManager->selectOneById($id);
-        $lastPhoto = $member['photo'];
-
         $errors = [];
+        $member = array_map('trim', $_POST);
+        $files = $_FILES;
+        $uploadFile = '';
+        $uniqName = '';
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $member = array_map('trim', $_POST);
+        if (!empty($files['photo']['name'])) {
+            $errorsUpload = $this->verifUpload($files);
 
-            if (!empty($_FILES['photo']['name'])) {
-                $extension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
-                $errorsUpload = $this->verifUpload($extension);
-
-                if (empty($errorsUpload)) {
-                    $uniqName = uniqid('', true) . '.' . $extension;
-                    $uploadFile = self::UPLOAD_DIR . $uniqName;
-
-                    if (!move_uploaded_file($_FILES['photo']['tmp_name'], $uploadFile)) {
-                        $errors[] = $_FILES['photo']['name'] . 'n\'a pas pu être uploadé. Veuillez réessayer.';
-                    } else {
-                        $member['photo'] = $uniqName;
-
-                        if (file_exists('upload/' . $lastPhoto)) {
-                            unlink('upload/' . $lastPhoto);
-                        }
-                    }
-                } else {
-                    $errors = array_merge($errorsUpload, $errors);
-                }
-            } else {
-                $member['photo'] = $lastPhoto;
+            if (empty($errorsUpload)) {
+                $extension = pathinfo($files['photo']['name'], PATHINFO_EXTENSION);
+                $uniqName = uniqid('', true) . '.' . $extension;
+                $uploadFile = self::UPLOAD_DIR . $uniqName;
             }
 
-            $errors = $this->verification($member);
-
-            $dateOfBirth = str_replace('.', '-', $member['dateOfBirth']);
-            $dateOfBirth = date("Y-m-d", strtotime($dateOfBirth));
-            $date = explode("-", $dateOfBirth);
-
-            if (!$this->checkDateOfBirth($date)) {
-                $errors[] = 'La date d\'anniversaire est incorrecte.';
+            if (!empty($errorsUpload) || !move_uploaded_file($files['photo']['tmp_name'], $uploadFile)) {
+                $errors[] = $files['photo']['name'] . ' n\'a pu être chargé. Veuillez réessayer.';
             } else {
-                $member['dateOfBirth'] = implode('-', $date);
+                $member['photo'] = $uniqName;
+            }
+
+            $errors = array_merge($errorsUpload, $errors);
+        } else {
+            $member['photo'] = $lastPhoto;
+        }
+
+        $errors =  array_merge($this->verification($member), $errors);
+
+
+        $dateOfBirth = new DateTime();
+        $date = explode("-", $member['dateOfBirth']);
+        $dateOfBirth->setDate(intval($date[0]), intval($date[1]), intval($date[2]));
+
+        if (!$dateOfBirth::getLastErrors()) {
+            $errors[] = 'La date d\'anniversaire est incorrecte.';
+        }
+
+        return [$errors, $member];
+    }
+
+    public function add(string $message = ''): string
+    {
+        $errors = [];
+        $member = [];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controlResult = $this->controlForAddOrEdit('');
+            $errors = $controlResult[0];
+            $member = $controlResult[1];
+            $errors = array_merge($this->roleVerification($member['role']));
+
+            if (empty($errors)) {
+                $membersManager = new MemberManager();
+                $membersManager->insert($member);
+
+                header('location: /admin/membres/add?message=success');
+
+                return '';
+            }
+        }
+
+        return $this->twig->render(
+            'Admin/membersAdd.html.twig',
+            [
+                'member' => $member,
+                'roles' => self::ROLES,
+                'errors' => $errors,
+                'message' => $message,
+                'label' => 'Ajouter',
+            ]
+        );
+    }
+
+    public function edit(int $id, string $message = ''): ?string
+    {
+        $errors = [];
+        $membersManager = new MemberManager();
+        $member = $membersManager->selectOneById($id);
+        $lastRole = $member['role'];
+        $lastPhoto = $member['photo'];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $controlResult = $this->controlForAddOrEdit($lastPhoto);
+            $errors = $controlResult[0];
+            $member = $controlResult[1];
+
+            if ($lastRole != $member['role']) {
+                $errors = array_merge($this->roleVerification($member['role']));
+            }
+
+            if (
+                isset($member['photo']) &&
+                $lastPhoto != $member['photo'] &&
+                !empty($lastPhoto) &&
+                file_exists(self::UPLOAD_DIR . $lastPhoto)
+            ) {
+                unlink(self::UPLOAD_DIR . $lastPhoto);
+            }
+
+            if (!isset($member['photo'])) {
+                $member['photo'] = '';
             }
 
             if (empty($errors)) {
-                $adminMembersManager->update($member);
+                $membersManager->update($member);
                 header('location: /admin/membres/edit?id=' . $id . '&message=success');
 
                 return '';
@@ -91,24 +151,41 @@ class AdminMemberController extends AbstractController
             'roles' => self::ROLES,
             'errors' => $errors,
             'message' => $message,
+            'label' => 'Modifier',
         ]);
     }
 
-    private function verifUpload(string $extension): array
+
+
+    private function roleVerification(string $role): array
+    {
+        $errors = [];
+        $adminMembersManager = new MemberManager();
+
+        if ($role !== 'member' && !empty($role)) {
+            if ($adminMembersManager->selectOneByRole($role)) {
+                $errors[] = 'Vous ne pouvez pas choisir un rôle dans l\'association déjà attribué.';
+            }
+        }
+
+        return $errors;
+    }
+
+    private function verifUpload(array $files): array
     {
         $errors = [];
 
-        if (file_exists($_FILES['photo']['tmp_name']) && filesize($_FILES['photo']['tmp_name']) > self::MAX_FILE_SIZE) {
+        if (file_exists($files['photo']['tmp_name']) && filesize($files['photo']['tmp_name']) > self::MAX_FILE_SIZE) {
             $errors[] = 'Votre fichier doit être inférieur à ' . self::MAX_FILE_SIZE / 1000000 . 'Mo.';
         }
 
-        if ((!in_array($extension, self::AUTH_EXTENSION))) {
+        if ((!in_array(pathinfo($files['photo']['name'], PATHINFO_EXTENSION), self::AUTH_EXTENSION))) {
             $extString = implode(', ', self::AUTH_EXTENSION);
             $errors[] = 'Veuillez sélectionner une image de type ' . $extString . '.';
         }
 
-        if (!empty($_FILES['error'])) {
-            $errors[] = 'Erreur d \'upload : ' . $_FILES['error'] . '.';
+        if (!empty($files['error'])) {
+            $errors[] = 'Erreur d \'upload : ' . $files['error'] . '.';
         }
 
         return $errors;
@@ -142,13 +219,6 @@ class AdminMemberController extends AbstractController
 
         return $errors;
     }
-
-    private function checkDateOfBirth(array $date): bool
-    {
-        return checkdate(intval($date[1]), intval($date[2]), intval($date[0]));
-    }
-
-
 
     private function verifEmpty(array $member, array $errors): array
     {
