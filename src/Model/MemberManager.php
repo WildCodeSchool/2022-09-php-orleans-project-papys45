@@ -35,6 +35,7 @@ class MemberManager extends AbstractManager
 
         return $statement->fetch();
     }
+
     public function update(array $member): bool
     {
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
