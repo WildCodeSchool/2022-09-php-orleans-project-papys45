@@ -10,6 +10,7 @@ return [
     '' => ['HomeController', 'index',],
     'contact' => ['FormController', 'index', ['message']],
     'admin/membres' => ['AdminMemberController', 'index',],
+    'admin/login' => ['AdminMemberController', 'login',],
     'membres' => ['MemberController', 'index'],
     'items' => ['ItemController', 'index',],
     'listRoute' => ['RouteController', 'index',],
