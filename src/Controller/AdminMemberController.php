@@ -89,7 +89,6 @@ class AdminMemberController extends AbstractController
             if (empty($errors)) {
                 $membersManager = new MemberManager();
                 $membersManager->insert($member);
-
                 header('location: /admin/membres/add?message=success');
 
                 return '';
