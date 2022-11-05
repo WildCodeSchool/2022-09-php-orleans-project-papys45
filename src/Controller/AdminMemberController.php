@@ -84,7 +84,7 @@ class AdminMemberController extends AbstractController
             $controlResult = $this->controlForAddOrEdit('');
             $errors = $controlResult[0];
             $member = $controlResult[1];
-            $errors = array_merge($this->roleVerification($member['role']));
+            $errors = array_merge($this->roleVerification($member['role']), $errors);
 
             if (empty($errors)) {
                 $membersManager = new MemberManager();
