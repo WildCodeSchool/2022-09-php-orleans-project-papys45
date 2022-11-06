@@ -1,0 +1,93 @@
+{% extends "layout.html.twig" %}
+
+{% block title %}Les Papys 45 - Ajout d'une sortie
+{% endblock %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/adminAddRoute.css">
+{% endblock %}
+
+{% block content %}
+
+	<h1 class="display-4 fw-bold text-danger text-center py-5">
+		AJOUTER UNE SORTIE</h1>
+
+	<div class="container">
+
+		<form>
+
+			<div class="row mb-3">
+				<label for="date" class="col-sm-2 col-form-label">Date de la sortie :</label>
+				<div class="col-sm-10">
+					<input type="date" placeholder="Choisir une date" class="form-control text-center" name="dateRoute" id="date"/>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label class="col-sm-2 col-form-label" for="formTime">Heure de la sortie :</label>
+				<div class="col-sm-10">
+					<input type="time" class="form-control text-center" id="formTime">
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<label for="inputStart" class="col-sm-2 col-form-label">Lieu de départ :</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="inputStart" placeholder="Ecrivez l'adresse de départ ici">
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="inputFinish" class="col-sm-2 col-form-label">Lieu d'arrivée :</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="inputFinish" placeholder="Ecrivez l'addresse d'arrivée ici">
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="inputRavito" class="col-sm-2 col-form-label">Lieu du ravito :</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="inputRavito" placeholder="Ecrivez l'addresse du ravito ici">
+                    <legend>Ravito n'est pas un champs obligatoire</legend>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="floatingSelect" class="col-sm-2 col-form-label">Choisir la difficulté :</label>
+				<div class="col-sm-10">
+					<select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+						<option selected>Ouvrez le menu de sélection</option>
+						<option value="1">One</option>
+						<option value="2">Two</option>
+						<option value="3">Three</option>
+					</select>
+				</div>
+			</div>
+			<div class="row mb-3">
+            <div class="col-sm-2 ">Ajouter participants :</div>
+				<div class="col-sm-10"><a class="btn btn-dark" href="#" role="button">Ajouter</a>
+                </div>
+			</div>
+
+
+			<div class="row mb-3">
+				<label for="inputGpx" class="col-sm-2 col-form-label">Ajouter la carte :</label>
+				<div class="col-sm-10">
+					<div class="input-group mb-3">
+						<span class="input-group-text" id="inputGpx">https://www.visugpx.com/</span>
+						<input type="text" class="form-control" id="inputGpx">
+					</div>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="descriptionTxt" class="col-sm-2 col-form-label">Description de la sortie :</label>
+				<div class="col-sm-10">
+					<textarea class="form-control" placeholder="Ecrivez ici..." id="descriptionTxt"></textarea>
+				</div>
+			</div>
+            <div class="text-center py-5">
+			<button type="submit" class="btn btn-danger">Créer la sortie</button>
+            </div>
+		</form>
+
+
+	</div>
+
+
+{% endblock %}
