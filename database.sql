@@ -356,3 +356,14 @@ VALUES (
         'SergeMoreau.png'
     );
 
+CREATE TABLE
+    `login` (
+        `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL UNIQUE,
+        `email` VARCHAR(255) NOT NULL,
+        `password` VARCHAR(255) NOT NULL
+    );
+
+INSERT INTO
+    `login` (`email`, `password`) /*mdp = bilbo */
+    VALUES ('admin@connexion.fr','$2y$10$fB15ED93ls/uDwhdSg4wQO9OmYXlNkfeAIG9ZlBsSf2UVGDoXxC.G');
+
