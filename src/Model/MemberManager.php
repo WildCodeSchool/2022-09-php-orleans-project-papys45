@@ -7,4 +7,5 @@ use PDO;
 class MemberManager extends AbstractManager
 {
     public const TABLE = 'member';
+
 }
