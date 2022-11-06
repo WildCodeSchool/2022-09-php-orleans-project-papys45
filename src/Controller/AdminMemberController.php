@@ -10,6 +10,13 @@ class AdminMemberController extends AbstractController
 {
     public function index(): string
     {
+        if (!$this->user) {
+            echo 'unauthorized access';
+            header('HTTP/1.1 401 Unauthorized');
+
+            return $this->twig->render('Error/error.html.twig');
+        }
+
         $membersManager = new MemberManager();
         $members = $membersManager->selectAll('firstname');
 
@@ -32,6 +39,7 @@ class AdminMemberController extends AbstractController
                 if ($user && password_verify($userLogin['password'], $user['password'])) {
                     $_SESSION['user_id'] = $user['id'];
                     header('Location: /admin/membres');
+
                     return '';
                 } else {
                     $errors[] = 'Erreur d\'authentification';
@@ -43,6 +51,15 @@ class AdminMemberController extends AbstractController
             }
         }
         return $this->twig->render('Admin/login.html.twig', ['errors' => $errors]);
+    }
+
+    public function logout(): void
+    {
+        if (isset($_SESSION['user_id'])) {
+            unset($_SESSION['user_id']);
+        }
+
+        header('Location: /');
     }
 
     private function verifications(array $userLogin): array
