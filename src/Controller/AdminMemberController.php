@@ -27,7 +27,6 @@ class AdminMemberController extends AbstractController
     public function index(): string
     {
         if (!$this->user) {
-            echo 'unauthorized access';
             header('HTTP/1.1 401 Unauthorized');
 
             return $this->twig->render('Error/error.html.twig');
@@ -93,10 +92,10 @@ class AdminMemberController extends AbstractController
         if (empty($userLogin['password'])) {
             $errors[] = 'Le mot de passe est obligatoire';
         }
-        
+
         return $errors;
     }
-    
+
     public function add(string $message = ''): ?string
     {
         $member = [];
