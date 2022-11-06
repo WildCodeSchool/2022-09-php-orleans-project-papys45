@@ -14,44 +14,44 @@
 
 	<div class="container">
 
-		<form>
+		<form method="post">
 
 			<div class="row mb-3">
 				<label for="date" class="col-sm-2 col-form-label">Date de la sortie :</label>
 				<div class="col-sm-10">
-					<input type="date" placeholder="Choisir une date" class="form-control text-center" name="dateRoute" id="date"/>
+					<input type="date" placeholder="Choisir une date" class="form-control text-center" name="date" id="date"/>
 				</div>
 			</div>
 			<div class="row mb-3">
-				<label class="col-sm-2 col-form-label" for="formTime">Heure de la sortie :</label>
+				<label class="col-sm-2 col-form-label" for="time">Heure de la sortie :</label>
 				<div class="col-sm-10">
-					<input type="time" class="form-control text-center" id="formTime">
+					<input type="time" class="form-control text-center" id="time" name="time">
 				</div>
 			</div>
 
 			<div class="row mb-3">
-				<label for="inputStart" class="col-sm-2 col-form-label">Lieu de départ :</label>
+				<label for="start" class="col-sm-2 col-form-label">Lieu de départ :</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="inputStart" placeholder="Ecrivez l'adresse de départ ici">
+					<input type="text" class="form-control" id="start" name="start" placeholder="Ecrivez l'adresse de départ ici">
 				</div>
 			</div>
 			<div class="row mb-3">
-				<label for="inputFinish" class="col-sm-2 col-form-label">Lieu d'arrivée :</label>
+				<label for="finish" class="col-sm-2 col-form-label">Lieu d'arrivée :</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="inputFinish" placeholder="Ecrivez l'addresse d'arrivée ici">
+					<input type="text" class="form-control" id="finish" name="finish" placeholder="Ecrivez l'addresse d'arrivée ici">
 				</div>
 			</div>
 			<div class="row mb-3">
-				<label for="inputRavito" class="col-sm-2 col-form-label">Lieu du ravito :</label>
+				<label for="ravito" class="col-sm-2 col-form-label">Lieu du ravito :</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="inputRavito" placeholder="Ecrivez l'addresse du ravito ici">
+					<input type="text" class="form-control" id="ravito" name="ravito" placeholder="Ecrivez l'addresse du ravito ici">
                     <legend>Ravito n'est pas un champs obligatoire</legend>
 				</div>
 			</div>
 			<div class="row mb-3">
-				<label for="floatingSelect" class="col-sm-2 col-form-label">Choisir la difficulté :</label>
+				<label for="difficulty" class="col-sm-2 col-form-label">Choisir la difficulté :</label>
 				<div class="col-sm-10">
-					<select class="form-select" id="floatingSelect" aria-label="Floating label select example">
+					<select class="form-select" name="difficulty" id="difficulty">
 						<option selected>Ouvrez le menu de sélection</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
@@ -60,9 +60,9 @@
 				</div>
 			</div>
             <div class="row mb-3">
-				<label for="inputDistance" class="col-sm-2 col-form-label">Distance de la sortie :</label>
+				<label for="distance" class="col-sm-2 col-form-label">Distance de la sortie :</label>
 				<div class="col-sm-10">
-					<input type="number" class="form-control" id="inputDistance" placeholder="ex : 80">
+					<input type="number" class="form-control" id="distance" name="distance" placeholder="ex : 80">
 				</div>
 			</div>
 			<div class="row mb-3">
@@ -73,18 +73,18 @@
 
 
 			<div class="row mb-3">
-				<label for="inputGpx" class="col-sm-2 col-form-label">Ajouter la carte :</label>
+				<label for="gpx" class="col-sm-2 col-form-label">Ajouter la carte :</label>
 				<div class="col-sm-10">
 					<div class="input-group mb-3">
-						<span class="input-group-text" id="inputGpx">https://www.visugpx.com/</span>
-						<input type="text" class="form-control" id="inputGpx">
+						<span class="input-group-text" id="gpx">https://www.visugpx.com/</span>
+						<input type="text" class="form-control" id="gpx" name="gpx">
 					</div>
 				</div>
 			</div>
 			<div class="row mb-3">
-				<label for="descriptionTxt" class="col-sm-2 col-form-label">Description de la sortie :</label>
+				<label for="descritpion" class="col-sm-2 col-form-label">Description de la sortie :</label>
 				<div class="col-sm-10">
-					<textarea class="form-control" placeholder="Ecrivez ici..." id="descriptionTxt"></textarea>
+					<textarea class="form-control" placeholder="Ecrivez ici..." id="descritpion" name="description"></textarea>
 				</div>
 			</div>
             <div class="text-center py-5">
