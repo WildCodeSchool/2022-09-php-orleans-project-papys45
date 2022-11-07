@@ -8,7 +8,7 @@
 	<div class="container mt-5">
 		<div class="row d-flex justify-content-center">
 			<div class="col-10">
-				<h1 class="AdminRouteTitle text-danger text-center fs-1 mt-5">Administration des sorties</h1>
+				<h1 class="admin-route-title text-danger text-center fs-1 mt-5">Administration des sorties</h1>
 				<div class="text-end">
 					<a href="">
 						<button class="btn btn-danger align-self-right">Ajouter une sortie</button>
@@ -42,10 +42,32 @@
 									<a class="btn btn-outline-warning btn-sm">Editer</a>
 								</td>
 								<td>
-									<a class="btn btn-outline-danger btn-sm">Supprimer</a>
+									<button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Modal{{routes.id}}">
+										Supprimer
+									</button>
+									<div class="modal" tabindex="-1" id="Modal{{routes.id}}">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title">Avertissement</h5>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													<p>Veuillez confirmer la suppression de la sortie du
+														{{routes.date}}</p>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+													<form action="/admin/deleteRoute/delete" method="post">
+														<input type="hidden" name="id" value="{{ routes.id }}">
+														<button type="submit" class="btn btn-outline-danger btn-sm" method="post">Supprimer</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
 								</td>
 							</tr>
-
 						{% endfor %}
 					</tbody>
 
