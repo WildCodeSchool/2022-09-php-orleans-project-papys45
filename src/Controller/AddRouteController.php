@@ -12,8 +12,6 @@ class AddRouteController extends AbstractController
     public const GPX_MAXLENGTH = 255;
     public const DESCRIPTION_MAXLENGTH = 255;
     public const RAPPORT_MAXLENGTH = 255;
-    
-
 
     public function add(): ?string
     {
@@ -33,9 +31,7 @@ class AddRouteController extends AbstractController
                 $routeManager->insert($route);
                 header('Location: /Admin/AddRoute');
             }
-            
         }
-
         return $this->twig->render('Admin/AddRouteForm.html.twig', ['errors' => $errors,]);
     }
 
