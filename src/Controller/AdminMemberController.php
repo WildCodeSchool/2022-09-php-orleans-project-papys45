@@ -27,19 +27,19 @@ class AdminMemberController extends AbstractController
 
     public function index(): string
     {
-        $membersManager = new MemberManager();
-        $members = $membersManager->selectAll('firstname');
+        $memberManager = new MemberManager();
+        $members = $memberManager->selectAll('firstname');
 
         return $this->twig->render('Admin/members.html.twig', ['members' => $members]);
     }
 
-    private function controlForAddOrEdit(string $lastPhoto): array
+    private function uploadFile(): array
     {
         $errors = [];
-        $member = array_map('trim', $_POST);
         $files = $_FILES;
         $uploadFile = '';
         $uniqName = '';
+        $fileName = '';
 
         if (!empty($files['photo']['name'])) {
             $errorsUpload = $this->verifUpload($files);
@@ -53,26 +53,27 @@ class AdminMemberController extends AbstractController
             if (!empty($errorsUpload) || !move_uploaded_file($files['photo']['tmp_name'], $uploadFile)) {
                 $errors[] = $files['photo']['name'] . ' n\'a pu être chargé. Veuillez réessayer.';
             } else {
-                $member['photo'] = $uniqName;
+                $fileName = $uniqName;
             }
 
             $errors = array_merge($errorsUpload, $errors);
-        } else {
-            $member['photo'] = $lastPhoto;
         }
 
-        $errors =  array_merge($this->verification($member), $errors);
+        return [$errors, $fileName];
+    }
 
-
+    private function controlDateOfBirth(string $memberDateOfBirth): array
+    {
+        $errors = [];
         $dateOfBirth = new DateTime();
-        $date = explode("-", $member['dateOfBirth']);
+        $date = explode("-", $memberDateOfBirth);
         $dateOfBirth->setDate(intval($date[0]), intval($date[1]), intval($date[2]));
 
         if (!$dateOfBirth::getLastErrors()) {
             $errors[] = 'La date d\'anniversaire est incorrecte.';
         }
 
-        return [$errors, $member];
+        return $errors;
     }
 
     public function add(string $message = ''): string
@@ -81,14 +82,18 @@ class AdminMemberController extends AbstractController
         $member = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $controlResult = $this->controlForAddOrEdit('');
-            $errors = $controlResult[0];
-            $member = $controlResult[1];
+            $member = array_map('trim', $_POST);
+            $errors = array_merge($this->verification($member), $errors);
+            $errors = array_merge($this->controlDateOfBirth($member['dateOfBirth']), $errors);
             $errors = array_merge($this->roleVerification($member['role']), $errors);
 
+            $uploadResult = $this->uploadFile();
+            $errors = array_merge($uploadResult[0], $errors);
+            $member['photo'] = $uploadResult[1];
+
             if (empty($errors)) {
-                $membersManager = new MemberManager();
-                $membersManager->insert($member);
+                $memberManager = new MemberManager();
+                $memberManager->insert($member);
                 header('location: /admin/membres/add?message=success');
 
                 return '';
@@ -110,22 +115,22 @@ class AdminMemberController extends AbstractController
     public function edit(int $id, string $message = ''): ?string
     {
         $errors = [];
-        $membersManager = new MemberManager();
-        $member = $membersManager->selectOneById($id);
+        $memberManager = new MemberManager();
+        $member = $memberManager->selectOneById($id);
         $lastRole = $member['role'];
         $lastPhoto = $member['photo'];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $controlResult = $this->controlForAddOrEdit($lastPhoto);
-            $errors = $controlResult[0];
-            $member = $controlResult[1];
+            $member = array_map('trim', $_POST);
+            $uploadResult = $this->uploadFile();
+            $errors = $uploadResult[0];
+            $member['photo'] = $uploadResult[1];
 
             if ($lastRole != $member['role']) {
                 $errors = array_merge($this->roleVerification($member['role']));
             }
 
             if (
-                isset($member['photo']) &&
                 $lastPhoto != $member['photo'] &&
                 !empty($lastPhoto) &&
                 file_exists(self::UPLOAD_DIR . $lastPhoto)
@@ -133,12 +138,8 @@ class AdminMemberController extends AbstractController
                 unlink(self::UPLOAD_DIR . $lastPhoto);
             }
 
-            if (!isset($member['photo'])) {
-                $member['photo'] = '';
-            }
-
             if (empty($errors)) {
-                $membersManager->update($member);
+                $memberManager->update($member);
                 header('location: /admin/membres/edit?id=' . $id . '&message=success');
 
                 return '';
@@ -159,10 +160,10 @@ class AdminMemberController extends AbstractController
     private function roleVerification(string $role): array
     {
         $errors = [];
-        $adminMembersManager = new MemberManager();
+        $memberManager = new MemberManager();
 
         if ($role !== 'member' && !empty($role)) {
-            if ($adminMembersManager->selectOneByRole($role)) {
+            if ($memberManager->selectOneByRole($role)) {
                 $errors[] = 'Vous ne pouvez pas choisir un rôle dans l\'association déjà attribué.';
             }
         }
