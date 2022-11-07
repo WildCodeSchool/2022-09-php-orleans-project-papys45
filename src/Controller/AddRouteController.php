@@ -12,17 +12,14 @@ class AddRouteController extends AbstractController
     public const GPX_MAXLENGTH = 255;
     public const DESCRIPTION_MAXLENGTH = 255;
     public const RAPPORT_MAXLENGTH = 255;
+    
 
-
-
-
-    public function index(): string
-    {
-        return $this->twig->render('Admin/AddRouteForm.html.twig');
-    }
 
     public function add(): ?string
     {
+        $errors = [];
+        $route = [];
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $route = array_map('trim', $_POST);
@@ -30,18 +27,16 @@ class AddRouteController extends AbstractController
             // TODO validations (length, format..  .)
             $errors = $this->verifempty($route);
             $errors = $this->verifyLength($route);
-            if (empty($errors)){
-
+            if (empty($errors)) {
             // if validation is ok, insert and redirection
-            $itemManager = new RouteManager();
-            $id = $itemManager->insert($route);
-
-            header('Location:DetailRoute/DetailRoute.html.twig?id=' . $id);
-            return null;
-         }
+                $routeManager = new RouteManager();
+                $routeManager->insert($route);
+                header('Location: /Admin/AddRoute');
+            }
+            
         }
 
-        return $this->twig->render('Admin/AddRouteForm.html.twig');
+        return $this->twig->render('Admin/AddRouteForm.html.twig', ['errors' => $errors,]);
     }
 
 
@@ -65,7 +60,7 @@ class AddRouteController extends AbstractController
         if (empty($route['distance'])) {
             $errors[] = 'La distance est  obligatoire.';
         }
-        if (empty($route['difficulty'])) {
+        if ($route['difficulty'] === '0') {
             $errors[] = 'La difficulté est obligatoire.';
         }
         if (empty($route['gpx'])) {
@@ -76,23 +71,31 @@ class AddRouteController extends AbstractController
 
     private function verifyLength(array $route)
     {
+
         $errors = [];
 
-        if (strlen($route['start']) > self::START_MAXLENGTH){
+        $errors = $this->verifEmpty($route);
+
+        if (strlen($route['start']) > self::START_MAXLENGTH) {
             $errors[] = 'Le lieu de départ ne doit pas dépasser' . ' ' . self::START_MAXLENGTH . ' ' . 'caractères.';
         }
-        if (strlen($route['finish']) > self::FINISH_MAXLENGTH){
+
+        if (strlen($route['finish']) > self::FINISH_MAXLENGTH) {
             $errors[] = 'Le lieu d\'arrivée ne doit pas dépasser' . ' ' . self::FINISH_MAXLENGTH . ' ' . 'caractères.';
         }
-        if (strlen($route['ravito']) > self::RAVITO_MAXLENGTH){
+
+        if (strlen($route['ravito']) > self::RAVITO_MAXLENGTH) {
             $errors[] = 'Le lieu du ravito ne doit pas dépasser' . ' ' . self::RAVITO_MAXLENGTH . ' ' . 'caractères.';
         }
-        if (strlen($route['gpx']) > self::GPX_MAXLENGTH){
+
+        if (strlen($route['gpx']) > self::GPX_MAXLENGTH) {
             $errors[] = 'L\'id ne doit pas dépasser' . ' ' . self::GPX_MAXLENGTH . ' ' . 'caractères.';
         }
-        if (strlen($route['descritpion']) > self::DESCRIPTION_MAXLENGTH){
+
+        if (strlen($route['description']) > self::DESCRIPTION_MAXLENGTH) {
             $errors[] = 'La description ne doit pas dépasser' . ' ' . self::DESCRIPTION_MAXLENGTH . ' ' . 'caractères.';
         }
+
         return $errors;
     }
 }

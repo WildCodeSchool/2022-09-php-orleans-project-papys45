@@ -20,7 +20,7 @@ class RouteManager extends AbstractManager
             `distance`,
             `difficulty`,
             `gpx`,
-            `description`) 
+            `description`)
             VALUES (
                 :date,
                 :time,
@@ -42,7 +42,6 @@ class RouteManager extends AbstractManager
         $statement->bindValue('difficulty', $route['difficulty'], PDO::PARAM_INT);
         $statement->bindValue('gpx', $route['gpx'], PDO::PARAM_STR);
         $statement->bindValue('description', $route['description'], PDO::PARAM_STR);
-
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }

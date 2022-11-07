@@ -9,30 +9,33 @@
 
 {% block content %}
 
+	<pre>
+    {{ dump(errors) }}
+</pre>
 	<h1 class="display-4 fw-bold text-danger text-center py-5">
 		AJOUTER UNE SORTIE</h1>
 
 	<div class="container">
 
 		<form method="post">
-        
-            <ul class="text-center text-dangers">
-            {% for error in errors %}
-                <li>{{error}}</li>
-            {% endfor %}
-            </ul>
-            
 
-			<div class="row mb-3">
+			<ul class="text-center text-danger">
+				{% for error in errors %}
+					<li>{{error}}</li>
+				{% endfor %}
+			</ul>
+
+
+			<div class="row mb-3 datepicker">
 				<label for="date" class="col-sm-2 col-form-label">Date de la sortie :</label>
 				<div class="col-sm-10">
-					<input type="date" placeholder="Choisir une date" class="form-control text-center" name="date" id="date"/>
+					<input type="date" placeholder="Choisir une date"  class=" form-control text-center" name="date" id="date" value="{{"now"|date("Y-m-d") }}"/>
 				</div>
 			</div>
 			<div class="row mb-3">
 				<label class="col-sm-2 col-form-label" for="time">Heure de la sortie :</label>
 				<div class="col-sm-10">
-					<input type="time" class="form-control text-center" id="time" name="time">
+					<input type="time" class="form-control text-center" id="time" name="time" value="{{"now"|date('H:i')}}" >
 				</div>
 			</div>
 
@@ -58,14 +61,14 @@
 				<label for="difficulty" class="col-sm-2 col-form-label">Choisir la difficulté :</label>
 				<div class="col-sm-10">
 					<select class="form-select" name="difficulty" id="difficulty">
-						<option selected>Ouvrez le menu de sélection</option>
+						<option value="0" selected>Ouvrez le menu de sélection</option>
 						<option value="1">1</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
 					</select>
 				</div>
 			</div>
-            <div class="row mb-3">
+			<div class="row mb-3">
 				<label for="distance" class="col-sm-2 col-form-label">Distance de la sortie :</label>
 				<div class="col-sm-10">
 					<input type="number" class="form-control" id="distance" name="distance" placeholder="ex : 80">
@@ -88,13 +91,17 @@
 					<textarea class="form-control" placeholder="Ecrivez ici..." id="descritpion" name="description"></textarea>
 				</div>
 			</div>
-            <div class="text-center py-5">
-			<button type="submit" class="btn btn-danger">Créer la sortie</button>
-            </div>
+			<div class="text-center py-5">
+				<button type="submit" class="btn btn-danger">Créer la sortie</button>
+			</div>
 		</form>
 
 
 	</div>
 
-
+	{% block javascript %}
+		<script type="text/javascript">
+			$('.date').datepicker({formatSubmit: 'yyyy/mm/dd'});
+		</script>
+	{% endblock %}
 {% endblock %}

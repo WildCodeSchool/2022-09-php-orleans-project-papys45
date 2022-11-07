@@ -13,7 +13,7 @@ return [
     'membres' => ['MemberController', 'index'],
     'items' => ['ItemController', 'index',],
     'listRoute' => ['RouteController', 'index',],
-    'admin/addRoute' => ['AddRouteController', 'index',],
+    'Admin/AddRoute' => ['AddRouteController', 'add',],
     'items/edit' => ['ItemController', 'edit', ['id']],
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
