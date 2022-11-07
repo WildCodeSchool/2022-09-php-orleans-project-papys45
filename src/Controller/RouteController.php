@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Controller\AbstractController;
 use App\Model\RouteManager;
+use App\Model\MemberManager;
 
 class RouteController extends AbstractController
 {

@@ -11,7 +11,7 @@
 		<h1 class="display-4 fw-bold text-danger text-center py-5">{{'Détails de la sortie passée'|upper}}</h1>
 	{% else %}
 		<h1 class="display-4 fw-bold text-danger text-center py-5">
-			{{'Détails de la sortie à venir'|upper}} 
+			{{'Détails de la sortie à venir'|upper}}
 		</h1>
 	{% endif %}
 
@@ -78,11 +78,10 @@
 				</div>
 				<div class="row flex-row pt-3">
 					<div class="col-2 text-center">
-						{% if  constant('App\\Controller\\RouteController::EASY_ROUTE') is same as route.difficulty %}<img class="card-img icon-green" 
-									src="/assets/images/mountain.svg" alt="green mountain icon">
-									{% elseif constant('App\\Controller\\RouteController::MEDIUM_ROUTE') is same as route.difficulty %}<img class="card-img icon-orange" src="/assets/images/mountain.svg" alt="orange mountain icon">
-									{% else %}<img class="card-img icon-red" src="/assets/images/mountain.svg" alt="red mountain icon"> 
-									{% endif %}
+						{% if  constant('App\\Controller\\RouteController::EASY_ROUTE') is same as route.difficulty %}<img class="card-img icon-green" src="/assets/images/mountain.svg" alt="green mountain icon">
+							{% elseif constant('App\\Controller\\RouteController::MEDIUM_ROUTE') is same as route.difficulty %}<img class="card-img icon-orange" src="/assets/images/mountain.svg" alt="orange mountain icon">
+							{% else %}<img class="card-img icon-red" src="/assets/images/mountain.svg" alt="red mountain icon">
+						{% endif %}
 
 					</div>
 					<div class="col-10 fs-2 pt-3">
@@ -91,40 +90,22 @@
 					</div>
 				</div>
 			</div>
-            
-            <div class="col-md-1 order-md-2 custom-border-left custom-border-bottom"></div>
+
+			<div class="col-md-1 order-md-2 custom-border-left custom-border-bottom"></div>
 
 			<div class="col-4 order-md-3 d-none d-md-block">
 				<div>
 					<h3 class="text-center pb-4 text-danger display-6">Déja inscrit</h3>
 				</div>
 
-				{# for here to call member table #}
 
-				<div class="row g-3 py-1"> {#dummy system#}
-					<img src="../../assets/images/default.svg" {# replace memberid.img#} class="w-25 rounded-circle memberpic" alt="{# replace memberid.alt #}"/>
-					<img src="../../assets/images/default.svg" {# replace memberid.img#} class="w-25 rounded-circle memberpic" alt="{# replace memberid.alt #}"/>
-					<img src="../../assets/images/default.svg" {# replace memberid.img#} class="w-25 rounded-circle memberpic" alt="{# replace memberid.alt #}"/>
-					<img src="../../assets/images/default.svg" {# replace memberid.img#} class="w-25 rounded-circle memberpic" alt="{# replace memberid.alt #}"/>
-				</div>
-				<div class="row g-3 py-1">
-					<img src="../../assets/images/default.svg" {# replace memberid.img#} class="w-25 rounded-circle memberpic" alt="{# replace memberid.alt #}"/>
-					<img src="../../assets/images/default.svg" {# replace memberid.img#} class="w-25 rounded-circle memberpic" alt="{# replace memberid.alt #}"/>
-					<img src="../../assets/images/default.svg" {# replace memberid.img#} class="w-25 rounded-circle memberpic" alt="{# replace memberid.alt #}"/>
-					<img src="../../assets/images/default.svg" {# replace memberid.img#} class="w-25 rounded-circle memberpic" alt="{# replace memberid.alt #}"/>
-				</div>
-				<div class="row g-3 py-1">
-					<img src="../../assets/images/default.svg" {# replace memberid.img#} class="w-25 rounded-circle memberpic" alt="{# replace memberid.alt #}"/>
-					<img src="../../assets/images/default.svg" {# replace memberid.img#} class="w-25 rounded-circle memberpic" alt="{# replace memberid.alt #}"/>
-					<img src="../../assets/images/default.svg" {# replace memberid.img#} class="w-25 rounded-circle memberpic" alt="{# replace memberid.alt #}"/>
-					<img src="../../assets/images/default.svg" {# replace memberid.img#} class="w-25 rounded-circle memberpic" alt="{# replace memberid.alt #}"/>
-				</div>
-				<div class="row g-3 py-1">
-					<img src="../../assets/images/default.svg" {# replace memberid.img#} class="w-25 rounded-circle memberpic" alt="{# replace memberid.alt #}"/>
-					<img src="../../assets/images/default.svg" {# replace memberid.img#} class="w-25 rounded-circle memberpic" alt="{# replace memberid.alt #}"/>
-					<img src="../../assets/images/default.svg" {# replace memberid.img#} class="w-25 rounded-circle memberpic" alt="{# replace memberid.alt #}"/>
-					<img src="../../assets/images/default.svg" {# replace memberid.img#} class="w-25 rounded-circle memberpic" alt="{# replace memberid.alt #}"/>
-				</div>
+				{% for member in members %}
+					<div class="row g-3 py-1">
+						<img src="/assets/images/{{member.photo}}" class="w-25 rounded-circle memberpic" alt="photo du membre"/>
+						{% endfor %}
+					</div>
+				
+
 
 			</div>
 		</div>
@@ -137,31 +118,32 @@
 			<div class="col-md-7">
 
 				<div class="row pe-5 shadow-sm text-center">
-					<p>{{route.description}} </p>
+					<p>{{route.description}}
+					</p>
 				</div>
 			</div>
 
-            <div class="col-md-1"></div>
+			<div class="col-md-1"></div>
 
-{% if "now"|date("Y-m-d") < route.date|date('Y-m-d') %}
-			<div class="col-md-4">
-				<div class="row">
-					<form>
-						<fieldset>
-							<legend>Inscrivez-vous à cette sortie</legend>
-							<label for="exampleDataList" class="form-label">Tapez votre nom</label>
-							<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Ecrivez votre nom ici">
-							<datalist id="datalistOptions">
-								<option value=""></option>
-							</datalist>
-							<button type="submit" class="btn btn-danger mt-2">S'inscrire</button>
-						</fieldset>
-					</form>
+			{% if "now"|date("Y-m-d") < route.date|date('Y-m-d') %}
+				<div class="col-md-4">
+					<div class="row">
+						<form>
+							<fieldset>
+								<legend>Inscrivez-vous à cette sortie</legend>
+								<label for="exampleDataList" class="form-label">Tapez votre nom</label>
+								<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Ecrivez votre nom ici">
+								<datalist id="datalistOptions">
+									<option value=""></option>
+								</datalist>
+								<button type="submit" class="btn btn-danger mt-2">S'inscrire</button>
+							</fieldset>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-{% endif %}
+	{% endif %}
 
 	<h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
 		Parcours
