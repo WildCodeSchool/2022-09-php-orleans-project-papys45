@@ -14,4 +14,9 @@ class AdminActuController extends AbstractController
 
         return $this->twig->render('Admin/admin_actuality.html.twig', ['actualities' => $actualities]);
     }
+
+    public function edit ($actualities)
+    {
+        
+    }
 }
