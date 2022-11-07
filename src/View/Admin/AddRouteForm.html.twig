@@ -15,6 +15,13 @@
 	<div class="container">
 
 		<form method="post">
+        
+            <ul class="text-center text-dangers">
+            {% for error in errors %}
+                <li>{{error}}</li>
+            {% endfor %}
+            </ul>
+            
 
 			<div class="row mb-3">
 				<label for="date" class="col-sm-2 col-form-label">Date de la sortie :</label>
@@ -45,7 +52,6 @@
 				<label for="ravito" class="col-sm-2 col-form-label">Lieu du ravito :</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" id="ravito" name="ravito" placeholder="Ecrivez l'addresse du ravito ici">
-                    <legend>Ravito n'est pas un champs obligatoire</legend>
 				</div>
 			</div>
 			<div class="row mb-3">
@@ -64,11 +70,6 @@
 				<div class="col-sm-10">
 					<input type="number" class="form-control" id="distance" name="distance" placeholder="ex : 80">
 				</div>
-			</div>
-			<div class="row mb-3">
-            <div class="col-sm-2 ">Ajouter participants :</div>
-				<div class="col-sm-10"><a class="btn btn-dark" href="#" role="button">Ajouter</a>
-                </div>
 			</div>
 
 
