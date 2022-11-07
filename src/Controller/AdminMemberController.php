@@ -25,8 +25,8 @@ class AdminMemberController extends AbstractController
     ];
     public function index(string $message = ''): string
     {
-        $membersManager = new MemberManager();
-        $members = $membersManager->selectAll('firstname');
+        $memberManager = new MemberManager();
+        $members = $memberManager->selectAll('firstname');
 
         return $this->twig->render('Admin/members.html.twig', ['members' => $members, 'message' => $message]);
     }
@@ -35,9 +35,9 @@ class AdminMemberController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
-            $membersManager = new MemberManager();
-            $idPhoto = $membersManager->idPhoto(intval($id));
-            $membersManager->delete(intval($id));
+            $memberManager = new MemberManager();
+            $idPhoto = $memberManager->selectOneById(intval($id));
+            $memberManager->delete(intval($id));
 
             if (!empty($idPhoto['photo']) && file_exists(self::UPLOAD_DIR . $idPhoto['photo'])) {
                 unlink(self::UPLOAD_DIR . $idPhoto['photo']);
@@ -95,8 +95,8 @@ class AdminMemberController extends AbstractController
 
 
             if (empty($errors)) {
-                $membersManager = new MemberManager();
-                $membersManager->insert($member);
+                $memberManager = new MemberManager();
+                $memberManager->insert($member);
 
                 header('location: /admin/membres/add?message=success');
 
@@ -119,10 +119,10 @@ class AdminMemberController extends AbstractController
     private function roleVerification(string $role): array
     {
         $errors = [];
-        $membersManager = new MemberManager();
+        $memberManager = new MemberManager();
 
         if ($role !== 'member' && !empty($role)) {
-            if ($membersManager->selectOneByRole($role)) {
+            if ($memberManager->selectOneByRole($role)) {
                 $errors[] = 'Vous ne pouvez pas choisir un rôle dans l\'association déjà attribué.';
             }
         }
