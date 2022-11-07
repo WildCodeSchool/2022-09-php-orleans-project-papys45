@@ -3,19 +3,15 @@
 namespace App\Controller;
 
 use App\Model\ActualityManager;
+use App\Controller\AbstractController;
 
-class ActualityController extends AbstractController
+class AdminActuController extends AbstractController
 {
     public function index(): string
     {
         $adminActualityManager = new ActualityManager();
-        $actuality = $adminActualityManager->selectAll('title');
+        $actualities = $adminActualityManager->selectAll();
 
-        return $this->twig->render('Admin/admin_actuality.html.twig', ['title' => $actuality]);
-    }
-
-    public function edit (): void
-    {
-        
+        return $this->twig->render('Admin/admin_actuality.html.twig', ['actualities' => $actualities]);
     }
 }
