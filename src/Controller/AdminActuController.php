@@ -9,8 +9,8 @@ class AdminActuController extends AbstractController
 {
     public function index(): string
     {
-        $adminActualityManager = new ActualityManager();
-        $actualities = $adminActualityManager->selectAll();
+        $adminActuManager = new ActualityManager();
+        $actualities = $adminActuManager->selectAll();
 
         return $this->twig->render('Admin/admin_actuality.html.twig', ['actualities' => $actualities]);
     }
