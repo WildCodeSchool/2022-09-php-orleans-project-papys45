@@ -8,7 +8,7 @@ class ActualityManager extends AbstractManager
 {
     public const TABLE = 'actuality';
 
-    public function selectOneBytitle(string $title): array|false
+    public function selectOneBytitle(string $title)
     {
         $statement = $this->pdo->prepare("SELECT `title` FROM " . self::TABLE . " WHERE title=:title");
         $statement->bindValue('title', $title, \PDO::PARAM_STR);

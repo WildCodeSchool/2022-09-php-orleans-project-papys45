@@ -11,9 +11,9 @@
 
 	<div class="container mt-5">
 		<div class="row d-flex justify-content-center">
-			<div class="col-md-6 mt-4 mb-4">
-				<h1 class="actu text-center mt-5 text-danger">ADMINISTRATION - ACTUALITES</h1>
-				<div class="row d-flex flex-wrap flex-md-row justify-content-center align-items-center shadow-sm">
+			<div class="col mt-4 mb-4">
+				<h1 class="actu text-center m-5 text-danger">ADMINISTRATION - ACTUALITES</h1>
+				<div class="row d-flex justify-content-center align-items-center shadow-sm m-4">
 
 					{% for actuality in actualities %}
 						<div class="col d-flex flex-column m-2">
@@ -23,7 +23,7 @@
 								<button type="button" class="btn btn-outline-success m-2" href="#">Ajouter</button>
 							</a>
 							<a href="/actuality/edit?={{ actuality.id }}">
-								<button type="button" class="edit btn btn-outline-danger mb-2" href="#">Editer</button>
+								<button type="button" class="edit btn btn-outline-warning mb-2" href="#">Editer</button>
 							</a>
 							<a href="/actuality/delete">
 								<button type="button" class="btn btn-outline-danger m-2" href="#">Supprimer</button>
