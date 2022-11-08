@@ -13,6 +13,7 @@ class AddRouteController extends AbstractController
     public const DESCRIPTION_MAXLENGTH = 255;
     public const RAPPORT_MAXLENGTH = 255;
 
+
     public function add(): ?string
     {
         $errors = [];
@@ -29,10 +30,10 @@ class AddRouteController extends AbstractController
             // if validation is ok, insert and redirection
                 $routeManager = new RouteManager();
                 $routeManager->insert($route);
-                header('Location: /Admin/AddRoute');
+                header('Location: Admin/AddRoute');
             }
         }
-        return $this->twig->render('Admin/AddRouteForm.html.twig', ['errors' => $errors,]);
+        return $this->twig->render('Admin/AddRouteForm.html.twig', ['errors' => $errors, 'route' => $route]);
     }
 
 
