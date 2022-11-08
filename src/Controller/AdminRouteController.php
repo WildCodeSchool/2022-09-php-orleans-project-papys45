@@ -14,15 +14,14 @@ class AdminRouteController extends AbstractController
         return $this->twig->render('AdminRoute/adminRoute.html.twig', ['routes' => $route]);
     }
 
-    public function delete(): string
+    public function delete(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
             $routeManager = new RouteManager();
             $routeManager->delete((int)$id);
 
-            header('Location:/admin/deleteRoute');
+            header('Location:/admin/route');
         }
-        return '';
     }
 }

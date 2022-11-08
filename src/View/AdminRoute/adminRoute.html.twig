@@ -45,7 +45,7 @@
 									<button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Modal{{route.id}}">
 										Supprimer
 									</button>
-									<div class="modal" tabindex="-1" id="Modal{{route.id}}">
+									<div class="modal fade" tabindex="-1" id="Modal{{route.id}}">
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
@@ -58,7 +58,7 @@
 												</div>
 												<div class="modal-footer">
 													<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-													<form action="/admin/deleteRoute/delete" method="post">
+													<form action="/admin/deleteRoute" method="post">
 														<input type="hidden" name="id" value="{{ route.id }}">
 														<button class="btn btn-outline-danger btn-sm" method="post">Supprimer</button>
 													</form>
