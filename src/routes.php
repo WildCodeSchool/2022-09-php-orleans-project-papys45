@@ -16,8 +16,8 @@ return [
     'items/show' => ['ItemController', 'show', ['id']],
     'items/add' => ['ItemController', 'add',],
     'items/delete' => ['ItemController', 'delete',],
-    'actuality/index' => ['AdminActuController', 'index'],
-    'actuality/edit' => ['AdminActuController', 'edit', ['id']],
-    'actuality/add' => ['AdminActuController', 'add'],
-    'actuality/delete' => ['AdminActuController', 'delete'],
+    'admin/actuality/index' => ['AdminActuController', 'index'],
+    'admin/actuality/edit' => ['AdminActuController', 'edit', ['id']],
+    'admin/actuality/add' => ['AdminActuController', 'add'],
+    'admin/actuality/delete' => ['AdminActuController', 'delete'],
 ];
