@@ -91,23 +91,7 @@
 				</div>
 			</div>
 
-			<div class="col-md-1 order-md-2 custom-border-left custom-border-bottom"></div>
-
-			<div class="col-4 order-md-3 d-none d-md-block">
-				<div>
-					<h3 class="text-center pb-4 text-danger display-6">Déja inscrit</h3>
-				</div>
-
-
-				{% for member in members %}
-					<div class="row g-3 py-1">
-						<img src="/assets/images/{{member.photo}}" class="w-25 rounded-circle memberpic" alt="photo du membre"/>
-						{% endfor %}
-					</div>
-				
-
-
-			</div>
+			{# Add register members here later#}
 		</div>
 	</div>
 
@@ -154,28 +138,7 @@
 
 
 	{% if "now"|date("Y-m-d") > route.date|date('Y-m-d') %}
-
-		<h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
-			Photos
-		</h2>
-
-		<div
-			class="container">
-
-			{# Call the photo table#}
-
-			<div class="row">
-				<div class="col-md-7 pb-2 ">
-					<img src="../../assets/images/default.svg" {# replace photoid.img #} class=" rounded gallery1" alt="{# replace photoid.alt #}"/>
-				</div>
-
-				<div class="col-md-5 mb-3">
-					<img src="../../assets/images/default.svg" {# replace photoid.img #} class=" rounded gallery2 mb-2" alt="{# replace photoid.alt #}"/>
-
-					<img src="../../assets/images/default.svg" {# replace photoid.img #} class="rounded gallery2 mb-2" alt="{# replace photoid.alt #}"/>
-				</div>
-			</div>
-
+		<div class="container">
 
 			<h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
 				Compte rendu
