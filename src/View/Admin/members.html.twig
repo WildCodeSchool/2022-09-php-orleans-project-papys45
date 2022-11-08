@@ -34,7 +34,7 @@
 								<th scope="row">{{ member.id}}</th>
 								<td>{{ member.firstname }}</td>
 								<td>{{ member.lastname }}</td>
-								<td>{{ member.role }}</td>
+								<td>{{ roles[member.role] }}</td>
 								<td>{{ member.mail }}</td>
 								<td>
 									<a href="/admin/membres/edit?id={{ member.id }}">

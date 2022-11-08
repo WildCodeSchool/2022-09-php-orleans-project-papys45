@@ -35,7 +35,7 @@ class AdminMemberController extends AbstractController
         $membersManager = new MemberManager();
         $members = $membersManager->selectAll('firstname');
 
-        return $this->twig->render('Admin/members.html.twig', ['members' => $members]);
+        return $this->twig->render('Admin/members.html.twig', ['members' => $members, 'roles' => self::ROLES]);
     }
 
     public function login(): string
