@@ -20,4 +20,6 @@ return [
     'admin/actuality/edit' => ['AdminActuController', 'edit', ['id']],
     'admin/actuality/add' => ['AdminActuController', 'add'],
     'admin/actuality/delete' => ['AdminActuController', 'delete'],
+    'admin/route' => ['AdminRouteController', 'index'],
+    'admin/deleteRoute' => ['AdminRouteController', 'delete'],
 ];
