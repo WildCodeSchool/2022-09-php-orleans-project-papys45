@@ -11,7 +11,7 @@ class AdminRouteController extends AbstractController
         $routeManager = new RouteManager();
         $route = $routeManager->selectAll('date', 'DESC');
 
-        return $this->twig->render('AdminRoute/adminRoute.html.twig', ['route' => $route]);
+        return $this->twig->render('AdminRoute/adminRoute.html.twig', ['routes' => $route]);
     }
 
     public function delete(): string
