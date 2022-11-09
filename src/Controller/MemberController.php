@@ -9,10 +9,12 @@ class MemberController extends AbstractController
 {
     public function index(): string
     {
+        $adminMembersManager = new MemberManager();
+        $members = $adminMembersManager->selectAll('firstname');
 
-        $memberManager = new MemberManager();
-        $members = $memberManager->selectAll('');
-
-        return $this->twig->render('Members/index.html.twig', ['members' => $members]);
+        return $this->twig->render(
+            'Members/index.html.twig',
+            ['members' => $members]
+        );
     }
 }

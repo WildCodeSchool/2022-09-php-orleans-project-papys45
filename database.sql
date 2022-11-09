@@ -131,7 +131,8 @@ INSERT INTO
         `finish`,
         `ravito`,
         `distance`,
-        `difficulty`
+        `difficulty`,
+        `gpx`
     )
 VALUES (
         '2022-10-27',
@@ -140,7 +141,8 @@ VALUES (
         '20 rue du velo en mer, Chécy',
         '250 avenue du raton',
         80,
-        1
+        1,
+        '7oy3KJ4XqY'
     );
 
 INSERT INTO
@@ -151,7 +153,8 @@ INSERT INTO
         `finish`,
         `ravito`,
         `distance`,
-        `difficulty`
+        `difficulty`,
+        `gpx`
     )
 VALUES (
         '2022-10-28',
@@ -160,7 +163,8 @@ VALUES (
         '13 rue de Babylone , St Cyr en Val',
         '48 faubourg du bourg, Olivet',
         100,
-        2
+        2,
+        '7oy3KJ4XqY'
     );
 
 INSERT INTO
@@ -171,7 +175,8 @@ INSERT INTO
         `finish`,
         `ravito`,
         `distance`,
-        `difficulty`
+        `difficulty`,
+        `gpx`
     )
 VALUES (
         '2023-01-03',
@@ -180,7 +185,8 @@ VALUES (
         '13 rue du couteau de Cécile, Beaugency',
         '48 rue de la rue, Chécy',
         20,
-        3
+        3,
+        '7oy3KJ4XqY'
     );
 
 CREATE TABLE
@@ -235,127 +241,138 @@ VALUES (
         'Roger',
         'Edarde',
         'president',
-        (STR_TO_DATE("30.10.1944",'%d.%m.%Y')),
-        'roger@edarde.fr',
-        'RogerEdarde.png'
+        '1957-12-02',
+         'roger@edarde.fr',
+        ''
     ), (
         'Frédérick',
         'Milier',
-        'vice-president',
-        (STR_TO_DATE("28.03.1968",'%d.%m.%Y')),
+        'vice',
+        '1947-12-02',
         'fred@milier.fr',
-        'RogerEdarde.png'
+        ''
     ), (
         'Guy',
         'Hauger',
         'secretary',
         '1967-12-02',
         'guy@hauger.fr',
-        'RogerEdarde.png'
+        ''
     ), (
         'Pierre',
         'Bernard',
-        'vice-secretary',
+        'adjSecretary',
         '1945-08-18',
         'pierre@bernard.fr',
-        'RogerEdarde.png'
+        ''
     ), (
         'Raymond',
         'Poulidor',
         'accoutant',
         '1968-08-28',
         'raymond@poulidor.fr',
-        'RogerEdarde.png'
+        ''
     ), (
         'John',
         'Doe',
         'member',
         '1980-12-02',
         'john@doe.fr',
-        'default.svg'
+        ''
     ), (
         'John',
         'Doe',
         'member',
         '1979-12-02',
         'john@doe.fr',
-        'default.svg'
+        ''
     ), (
         'John',
         'Doe',
         'member',
         '1978-12-02',
         'john@doe.fr',
-        'default.svg'
+        ''
     ), (
         'John',
         'Doe',
         'member',
         '1977-12-02',
         'john@doe.fr',
-        'default.svg'
+        ''
     ), (
         'John',
         'Doe',
         'member',
         '1976-12-02',
         'john@doe.fr',
-        'default.svg'
+        ''
     ), (
         'John',
         'Doe',
         'member',
         '1975-12-02',
         'john@doe.fr',
-        'default.svg'
+        ''
     ), (
         'John',
         'Doe',
         'member',
         '1974-12-02',
         'john@doe.fr',
-        'default.svg'
+        ''
     ), (
         'John',
         'Doe',
         'member',
         '1973-12-02',
         'john@doe.fr',
-        'default.svg'
+        ''
     ), (
         'John',
         'Doe',
         'member',
         '1972-12-02',
         'john@doe.fr',
-        'default.svg'
+        ''
     ), (
         'John',
         'Doe',
         'member',
         '1971-12-02',
         'john@doe.fr',
-        'default.svg'
+        ''
     ), (
         'John',
         'Doe',
         'member',
         '1970-12-02',
         'john@doe.fr',
-        'default.svg'
+        ''
     ), (
         'John',
         'Doe',
         'member',
         '1969-12-02',
         'john@doe.fr',
-        'default.svg'
+        ''
     ), (
         'Serge',
         'Moreau',
         'member',
         '1959-12-02',
         'john@doe.fr',
-        'SergeMoreau.png'
+        ''
     );
+
+CREATE TABLE
+    `login` (
+        `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL UNIQUE,
+        `email` VARCHAR(255) NOT NULL,
+        `password` VARCHAR(255) NOT NULL
+    );
+
+INSERT INTO
+    `login` (`email`, `password`) /*mdp = bilbo */
+    VALUES ('admin@connexion.fr','$2y$10$fB15ED93ls/uDwhdSg4wQO9OmYXlNkfeAIG9ZlBsSf2UVGDoXxC.G');
 
