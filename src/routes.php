@@ -9,6 +9,7 @@
 return [
     '' => ['HomeController', 'index',],
     'contact' => ['FormController', 'index', ['message']],
+    'admin/membres/edit' => ['AdminMemberController', 'edit', ['id', 'message']],
     'admin/membres' => ['AdminMemberController', 'index',['message']],
     'admin/membres/delete' => ['AdminMemberController', 'delete'],
     'admin/login' => ['AdminLoginController', 'login',],
