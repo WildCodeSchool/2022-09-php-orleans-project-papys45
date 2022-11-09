@@ -29,5 +29,5 @@ return [
     'admin/actuality/delete' => ['AdminActuController', 'delete'],
     'admin/route' => ['AdminRouteController', 'index'],
     'admin/deleteRoute' => ['AdminRouteController', 'delete'],
-    'Admin/AddRoute' => ['AddRouteController', 'add',],
+    'admin/add-route' => ['AddRouteController', 'add',],
 ];
