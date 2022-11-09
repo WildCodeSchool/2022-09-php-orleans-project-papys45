@@ -14,7 +14,7 @@ class MemberController extends AbstractController
 
         return $this->twig->render(
             'Members/index.html.twig',
-            ['members' => $members, 'roles' => AdminMemberController::ROLES]
+            ['members' => $members]
         );
     }
 }
