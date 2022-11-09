@@ -38,8 +38,8 @@ class AdminActuController extends AbstractController
             }
 
             if (empty($errors)) {
-                $adminMembersManager = new ActualityManager();
-                $adminMembersManager->add($actuality);
+                $adminActuManager = new ActualityManager();
+                $adminActuManager->add($actuality);
 
                 header("Location: /admin/membres/index?message=success");
 
