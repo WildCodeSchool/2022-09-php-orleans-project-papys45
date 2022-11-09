@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Controller\AbstractController;
 use App\Model\RouteManager;
+use App\Model\MemberManager;
 
 class RouteController extends AbstractController
 {
@@ -17,5 +18,13 @@ class RouteController extends AbstractController
         $routes = $itemManager->selectAll('date', 'DESC');
 
         return $this->twig->render('List/listRoute.html.twig', ['routes' => $routes]);
+    }
+
+    public function showRoute(int $id): string
+    {
+        $itemRouteManager = new RouteManager();
+        $route = $itemRouteManager->selectOneById($id);
+
+        return $this->twig->render('DetailRoute/DetailRoute.html.twig', ['route' => $route]);
     }
 }
