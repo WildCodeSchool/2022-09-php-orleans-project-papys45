@@ -21,7 +21,7 @@ class AdminRouteController extends AbstractController
             $routeManager = new RouteManager();
             $routeManager->delete((int)$id);
 
-            header('Location:/admin/route');
+            header('Location: /admin/route');
         }
     }
 }
