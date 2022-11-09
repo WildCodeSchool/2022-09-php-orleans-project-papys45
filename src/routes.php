@@ -9,9 +9,10 @@
 return [
     '' => ['HomeController', 'index',],
     'contact' => ['FormController', 'index', ['message']],
-    'admin/membres' => ['AdminMemberController', 'index',],
-    'admin/login' => ['AdminLoginController', 'login',],
-    'admin/logout' => ['AdminLoginController', 'logout',],
+    'admin/membres' => ['AdminMemberController', 'index',['message']],
+    'admin/membres/delete' => ['AdminMemberController', 'delete'],
+    'admin/login' => ['AdminMemberController', 'login',],
+    'admin/logout' => ['AdminMemberController', 'logout',],
     'admin/membres/add' => ['AdminMemberController', 'add', ['message']],
     'membres' => ['MemberController', 'index'],
     'items' => ['ItemController', 'index',],

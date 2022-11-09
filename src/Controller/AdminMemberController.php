@@ -24,18 +24,35 @@ class AdminMemberController extends AbstractController
         'adjSecretary' => 'Secrétaire-adjoint',
         'member' => 'Membre actif'
     ];
-    public function index(): string
+    public function index(string $message = ''): string
     {
         if (!$this->user) {
             header('HTTP/1.1 401 Unauthorized');
 
             return $this->twig->render('Error/error.html.twig');
         }
+        $memberManager = new MemberManager();
+        $members = $memberManager->selectAll('firstname');
 
-        $membersManager = new MemberManager();
-        $members = $membersManager->selectAll('firstname');
+        return $this->twig->render('Admin/members.html.twig', ['members' => $members, 'message' => $message]);
+    }
 
-        return $this->twig->render('Admin/members.html.twig', ['members' => $members]);
+    public function delete(): string
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $memberManager = new MemberManager();
+            $idPhoto = $memberManager->selectOneById(intval($id));
+            $memberManager->delete(intval($id));
+
+            if (!empty($idPhoto['photo']) && file_exists(self::UPLOAD_DIR . $idPhoto['photo'])) {
+                unlink(self::UPLOAD_DIR . $idPhoto['photo']);
+            }
+
+            header('Location:/admin/membres/?message=success');
+        }
+
+        return '';
     }
 
     public function add(string $message = ''): ?string
@@ -90,8 +107,8 @@ class AdminMemberController extends AbstractController
 
 
             if (empty($errors)) {
-                $adminMembersManager = new MemberManager();
-                $adminMembersManager->insert($member);
+                $memberManager = new MemberManager();
+                $memberManager->insert($member);
 
                 header('location: /admin/membres/add?message=success');
 
@@ -114,10 +131,10 @@ class AdminMemberController extends AbstractController
     private function roleVerification(string $role): array
     {
         $errors = [];
-        $adminMembersManager = new MemberManager();
+        $memberManager = new MemberManager();
 
         if ($role !== 'member' && !empty($role)) {
-            if ($adminMembersManager->selectOneByRole($role)) {
+            if ($memberManager->selectOneByRole($role)) {
                 $errors[] = 'Vous ne pouvez pas choisir un rôle dans l\'association déjà attribué.';
             }
         }

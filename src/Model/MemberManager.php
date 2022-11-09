@@ -31,6 +31,7 @@ class MemberManager extends AbstractManager
     {
         $statement = $this->pdo->prepare("SELECT `role` FROM " . self::TABLE . " WHERE role=:role");
         $statement->bindValue('role', $role, \PDO::PARAM_STR);
+
         $statement->execute();
 
         return $statement->fetch();
