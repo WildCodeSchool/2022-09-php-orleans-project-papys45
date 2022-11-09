@@ -20,7 +20,7 @@
 							<th scope="col" class="col-md-2">Date de sortie</th>
 							<th scope="col" class="col-md-2">Heure de départ</th>
 							<th scope="col" class="col-md-2">Lieu de départ</th>
-							<th scope="col" class="col-md-2">Lieu d'arrivé</th>
+							<th scope="col" class="col-md-2">Lieu d'arrivée</th>
 							<th scope="col" class="col-md-2">Distance</th>
 							<th scope="col" class="col-md-2"></th>
 							<th scope="col" class="col-md-2"></th>
@@ -28,13 +28,13 @@
 						</tr>
 					</thead>
 					<tbody>
-						{% for routes in route %}
+						{% for route in routes %}
 							<tr>
-								<td class="col-md-2">{{routes.date|date("d/m/Y")}}</td>
-								<td class="col-md-2">{{routes.time|date('H\\hi')}}</td>
-								<td class="col-md-2">{{routes.start}}</td>
-								<td class="col-md-2">{{routes.finish}}</td>
-								<td class="col-md-2">{{routes.distance ~ " km"}}</td>
+								<td class="col-md-2">{{route.date|date("d/m/Y")}}</td>
+								<td class="col-md-2">{{route.time|date('H\\hi')}}</td>
+								<td class="col-md-2">{{route.start}}</td>
+								<td class="col-md-2">{{route.finish}}</td>
+								<td class="col-md-2">{{route.distance ~ " km"}}</td>
 								<td>
 									<a class="btn btn-outline-warning btn-sm">Ajouter participant</a>
 								</td>
@@ -42,10 +42,32 @@
 									<a class="btn btn-outline-warning btn-sm">Editer</a>
 								</td>
 								<td>
-									<a class="btn btn-outline-danger btn-sm">Supprimer</a>
+									<button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Modal{{route.id}}">
+										Supprimer
+									</button>
+									<div class="modal fade" tabindex="-1" id="Modal{{route.id}}">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title">Avertissement</h5>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													<p>Veuillez confirmer la suppression de la sortie du
+														{{route.date}}</p>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+													<form action="/admin/deleteRoute" method="post">
+														<input type="hidden" name="id" value="{{ route.id }}">
+														<button class="btn btn-outline-danger btn-sm" method="post">Supprimer</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
 								</td>
 							</tr>
-
 						{% endfor %}
 					</tbody>
 
