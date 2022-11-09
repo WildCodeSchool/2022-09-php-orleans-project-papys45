@@ -6,12 +6,7 @@ use App\Model\RouteManager;
 
 class AddRouteController extends AbstractController
 {
-    public const START_MAXLENGTH = 255;
-    public const FINISH_MAXLENGTH = 255;
-    public const RAVITO_MAXLENGTH = 255;
-    public const GPX_MAXLENGTH = 255;
-    public const DESCRIPTION_MAXLENGTH = 255;
-    public const RAPPORT_MAXLENGTH = 255;
+    public const MAX_LENGTH = 255;
 
 
     public function add(): ?string
@@ -20,14 +15,10 @@ class AddRouteController extends AbstractController
         $route = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
             $route = array_map('trim', $_POST);
-
-            // TODO validations (length, format..  .)
             $errors = $this->verifempty($route);
             $errors = $this->verifyLength($route);
             if (empty($errors)) {
-            // if validation is ok, insert and redirection
                 $routeManager = new RouteManager();
                 $routeManager->insert($route);
                 header('Location: /Admin/AddRoute');
@@ -73,24 +64,24 @@ class AddRouteController extends AbstractController
 
         $errors = $this->verifEmpty($route);
 
-        if (strlen($route['start']) > self::START_MAXLENGTH) {
-            $errors[] = 'Le lieu de départ ne doit pas dépasser' . ' ' . self::START_MAXLENGTH . ' ' . 'caractères.';
+        if (strlen($route['start']) > self::MAX_LENGTH) {
+            $errors[] = 'Le lieu de départ ne doit pas dépasser' . ' ' . self::MAX_LENGTH . ' ' . 'caractères.';
         }
 
-        if (strlen($route['finish']) > self::FINISH_MAXLENGTH) {
-            $errors[] = 'Le lieu d\'arrivée ne doit pas dépasser' . ' ' . self::FINISH_MAXLENGTH . ' ' . 'caractères.';
+        if (strlen($route['finish']) > self::MAX_LENGTH) {
+            $errors[] = 'Le lieu d\'arrivée ne doit pas dépasser' . ' ' . self::MAX_LENGTH . ' ' . 'caractères.';
         }
 
-        if (strlen($route['ravito']) > self::RAVITO_MAXLENGTH) {
-            $errors[] = 'Le lieu du ravito ne doit pas dépasser' . ' ' . self::RAVITO_MAXLENGTH . ' ' . 'caractères.';
+        if (strlen($route['ravito']) > self::MAX_LENGTH) {
+            $errors[] = 'Le lieu du ravito ne doit pas dépasser' . ' ' . self::MAX_LENGTH . ' ' . 'caractères.';
         }
 
-        if (strlen($route['gpx']) > self::GPX_MAXLENGTH) {
-            $errors[] = 'L\'id ne doit pas dépasser' . ' ' . self::GPX_MAXLENGTH . ' ' . 'caractères.';
+        if (strlen($route['gpx']) > self::MAX_LENGTH) {
+            $errors[] = 'L\'id ne doit pas dépasser' . ' ' . self::MAX_LENGTH . ' ' . 'caractères.';
         }
 
-        if (strlen($route['description']) > self::DESCRIPTION_MAXLENGTH) {
-            $errors[] = 'La description ne doit pas dépasser' . ' ' . self::DESCRIPTION_MAXLENGTH . ' ' . 'caractères.';
+        if (strlen($route['description']) > self::MAX_LENGTH) {
+            $errors[] = 'La description ne doit pas dépasser' . ' ' . self::MAX_LENGTH . ' ' . 'caractères.';
         }
 
         return $errors;
