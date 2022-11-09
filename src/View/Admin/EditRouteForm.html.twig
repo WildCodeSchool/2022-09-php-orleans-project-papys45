@@ -1,0 +1,106 @@
+{% extends "layoutAdmin.html.twig" %}
+
+{% block title %}Les Papys 45 - Ajout d'une sortie
+{% endblock %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/adminAddRoute.css">
+{% endblock %}
+
+{% block content %}
+
+
+	<h1 class="display-4 fw-bold text-danger text-center py-5">
+		AJOUTER UNE SORTIE</h1>
+
+	<form method="post">
+
+		<ul class="text-center text-danger">
+			{% for error in errors %}
+				<li>{{error}}</li>
+			{% endfor %}
+		</ul>
+
+
+		<div class="row mb-3 datepicker">
+			<label for="date" class="col-sm-2 col-form-label">Date de la sortie :</label>
+			<div class="col-sm-10">
+				<input type="date" placeholder="Choisir une date" required class=" form-control text-center" name="date" id="date" value="{{ route.date ?? "now"|date("Y-m-d") }}"/>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label class="col-sm-2 col-form-label" for="time">Heure de la sortie :</label>
+			<div class="col-sm-10">
+				<input type="time" class="form-control text-center" required id="time" name="time" value="{{route.time ?? "now"|date('H:i')}}">
+			</div>
+		</div>
+
+		<div class="row mb-3">
+			<label for="start" class="col-sm-2 col-form-label">Lieu de départ :</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" required id="start" name="start" placeholder="Ecrivez l'adresse de départ ici" value="{{route.start ?? ''}}">
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="finish" class="col-sm-2 col-form-label">Lieu d'arrivée :</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" required id="finish" name="finish" placeholder="Ecrivez l'addresse d'arrivée ici" value="{{route.finish ?? ''}}">
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="ravito" class="col-sm-2 col-form-label">Lieu du ravito :</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="ravito" name="ravito" placeholder="Ecrivez l'addresse du ravito ici" value="{{route.ravito ?? ''}}">
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="difficulty" class="col-sm-2 col-form-label">Choisir la difficulté :</label>
+			<div class="col-sm-10">
+				<select class="form-select" name="difficulty" id="difficulty">
+					<option value="0" selected>Ouvrez le menu de sélection</option>
+					<option value="1">Facile</option>
+					<option value="2">Moyen</option>
+					<option value="3">Difficile</option>
+				</select>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="distance" class="col-sm-2 col-form-label">Distance de la sortie :</label>
+			<div class="col-sm-10">
+				<input type="number" class="form-control" required id="distance" name="distance" placeholder="ex : 80" value="{{route.distance ?? ''}}">
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="gpx" class="col-sm-2 col-form-label">Ajouter la carte :</label>
+			<div class="col-sm-10">
+				<div class="input-group mb-3">
+					<span class="input-group-text" id="gpx">https://www.visugpx.com/</span>
+					<input type="text" required class="form-control" id="gpx" name="gpx" value="{{route.gpx ?? ''}}">
+				</div>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="descritpion" class="col-sm-2 col-form-label">Description de la sortie :</label>
+			<div class="col-sm-10">
+				<textarea class="form-control" placeholder="Ecrivez ici..." id="descritpion" name="description">{{route.description ?? ''}}</textarea>
+			</div>
+		</div>
+		<div class="row mb-3">
+			<label for="uploadImg" class="col-sm-2 col-form-label">Envoyez vos photos :</label>
+			<div class="col-sm-10">
+				{#mettre les uploads ici#}
+			</div>
+		</div>
+        <div class="row mb-3">
+			<label for="rapport" class="col-sm-2 col-form-label">Compte rendu de la sortie :</label>
+			<div class="col-sm-10">
+				<textarea class="form-control" placeholder="Ecrivez ici..." id="rapport" name="rapport">{{route.rapport ?? ''}}</textarea>
+			</div>
+		</div>
+		<div class="text-center py-5">
+			<button type="submit" class="btn btn-danger">Créer la sortie</button>
+		</div>
+	</form>
+</div>
+
+{% endblock %}
