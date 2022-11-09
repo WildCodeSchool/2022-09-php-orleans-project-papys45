@@ -1,12 +1,14 @@
 {% extends 'layoutAdmin.html.twig' %}
+
 {% block stylesheet %}
 	<link rel="stylesheet" href="/assets/css/adminMembers.css">
 {% endblock %}
 
-
 {% block content %}
 
-	{% include "Admin/_formAdminMember.html.twig" %}
+{% include "Admin/_formAdminMember.html.twig" %}
+
+
 
 	{% block javascript %}
 		<script type="text/javascript">

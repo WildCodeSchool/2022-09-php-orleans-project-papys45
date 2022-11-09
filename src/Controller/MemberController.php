@@ -12,6 +12,9 @@ class MemberController extends AbstractController
         $adminMembersManager = new MemberManager();
         $members = $adminMembersManager->selectAll('firstname');
 
-        return $this->twig->render('Admin/members.html.twig', ['members' => $members]);
+        return $this->twig->render(
+            'Members/index.html.twig',
+            ['members' => $members]
+        );
     }
 }

@@ -16,7 +16,7 @@
 								<div class="card-body">
 									<p class="officeContent card-text text-center m-0 p-0 fw-bold">{{ member.firstname }}
 										{{ member.lastname }}</p>
-									<p class="officeContent card-text text-center m-0 p-0 fw-bold text-danger">{{ member.role }}</p>
+									<p class="officeContent card-text text-center m-0 p-0 fw-bold text-danger">{{ constant('App\\Controller\\AdminMemberController::ROLES')[member.role] }}</p>
 									<p class="officeContent card-text text-center m-0 p-0">
 										{% set difference = date( now | date() ).diff(date(member.dateOfBirth)) %}
 										{% set years = difference.y %}

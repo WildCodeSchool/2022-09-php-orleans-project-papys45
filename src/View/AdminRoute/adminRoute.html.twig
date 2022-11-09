@@ -1,0 +1,80 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/adminRoute.css">
+{% endblock %}
+
+{% block content %}
+	<div class="container mt-5">
+		<div class="row d-flex justify-content-center">
+			<div class="col-10">
+				<h1 class="admin-route-title text-danger text-center fs-1 mt-5">Administration des sorties</h1>
+				<div class="text-end">
+					<a href="">
+						<button class="btn btn-danger align-self-right">Ajouter une sortie</button>
+					</a>
+				</div>
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr>
+							<th scope="col" class="col-md-2">Date de sortie</th>
+							<th scope="col" class="col-md-2">Heure de départ</th>
+							<th scope="col" class="col-md-2">Lieu de départ</th>
+							<th scope="col" class="col-md-2">Lieu d'arrivée</th>
+							<th scope="col" class="col-md-2">Distance</th>
+							<th scope="col" class="col-md-2"></th>
+							<th scope="col" class="col-md-2"></th>
+							<th scope="col" class="col-md-2"></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for route in routes %}
+							<tr>
+								<td class="col-md-2">{{route.date|date("d/m/Y")}}</td>
+								<td class="col-md-2">{{route.time|date('H\\hi')}}</td>
+								<td class="col-md-2">{{route.start}}</td>
+								<td class="col-md-2">{{route.finish}}</td>
+								<td class="col-md-2">{{route.distance ~ " km"}}</td>
+								<td>
+									<a class="btn btn-outline-warning btn-sm">Ajouter participant</a>
+								</td>
+								<td>
+									<a class="btn btn-outline-warning btn-sm">Editer</a>
+								</td>
+								<td>
+									<button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Modal{{route.id}}">
+										Supprimer
+									</button>
+									<div class="modal fade" tabindex="-1" id="Modal{{route.id}}">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title">Avertissement</h5>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													<p>Veuillez confirmer la suppression de la sortie du
+														{{route.date}}</p>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+													<form action="/admin/deleteRoute" method="post">
+														<input type="hidden" name="id" value="{{ route.id }}">
+														<button class="btn btn-outline-danger btn-sm" method="post">Supprimer</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+
+				</table>
+
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
