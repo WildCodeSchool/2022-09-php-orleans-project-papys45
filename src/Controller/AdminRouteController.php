@@ -24,15 +24,4 @@ class AdminRouteController extends AbstractController
             header('Location: /admin/route');
         }
     }
-
-    public function delete(): void
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $id = trim($_POST['id']);
-            $routeManager = new RouteManager();
-            $routeManager->delete((int)$id);
-
-            header('Location:/');
-        }
-    }
 }
