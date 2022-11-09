@@ -1,6 +1,6 @@
 {% extends "layoutAdmin.html.twig" %}
 
-{% block title %}Les Papys 45 - Ajout d'une sortie
+{% block title %}Les Papys 45 - Modification d'une sortie
 {% endblock %}
 
 {% block stylesheet %}
@@ -11,7 +11,7 @@
 
 
 	<h1 class="display-4 fw-bold text-danger text-center py-5">
-		AJOUTER UNE SORTIE</h1>
+		MODIFIER UNE SORTIE</h1>
 
 	<form method="post">
 
@@ -54,7 +54,7 @@
 			</div>
 		</div>
 		<div class="row mb-3">
-			<label for="difficulty" class="col-sm-2 col-form-label">Choisir la difficulté :</label>
+			<label for="difficulty" class="col-sm-2 col-form-label">Modifier la difficulté :</label>
 			<div class="col-sm-10">
 				<select class="form-select" name="difficulty" id="difficulty">
 					<option value="0" selected>Ouvrez le menu de sélection</option>
@@ -71,7 +71,7 @@
 			</div>
 		</div>
 		<div class="row mb-3">
-			<label for="gpx" class="col-sm-2 col-form-label">Ajouter la carte :</label>
+			<label for="gpx" class="col-sm-2 col-form-label">Modifier la carte :</label>
 			<div class="col-sm-10">
 				<div class="input-group mb-3">
 					<span class="input-group-text" id="gpx">https://www.visugpx.com/</span>
@@ -98,7 +98,7 @@
 			</div>
 		</div>
 		<div class="text-center py-5">
-			<button type="submit" class="btn btn-danger">Créer la sortie</button>
+			<button type="submit" class="btn btn-danger">Modifier la sortie</button>
 		</div>
 	</form>
 </div>
