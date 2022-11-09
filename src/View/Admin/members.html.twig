@@ -34,7 +34,7 @@
 							<tr>
 								<td>{{ member.firstname }}</td>
 								<td>{{ member.lastname }}</td>
-								<td>{{ member.role }}</td>
+								<td>{{ constant('App\\Controller\\AdminMemberController::ROLES')[member.role] }}</td>
 								<td>{{ member.mail }}</td>
 								<td>
 									<a href="/admin/membres/edit?id={{ member.id }}" class="btn btn-outline-warning btn-sm">Modifier
