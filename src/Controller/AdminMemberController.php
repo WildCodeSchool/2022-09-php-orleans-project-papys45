@@ -25,19 +25,35 @@ class AdminMemberController extends AbstractController
         'member' => 'Membre actif'
     ];
 
-
-    public function index(): string
+    public function index(string $message = ''): string
     {
         if (!$this->user) {
             header('HTTP/1.1 401 Unauthorized');
 
             return $this->twig->render('Error/error.html.twig');
         }
-
         $memberManager = new MemberManager();
         $members = $memberManager->selectAll('firstname');
 
-        return $this->twig->render('Admin/members.html.twig', ['members' => $members]);
+        return $this->twig->render('Admin/members.html.twig', ['members' => $members, 'message' => $message]);
+    }
+
+    public function delete(): string
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $memberManager = new MemberManager();
+            $idPhoto = $memberManager->selectOneById(intval($id));
+            $memberManager->delete(intval($id));
+
+            if (!empty($idPhoto['photo']) && file_exists(self::UPLOAD_DIR . $idPhoto['photo'])) {
+                unlink(self::UPLOAD_DIR . $idPhoto['photo']);
+            }
+
+            header('Location:/admin/membres/?message=success');
+        }
+
+        return '';
     }
 
     private function uploadFile(): array
