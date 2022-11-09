@@ -59,7 +59,6 @@ class RouteManager extends AbstractManager
         `difficulty` = :difficulty,
         `gpx` = :gpx,
         `description` = :description,
-        `photo` = :photo,
         `rapport` = :rapport,
         WHERE id=:id");
 
@@ -73,7 +72,6 @@ class RouteManager extends AbstractManager
         $statement->bindValue('difficulty', $route['difficulty'], PDO::PARAM_INT);
         $statement->bindValue('gpx', $route['gpx'], PDO::PARAM_STR);
         $statement->bindValue('description', $route['description'], PDO::PARAM_STR);
-        $statement->bindValue('photo', $route['photo'], PDO::PARAM_STR);
         $statement->bindValue('rapport', $route['rapport'], PDO::PARAM_STR);
         return $statement->execute();
     }

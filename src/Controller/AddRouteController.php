@@ -21,7 +21,7 @@ class AddRouteController extends AbstractController
             if (empty($errors)) {
                 $routeManager = new RouteManager();
                 $routeManager->insert($route);
-                header('Location: /Admin/AddRoute');
+                header('Location: /admin/add-route');
             }
         }
         return $this->twig->render('Admin/AddRouteForm.html.twig', ['errors' => $errors, 'route' => $route]);
@@ -84,6 +84,33 @@ class AddRouteController extends AbstractController
             $errors[] = 'La description ne doit pas dépasser' . ' ' . self::MAX_LENGTH . ' ' . 'caractères.';
         }
 
+        if (strlen($route['rapport']) > self::MAX_LENGTH) {
+            $errors[] = 'Le compte rendu ne doit pas dépasser' . ' ' . self::MAX_LENGTH . ' ' . 'caractères.';
+        }
+
         return $errors;
+    }
+    public function edit(int $id): ?string
+    {
+        $errors = [];
+
+        $routeManager = new RouteManager();
+        $route = $routeManager->selectOneById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $route = array_map('trim', $_POST);
+            $errors = $this->verifempty($route);
+            $errors = $this->verifyLength($route);
+            if (empty($errors)) {
+                $routeManager->update($route);
+                header('Location: /admin/modif-route?id=' . $id);
+                return null;
+            }
+        }
+
+        return $this->twig->render('Admin/EditRouteForm.html.twig', [
+            'route' => $route,
+            'errors' => $errors,
+        ]);
     }
 }
