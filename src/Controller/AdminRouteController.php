@@ -8,9 +8,20 @@ class AdminRouteController extends AbstractController
 {
     public function index(): string
     {
-        $RouteManager = new RouteManager();
-        $route = $RouteManager->selectAll('date', 'DESC');
+        $routeManager = new RouteManager();
+        $route = $routeManager->selectAll('date', 'DESC');
 
-        return $this->twig->render('AdminRoute/adminRoute.html.twig', ['route' => $route]);
+        return $this->twig->render('AdminRoute/adminRoute.html.twig', ['routes' => $route]);
+    }
+
+    public function delete(): void
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $routeManager = new RouteManager();
+            $routeManager->delete((int)$id);
+
+            header('Location: /admin/route');
+        }
     }
 }
