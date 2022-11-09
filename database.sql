@@ -207,9 +207,7 @@ VALUES (
     ), (
         'C\'est qui ton meilleur ami ?',
         'Mon meilleur ami c\'est GRUMP.'
-
     );
-
 
 CREATE TABLE
     `member` (
@@ -236,7 +234,7 @@ VALUES (
         'Edarde',
         'president',
         '1957-12-02',
-         'roger@edarde.fr',
+        'roger@edarde.fr',
         ''
     ), (
         'Frédérick',
@@ -367,6 +365,16 @@ CREATE TABLE
     );
 
 INSERT INTO
-    `login` (`email`, `password`) /*mdp = bilbo */
-    VALUES ('admin@connexion.fr','$2y$10$fB15ED93ls/uDwhdSg4wQO9OmYXlNkfeAIG9ZlBsSf2UVGDoXxC.G');
+    `login` (`email`, `password`)
+    /*mdp = bilbo */
+VALUES (
+        'admin@connexion.fr',
+        '$2y$10$fB15ED93ls/uDwhdSg4wQO9OmYXlNkfeAIG9ZlBsSf2UVGDoXxC.G'
+    );
 
+CREATE TABLE
+    `register` (
+        `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL UNIQUE,
+        CONSTRAINT `fk_member` FOREIGN KEY (`member_id`) REFERENCES `member`(id),
+        CONSTRAINT `fk_route` FOREIGN KEY (`route_id`) REFERENCES `route`(id)
+    );
