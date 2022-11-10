@@ -7,7 +7,7 @@ use PDO;
 class RouteManager extends AbstractManager
 {
     public const TABLE = 'route';
-
+    public const TABLE2 = 'photo';
 
     public function insert(array $route): int
     {
@@ -20,7 +20,8 @@ class RouteManager extends AbstractManager
             `distance`,
             `difficulty`,
             `gpx`,
-            `description`)
+            `description`
+            )
             VALUES (
                 :date,
                 :time,
@@ -32,6 +33,7 @@ class RouteManager extends AbstractManager
                 :gpx,
                 :description
                 )");
+            ("INSERT INTO " . self::TABLE2 . " (`photo1`) VALUES (:photo1)");
 
         $statement->bindValue('date', $route['date'], PDO::PARAM_STR);
         $statement->bindValue('time', $route['time'], PDO::PARAM_STR);
@@ -42,6 +44,7 @@ class RouteManager extends AbstractManager
         $statement->bindValue('difficulty', $route['difficulty'], PDO::PARAM_INT);
         $statement->bindValue('gpx', $route['gpx'], PDO::PARAM_STR);
         $statement->bindValue('description', $route['description'], PDO::PARAM_STR);
+
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }

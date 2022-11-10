@@ -1,4 +1,4 @@
--- Active: 1665561486420@@127.0.0.1@3306@papys45
+-- Active: 1666473831057@@127.0.0.1@3306@papys45
 
 -- phpMyAdmin SQL Dump
 
@@ -378,6 +378,6 @@ INSERT INTO
 
 CREATE TABLE
     `photo` (
-        `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL,
-        `photo` TEXT NOT NULL
+        `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL UNIQUE,
+        `photo1` TEXT
     );

@@ -84,10 +84,6 @@ class AddRouteController extends AbstractController
             $errors[] = 'La description ne doit pas dépasser' . ' ' . self::MAX_LENGTH . ' ' . 'caractères.';
         }
 
-        if (strlen($route['rapport']) > self::MAX_LENGTH) {
-            $errors[] = 'Le compte rendu ne doit pas dépasser' . ' ' . self::MAX_LENGTH . ' ' . 'caractères.';
-        }
-
         return $errors;
     }
     public function edit(int $id): ?string
@@ -101,8 +97,13 @@ class AddRouteController extends AbstractController
             $route = array_map('trim', $_POST);
             $errors = $this->verifempty($route);
             $errors = $this->verifyLength($route);
+            if (strlen($route['rapport']) > self::MAX_LENGTH) {
+                $errors[] = 'Le compte rendu ne doit pas dépasser' . ' ' . self::MAX_LENGTH . ' ' . 'caractères.';
+            }
+
             if (empty($errors)) {
                 $routeManager->update($route);
+
                 header('Location: /admin/modif-route?id=' . $id);
                 return null;
             }
