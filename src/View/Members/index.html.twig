@@ -12,11 +12,11 @@
 				<div class="detailOffice mt-5 d-flex flex-wrap justify-content-center align-items-center">
 					{% for member in members|filter(member => member.role != 'member') -%}
 							<div class="officeCard card border-0 mx-4">
-								<img src="/upload/{{member.photo}}" class="card-img-top d-flex rounded-circle" alt="photo d'un membre du bureau">
+								<img src="{{ member.photo is empty ? '/assets/images/default.svg' : '/upload/' ~ member.photo }}" class="card-img-top d-flex rounded-circle" alt="photo d'un membre du bureau">
 								<div class="card-body">
 									<p class="officeContent card-text text-center m-0 p-0 fw-bold">{{ member.firstname }}
 										{{ member.lastname }}</p>
-									<p class="officeContent card-text text-center m-0 p-0 fw-bold text-danger">{{ member.role }}</p>
+									<p class="officeContent card-text text-center m-0 p-0 fw-bold text-danger">{{ constant('App\\Controller\\AdminMemberController::ROLES')[member.role] }}</p>
 									<p class="officeContent card-text text-center m-0 p-0">
 										{% set difference = date( now | date() ).diff(date(member.dateOfBirth)) %}
 										{% set years = difference.y %}
@@ -33,7 +33,7 @@
 					{% for member in members|filter(member => member.role == 'member') -%}
 					
 							<div class="membersCard card border-0 mx-4">
-								<img src="/upload/{{member.photo}}" class="card-img-top d-flex rounded-circle " alt="photo d'un membre actif">
+								<img src="{{ member.photo is empty ? '/assets/images/default.svg' : '/upload/' ~ member.photo }}"" class="card-img-top d-flex rounded-circle " alt="photo d'un membre actif">
 
 								<div class="card-body">
 									<p class="officeContent card-text text-center m-0 p-0 fw-bold">{{ member.firstname }}

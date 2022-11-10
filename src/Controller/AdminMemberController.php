@@ -24,75 +24,104 @@ class AdminMemberController extends AbstractController
         'adjSecretary' => 'Secrétaire-adjoint',
         'member' => 'Membre actif'
     ];
-    public function index(): string
+
+    public function index(string $message = ''): string
     {
         if (!$this->user) {
             header('HTTP/1.1 401 Unauthorized');
 
             return $this->twig->render('Error/error.html.twig');
         }
+        $memberManager = new MemberManager();
+        $members = $memberManager->selectAll('firstname');
 
-        $membersManager = new MemberManager();
-        $members = $membersManager->selectAll('firstname');
-
-        return $this->twig->render('Admin/members.html.twig', ['members' => $members]);
+        return $this->twig->render('Admin/members.html.twig', ['members' => $members, 'message' => $message]);
     }
 
-    public function add(string $message = ''): ?string
+    public function delete(): string
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = trim($_POST['id']);
+            $memberManager = new MemberManager();
+            $idPhoto = $memberManager->selectOneById(intval($id));
+            $memberManager->delete(intval($id));
+
+            if (!empty($idPhoto['photo']) && file_exists(self::UPLOAD_DIR . $idPhoto['photo'])) {
+                unlink(self::UPLOAD_DIR . $idPhoto['photo']);
+            }
+
+            header('Location:/admin/membres/?message=success');
+        }
+
+        return '';
+    }
+
+    private function uploadFile(): array
+    {
+        $errors = [];
+        $files = $_FILES;
+        $uploadFile = '';
+        $uniqName = '';
+        $fileName = '';
+
+        if (!empty($files['photo']['name'])) {
+            $errorsUpload = $this->verifUpload($files);
+
+            if (empty($errorsUpload)) {
+                $extension = pathinfo($files['photo']['name'], PATHINFO_EXTENSION);
+                $uniqName = uniqid('', true) . '.' . $extension;
+                $uploadFile = self::UPLOAD_DIR . $uniqName;
+            }
+
+            if (!empty($errorsUpload) || !move_uploaded_file($files['photo']['tmp_name'], $uploadFile)) {
+                $errors[] = $files['photo']['name'] . ' n\'a pu être chargé. Veuillez réessayer.';
+            } else {
+                $fileName = $uniqName;
+            }
+
+            $errors = array_merge($errorsUpload, $errors);
+        }
+
+        return [$errors, $fileName];
+    }
+
+    private function controlDateOfBirth(string $memberDateOfBirth): array
+    {
+        $errors = [];
+        $dateOfBirth = new DateTime();
+        $date = explode("-", $memberDateOfBirth);
+        $dateOfBirth->setDate(intval($date[0]), intval($date[1]), intval($date[2]));
+
+        if (!$dateOfBirth::getLastErrors()) {
+            $errors[] = 'La date d\'anniversaire est incorrecte.';
+        }
+
+        return $errors;
+    }
+
+    public function add(string $message = ''): string
     {
         if (!$this->user) {
             header('HTTP/1.1 401 Unauthorized');
 
             return $this->twig->render('Error/error.html.twig');
         }
-
-        $member = [];
         $errors = [];
-        $uniqName = '';
-        $uploadFile = '';
-
+        $member = [];
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $member = array_map('trim', $_POST);
-            $files = $_FILES;
+            $errors = array_merge($this->verification($member), $errors);
+            $errors = array_merge($this->controlDateOfBirth($member['dateOfBirth']), $errors);
+            $errors = array_merge($this->roleVerification($member['role']), $errors);
 
-            if (!empty($files['photo']['name'])) {
-                $errorsUpload = $this->verifUpload($files);
-
-                if (empty($errorsUpload)) {
-                    $extension = pathinfo($files['photo']['name'], PATHINFO_EXTENSION);
-                    $uniqName = uniqid('', true) . '.' . $extension;
-                    $uploadFile = self::UPLOAD_DIR . $uniqName;
-                }
-
-                if (!move_uploaded_file($files['photo']['tmp_name'], $uploadFile)) {
-                    $errors[] = $files['photo']['name'] . 'n\'a pas pu être uploadé. Veuillez réessayer.';
-                } else {
-                    $member['photo'] = $uniqName;
-                }
-
-                $errors = array_merge($errorsUpload, $errors);
-            } else {
-                $member['photo'] = '';
-            }
-
-            $errors = $this->verification($member);
-
-            $errors = $this->roleVerification($member['role']);
-
-            $dateOfBirth = new DateTime();
-            $date = explode("-", $member['dateOfBirth']);
-            $dateOfBirth->setDate(intval($date[0]), intval($date[1]), intval($date[2]));
-
-            if (!$dateOfBirth::getLastErrors()) {
-                $errors[] = 'La date d\'anniversaire est incorrecte.';
-            }
-
+            $uploadResult = $this->uploadFile();
+            $errors = array_merge($uploadResult[0], $errors);
+            $member['photo'] = $uploadResult[1];
 
             if (empty($errors)) {
-                $adminMembersManager = new MemberManager();
-                $adminMembersManager->insert($member);
-
+                $memberManager = new MemberManager();
+                $memberManager->insert($member);
                 header('location: /admin/membres/add?message=success');
 
                 return '';
@@ -106,25 +135,67 @@ class AdminMemberController extends AbstractController
                 'roles' => self::ROLES,
                 'errors' => $errors,
                 'message' => $message,
-                'labelButton' => 'Ajouter',
+                'label' => 'Ajouter',
             ]
         );
+    }
+
+    public function edit(int $id, string $message = ''): ?string
+    {
+        $errors = [];
+        $memberManager = new MemberManager();
+        $member = $memberManager->selectOneById($id);
+        $lastRole = $member['role'];
+        $lastPhoto = $member['photo'];
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $member = array_map('trim', $_POST);
+            $uploadResult = $this->uploadFile();
+            $errors = $uploadResult[0];
+            $member['photo'] = $uploadResult[1];
+
+            if ($lastRole != $member['role']) {
+                $errors = array_merge($this->roleVerification($member['role']));
+            }
+
+            if (
+                $lastPhoto != $member['photo'] &&
+                !empty($lastPhoto) &&
+                file_exists(self::UPLOAD_DIR . $lastPhoto)
+            ) {
+                unlink(self::UPLOAD_DIR . $lastPhoto);
+            }
+
+            if (empty($errors)) {
+                $memberManager->update($member);
+                header('location: /admin/membres/edit?id=' . $id . '&message=success');
+
+                return '';
+            }
+        }
+
+        return $this->twig->render('Admin/membersEdit.html.twig', [
+            'member' => $member,
+            'roles' => self::ROLES,
+            'errors' => $errors,
+            'message' => $message,
+            'label' => 'Modifier',
+        ]);
     }
 
     private function roleVerification(string $role): array
     {
         $errors = [];
-        $adminMembersManager = new MemberManager();
+        $memberManager = new MemberManager();
 
         if ($role !== 'member' && !empty($role)) {
-            if ($adminMembersManager->selectOneByRole($role)) {
+            if ($memberManager->selectOneByRole($role)) {
                 $errors[] = 'Vous ne pouvez pas choisir un rôle dans l\'association déjà attribué.';
             }
         }
 
         return $errors;
     }
-
 
     private function verifUpload(array $files): array
     {

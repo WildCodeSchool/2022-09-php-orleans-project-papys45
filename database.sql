@@ -131,7 +131,8 @@ INSERT INTO
         `finish`,
         `ravito`,
         `distance`,
-        `difficulty`
+        `difficulty`,
+        `gpx`
     )
 VALUES (
         '2022-10-27',
@@ -140,7 +141,8 @@ VALUES (
         '20 rue du velo en mer, Chécy',
         '250 avenue du raton',
         80,
-        1
+        1,
+        '7oy3KJ4XqY'
     );
 
 INSERT INTO
@@ -151,7 +153,8 @@ INSERT INTO
         `finish`,
         `ravito`,
         `distance`,
-        `difficulty`
+        `difficulty`,
+        `gpx`
     )
 VALUES (
         '2022-10-28',
@@ -160,7 +163,8 @@ VALUES (
         '13 rue de Babylone , St Cyr en Val',
         '48 faubourg du bourg, Olivet',
         100,
-        2
+        2,
+        '7oy3KJ4XqY'
     );
 
 INSERT INTO
@@ -171,7 +175,8 @@ INSERT INTO
         `finish`,
         `ravito`,
         `distance`,
-        `difficulty`
+        `difficulty`,
+        `gpx`
     )
 VALUES (
         '2023-01-03',
@@ -180,7 +185,8 @@ VALUES (
         '13 rue du couteau de Cécile, Beaugency',
         '48 rue de la rue, Chécy',
         20,
-        3
+        3,
+        '7oy3KJ4XqY'
     );
 
 CREATE TABLE
