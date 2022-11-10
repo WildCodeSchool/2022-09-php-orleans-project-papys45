@@ -13,10 +13,14 @@
 			<span class="navbar-toggler-icon text-light"></span>
 		</button>
 		<div class="collapse navbar-collapse justify-content-end fw-bold" id="navbarNavAltMarkup">
-			<div class="navbar-nav">				<a class="nav-link text-light m-2" aria-current="page" href="/">Accueil</a>
+			<div class="navbar-nav">
+				<a class="nav-link text-light m-2" aria-current="page" href="/">Accueil</a>
 				<a class="nav-link text-light m-2" href="/list-route">Sorties</a>
 				<a class="nav-link text-light m-2" href="/membres">Membres</a>
 				<a class="nav-link text-light m-2" href="/contact">Contact</a>
+				{% if user %}
+					<a href="/admin/membres" class="nav-link text-light m-2 border rounded-pill">Administrateur</a>
+				{% endif %}
 			</div>
 		</div>
 	</div>
