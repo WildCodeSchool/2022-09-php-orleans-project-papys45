@@ -21,7 +21,7 @@ class AddRouteController extends AbstractController
             if (empty($errors)) {
                 $routeManager = new RouteManager();
                 $routeManager->insert($route);
-                header('Location: /Admin/AddRoute');
+                header('Location: /admin/add-route');
             }
         }
         return $this->twig->render('Admin/AddRouteForm.html.twig', ['errors' => $errors, 'route' => $route]);
