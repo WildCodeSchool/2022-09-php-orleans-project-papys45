@@ -380,3 +380,7 @@ CREATE TABLE
         CONSTRAINT `fk_member` FOREIGN KEY (`member_id`) REFERENCES `member`(id),
         CONSTRAINT `fk_route` FOREIGN KEY (`route_id`) REFERENCES `route`(id)
     );
+
+INSERT INTO
+    `register`(`member_id`, `route_id`)
+VALUES (1, 2), (1, 3), (2, 1), (3, 1);
