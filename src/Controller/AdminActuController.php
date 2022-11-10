@@ -48,7 +48,7 @@ class AdminActuController extends AbstractController
         }
 
         return $this->twig->render(
-            'Admin/Actualities/admin_actuality_add.html.twig',
+            'Form/form_actu_add.html.twig',
             [
                 'errors' => $errors,
                 'actuality' => $actuality,
