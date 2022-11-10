@@ -268,7 +268,7 @@ VALUES (
     ), (
         'Raymond',
         'Poulidor',
-        'accoutant',
+        'accountant',
         '1968-08-28',
         'raymond@poulidor.fr',
         ''
