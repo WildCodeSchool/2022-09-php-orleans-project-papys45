@@ -14,7 +14,7 @@ class AdminActuController extends AbstractController
         $adminActuManager = new ActualityManager();
         $actualities = $adminActuManager->selectAll();
 
-        return $this->twig->render('Admin/Actualities/admin_actuality.html.twig', ['actualities' => $actualities]);
+        return $this->twig->render('Admin/admin_actuality.html.twig', ['actualities' => $actualities]);
     }
 
     public function add(string $actuality = ''): string
@@ -41,14 +41,14 @@ class AdminActuController extends AbstractController
                 $adminActuManager = new ActualityManager();
                 $adminActuManager->add($actuality);
 
-                header("Location: /admin/membres/index?message=success");
+                header("Location: /admin/actualites?message=success");
 
                 return '';
             }
         }
 
         return $this->twig->render(
-            'Form/form_actu_add.html.twig',
+            'Admin/form_actu_add.html.twig',
             [
                 'errors' => $errors,
                 'actuality' => $actuality,

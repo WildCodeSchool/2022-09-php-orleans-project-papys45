@@ -14,7 +14,7 @@ class ActualityManager extends AbstractManager
             "INSERT INTO " . self::TABLE .
                 "(`title`,`content`)
             VALUES
-            (:title, :content,)"
+            (:title, :content)"
         );
         $statement->bindValue('title', $actuality['title'], PDO::PARAM_STR);
         $statement->bindValue('content', $actuality['content'], PDO::PARAM_STR);
