@@ -376,3 +376,8 @@ INSERT INTO
     `login` (`email`, `password`) /*mdp = bilbo */
     VALUES ('admin@connexion.fr','$2y$10$fB15ED93ls/uDwhdSg4wQO9OmYXlNkfeAIG9ZlBsSf2UVGDoXxC.G');
 
+CREATE TABLE
+    `photo` (
+        `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+        `photo` TEXT NOT NULL
+    );
