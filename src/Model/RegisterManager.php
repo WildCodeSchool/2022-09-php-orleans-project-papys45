@@ -13,7 +13,7 @@ class RegisterManager extends AbstractManager
     {
         $statement = $this->pdo->prepare("SELECT photo FROM " . MemberManager::TABLE . " AS m
        INNER JOIN " . self::TABLE . " AS r on m.id= r.member_id 
-       WHERE r.route_id=:id");
+       WHERE r.route_id=:id LIMIT 16");
 
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
