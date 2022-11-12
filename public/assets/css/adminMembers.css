@@ -2,7 +2,7 @@
     font-family: var(--title-font);
 }
 
-.adminMembersList{
+.adminMembersList {
     font-family: var(--content-font);
 }
 
@@ -15,11 +15,14 @@
 }
 
 .formTitle {
-    font-family: var(--title-font); 
+    font-family: var(--title-font);
 }
 
 .contactFooter {
-    --margin:300px;
-    margin-top: var(--margin) ;
+    --margin: 200px;
+    margin-top: var(--margin);
 }
 
+.datepicker {
+    padding: 0;
+}

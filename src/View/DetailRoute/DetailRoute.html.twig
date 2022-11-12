@@ -147,10 +147,8 @@
 	Parcours
 </h2>
 <div class="container pb-5 shadow">
-	<iframe src="https://www.visugpx.com/" {{route.gpx}} "?iframe" id="ivisugpx" scrolling="no"></iframe>
+	<iframe src="https://www.visugpx.com/{{ route.gpx }}?iframe" id="ivisugpx" scrolling="no"></iframe>
 </div>
-
-
 {% if "now"|date("Y-m-d") > route.date|date('Y-m-d') %}
 	<div class="container">
 

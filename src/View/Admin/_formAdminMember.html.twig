@@ -1,7 +1,7 @@
 <div class="container mt-5">
 	<div class="row d-flex justify-content-center">
 		<div class="col-10">
-			<h1 class="adminMembersTitle text-danger text-center fs-1 mt-5">Administration ajout d'un membre</h1>
+			<h1 class="adminMembersTitle text-danger text-center fs-1 mt-5">Administration {{ label }} un membre</h1>
 			<ul class="text-center mt-5">
 				{% for error in errors %}
 					<li class="text-danger">
@@ -17,7 +17,7 @@
 							<form action="" method="post" enctype="multipart/form-data"  runat="server">
 						<div class="d-flex justify-content-center mt-2">
 							<picture class="d-flex align-items-center h-50 w-50 justify-content-center border-none">
-								<img src="/upload/{{ member.photo ?? 'default.svg' }}" class="rounded-circle w-50" alt="photo ou avatar" id="thumb" >
+								<img src="{{ member.photo is empty ? '/assets/images/default.svg' : '/upload/' ~ member.photo }}"" class="rounded-circle w-50" alt="photo ou avatar" id="thumb" >
 							</picture>
 						</div>
 								<div class="form-group mt-2 text-center">
@@ -50,10 +50,8 @@
 								<input type="email" class="form-control formContent" name="mail" id="email" placeholder="Dupont@gmail.com" value="{{ member.mail ?? '' }}" required>
 							</div>
 							<div class="d-flex align-items-center justify-content-between ">
-								<button type="submit" class="btn btn-danger mt-2">{{ labelButton }}</button>
-								<a href="/admin/membres">
-									<button type="button" class="btn btn-outline-secondary mt-2">Retour</button>
-								</a>
+								<button type="submit" class="btn btn-danger mt-2">{{ label }}</button>
+								<a href="/admin/membres"class="btn btn-outline-secondary mt-2">Retour</a>
 							</div>
 						</form>
 					</div>
