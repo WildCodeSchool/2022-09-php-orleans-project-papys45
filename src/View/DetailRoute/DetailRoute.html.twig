@@ -101,7 +101,7 @@
 
 				<div class=" d-flex row py-1 wrap">
 					{% for registration in registrations %}
-						<img src="{{registration.photo is empty? '/assets/images/default.svg' : '/upload/'~photo}}" class="w-25 rounded-circle memberpic" alt="{{registration.firstname}}" title="{{registration.firstname}}"/>
+						<img src="{{registration.photo is empty? '/assets/images/default.svg' : '/upload/'~photo}}" class="w-25 rounded-circle memberpic" alt="{{registration.firstname}}" title="{{registration.firstname}} {{registration.lastname}} "/>
 					{% endfor %}
 				</div>
 			</div>
@@ -139,9 +139,10 @@
 					</form>
 				</div>
 			</div>
-		</div>
+		{% endif %}
 	</div>
-{% endif %}
+</div>
+
 
 <h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
 	Parcours
