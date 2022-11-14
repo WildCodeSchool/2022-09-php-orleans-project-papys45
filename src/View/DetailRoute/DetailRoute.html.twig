@@ -100,8 +100,8 @@
 				</div>
 
 				<div class=" d-flex row py-1 wrap">
-					{% for photo in photos %}
-						<img src="{{ photo is empty? '/assets/images/default.svg' : '/upload/'~photo}}" class="w-25 rounded-circle memberpic" alt="photo du membre"/>
+					{% for registration in registrations %}
+						<img src="{{registration.photo is empty? '/assets/images/default.svg' : '/upload/'~photo}}" class="w-25 rounded-circle memberpic" alt="{{registration.firstname}}" title="{{registration.firstname}}"/>
 					{% endfor %}
 				</div>
 			</div>

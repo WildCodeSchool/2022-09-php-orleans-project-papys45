@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Controller\AbstractController;
 use App\Model\RouteManager;
 use App\Model\MemberManager;
-use App\Model\RegisterManager;
+use App\Model\RegistrationManager;
 
 class RouteController extends AbstractController
 {
@@ -26,11 +26,9 @@ class RouteController extends AbstractController
         $itemRouteManager = new RouteManager();
         $route = $itemRouteManager->selectOneById($id);
 
-        $registerManager = new RegisterManager();
-        $photos = $registerManager->selectByRouteId($id);
+        $registrationManager = new RegistrationManager();
+        $registrations = $registrationManager->selectByRouteId($id);
 
-        $photos = array_column($photos, 'photo');
-
-        return $this->twig->render('DetailRoute/DetailRoute.html.twig', ['route' => $route, 'photos' => $photos]);
+        return $this->twig->render('DetailRoute/detailRoute.html.twig', ['route' => $route, 'registrations' => $registrations]);
     }
 }
