@@ -14,7 +14,7 @@ class AdminActuController extends AbstractController
         $adminActuManager = new ActualityManager();
         $actualities = $adminActuManager->selectAll();
 
-        return $this->twig->render('Admin/admin_actualites.html.twig', ['actualities' => $actualities]);
+        return $this->twig->render('Admin/admin_actuality.html.twig', ['actualities' => $actualities]);
     }
 
     public function add(string $actuality = ''): string
