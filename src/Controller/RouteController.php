@@ -29,6 +29,9 @@ class RouteController extends AbstractController
         $registrationManager = new RegistrationManager();
         $registrations = $registrationManager->selectByRouteId($id);
 
-        return $this->twig->render('DetailRoute/detailRoute.html.twig', ['route' => $route, 'registrations' => $registrations]);
+        return $this->twig->render(
+            'DetailRoute/detailRoute.html.twig',
+            ['route' => $route, 'registrations' => $registrations]
+        );
     }
 }
