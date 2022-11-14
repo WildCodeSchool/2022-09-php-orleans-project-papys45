@@ -55,4 +55,39 @@ class AdminActuController extends AbstractController
             ]
         );
     }
+
+    public function edit(int $id, string $actuality = ''): ?string
+    {
+        $errors = [];
+        $actualityManager = new ActualityManager();
+        $actuality = $actualityManager->selectOneById($id);
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $actuality = array_map('trim', $_POST);
+
+            if (empty($actuality['title'])) {
+                $errors[] = 'Le prénom est obligatoire';
+            }
+
+            if (strlen($actuality['title']) > self::MAX_LENGTH) {
+                $errors[] = 'Le prénom doit être inférieur à ' . self::MAX_LENGTH . ' caractères';
+            }
+
+            if (empty($actuality['content'])) {
+                $errors[] = 'Le prénom est obligatoire';
+            }
+
+            if (empty($errors)) {
+                $actualityManager->update($actuality);
+                header('location: /admin/actualites/editer?id=' . $id . '&message=success');
+
+                return '';
+            }
+        }
+
+        return $this->twig->render('Admin/form_actu_edit.html.twig', [
+            'errors' => $errors,
+            'actuality' => $actuality,
+        ]);
+    }
 }
