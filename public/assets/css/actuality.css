@@ -1,7 +1,7 @@
-.actu {
+.actu-title {
     font-family: var(--title-font);
 }
 
-.container, .btn {
+.actu-container, .actu-btn {
     font-family: var(--content-font);
 }
