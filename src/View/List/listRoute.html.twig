@@ -47,9 +47,7 @@
 											</div>
 										</div>
 										<div class="col">
-											{% if "now"|date("Y-m-d") < route.date|date('Y-m-d') %}
-												<div class="row justify-content-center text-light font-weight-bolder bg-danger tool-font position-relative top-0 end-0">A venir</div>	
-											{% endif %}
+											{{ "now"|date("Y-m-d") < route.date|date('Y-m-d') ? '<div class="justify-content-center text-light font-weight-bolder bg-danger tool-font">A venir</div> ': '' }}
 											<div class="row justify-content-center pt-5 tool-font "><img class="card-img-top" src="/assets/images/calendar.svg" alt="calendar icon"></div>
 											<div class="row justify-content-center pt-2 tool-font fs-4">{{route.date}}</div>
 											<div class="row justify-content-center pt-2 tool-font fs-4 pb-4">{{route.time}}</div>
