@@ -42,41 +42,41 @@
 					<h3 class="display-6 text-center pb-4 text-danger">Points important</h3>
 				</div>
 
-				<div class="row flex-row pt-5 ">
-					<div class="col-2 text-center">
+				<div class="row flex-row pt-3 align-items-center">
+					<div class="col-2 text-center align-items-center">
 						<img class="icon" src="/assets/images/pin.svg" alt="pin icon">
 					</div>
 					<div class="col-10">
-						<p class="">{{route.start}}</p>
+						<p class="small m-0">{{route.start}}</p>
 					</div>
 				</div>
 
-				<div class="row flex-row pt-2">
+				<div class="row flex-row pt-3 align-items-center">
 					<div class="col-2 text-center">
 						<img class="icon" src="/assets/images/flag.svg" alt="flag icon">
 					</div>
 					<div class="col-10">
-						<p>{{route.finish}}</p>
+						<p class="small m-0">{{route.finish}}</p>
 					</div>
 				</div>
-				<div class="row flex-row pt-2">
+				<div class="row flex-row pt-3 align-items-center">
 					<div class="col-2 text-center">
 						<img class="icon" src="/assets/images/ravito.svg" alt="ravito icon">
 					</div>
 					<div class="col-10">
-						<p>{{route.ravito}}</p>
+						<p class="small m-0">{{route.ravito}}</p>
 					</div>
 				</div>
-				<div class="row flex-row pt-3">
+				<div class="row flex-row pt-3 align-items-center">
 					<div class="col-2 text-center">
 						<img class="icon" src="/assets/images/distance.svg" alt="distance icon">
 					</div>
-					<div class="col-10 fs-2">
-						<p>{{route.distance}}
+					<div class="col-10">
+						<p class="small m-0">{{route.distance}}
 							KM</p>
 					</div>
 				</div>
-				<div class="row flex-row pt-3">
+				<div class="row flex-row pt-3 align-items-center">
 					<div class="col-2 text-center">
 						{% if  constant('App\\Controller\\RouteController::EASY_ROUTE') is same as route.difficulty %}<img class="card-img icon-green" src="/assets/images/mountain.svg" alt="green mountain icon">
 							{% elseif constant('App\\Controller\\RouteController::MEDIUM_ROUTE') is same as route.difficulty %}<img class="card-img icon-orange" src="/assets/images/mountain.svg" alt="orange mountain icon">
@@ -84,8 +84,8 @@
 						{% endif %}
 
 					</div>
-					<div class="col-10 fs-2 pt-3">
-						<p>Difficulté
+					<div class="col-10 fs-2">
+						<p class="small m-0" >Difficulté
 							{{route.difficulty}}</p>
 					</div>
 				</div>
