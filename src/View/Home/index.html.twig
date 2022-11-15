@@ -26,7 +26,7 @@
 		<h2 class="text-danger fs-1 d-none d-sm-block mt-5">LE MOT DU PRESIDENT</h2>
 		<div class="story col-10 col-md-8 col-lg-6 mt-5 position-relative pt-3 shadow">
 			<div class="image position-relative">
-				<img class="rounded-circle float-sm-left img-fluid position-absolute top-0 start-0 translate-middle shadow" src="../assets/images/C10.png" alt="Président">
+				<img class="rounded-circle float-sm-left img-fluid position-absolute top-0 start-0 translate-middle shadow" src="{{ president.photo is empty ? '/assets/images/default.svg' : '/upload/' ~ president.photo }}" alt="Président">
 			</div>
 
 			<div class"first">
