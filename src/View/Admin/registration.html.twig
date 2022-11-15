@@ -17,13 +17,13 @@
 						</tr>
 					</thead>
 					<tbody>
-						{% for member in members %}
+						{% for registration in registrations %}
 							<tr>
-								<td>{{ member.firstname }}</td>
-								<td>{{ member.lastname }}</td>
-								<td>
+								<td class="col-md-2">{{ registration.firstname }}</td>
+								<td class="col-md-2">{{ registration.lastname }}</td>
+								<td class="col-md-2">
 									<form action="" method="POST">
-										<input type="checkbox" class="form-check-input" name="Inscrit" value="{{member.id}}">
+										<input type="checkbox" class="form-check-input" name="Inscrit" value="{{registration.id}}" checked>
 									</form>
 								</td>
 							</tr>

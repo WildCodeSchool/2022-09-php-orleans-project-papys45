@@ -30,6 +30,6 @@ return [
     'admin/route' => ['AdminRouteController', 'index'],
     'admin/deleteRoute' => ['AdminRouteController', 'delete'],
     'admin/add-route' => ['AddRouteController', 'add',],
-    'admin/registration' => ['AdminRegistrationController', 'index'],
+    'admin/registration' => ['AdminRegistrationController', 'index', ['id']],
     'admin/add-registration' => ['AdminRegistrationController', 'add'],
 ];
