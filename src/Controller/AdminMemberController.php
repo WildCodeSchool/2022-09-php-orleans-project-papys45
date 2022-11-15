@@ -28,7 +28,7 @@ class AdminMemberController extends AbstractController
     public function index(string $message = ''): string
     {
         if (!$this->user) {
-            header('HTTP/1.1 401 Unauthorized');
+            header('HTTP/1.1 404 Page not found');
 
             return $this->twig->render('Error/error.html.twig');
         }
@@ -102,7 +102,7 @@ class AdminMemberController extends AbstractController
     public function add(string $message = ''): string
     {
         if (!$this->user) {
-            header('HTTP/1.1 401 Unauthorized');
+            header('HTTP/1.1 404 Page not found');
 
             return $this->twig->render('Error/error.html.twig');
         }
