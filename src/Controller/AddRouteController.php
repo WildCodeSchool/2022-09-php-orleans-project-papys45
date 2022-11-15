@@ -8,7 +8,6 @@ class AddRouteController extends AbstractController
 {
     public const MAX_LENGTH = 255;
 
-
     public function add(): ?string
     {
         $errors = [];
@@ -86,6 +85,7 @@ class AddRouteController extends AbstractController
 
         return $errors;
     }
+
     public function edit(int $id): ?string
     {
         $errors = [];
@@ -101,10 +101,12 @@ class AddRouteController extends AbstractController
                 $errors[] = 'Le compte rendu ne doit pas dépasser' . ' ' . self::MAX_LENGTH . ' ' . 'caractères.';
             }
 
-            if (empty($errors)) {
-                $routeManager->update($route);
 
-                header('Location: /admin/modif-route?id=' . $id);
+            if (empty($errors)) {
+                $route['id'] = $id;
+                $routeManager->update($route);
+                $routeManager->insertphoto($route);
+                header('location: /admin/modif-route?id=' . $id);
                 return null;
             }
         }
