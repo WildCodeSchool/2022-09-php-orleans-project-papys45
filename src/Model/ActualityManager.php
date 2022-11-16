@@ -34,15 +34,16 @@ class ActualityManager extends AbstractManager
 
     public function update(array $actuality): bool
     {
+        $actuality['id'] = (int) $actuality['id'];
+        $query = " SET
+        `title` = :title,
+        `content` = :content
+        WHERE id=:id";
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
-            " SET
-            `title` = :title,
-            `content` = :content,
-            WHERE id=:id");
+            $query);
         $statement->bindValue('id', $actuality['id'], PDO::PARAM_INT);
         $statement->bindValue('title', $actuality['title'], PDO::PARAM_STR);
         $statement->bindValue('content', $actuality['content'], PDO::PARAM_STR);
-
         return $statement->execute();
     }
 }
