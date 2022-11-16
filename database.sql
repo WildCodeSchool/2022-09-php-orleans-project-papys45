@@ -379,9 +379,7 @@ INSERT INTO
 CREATE TABLE
     `photo` (
         `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL UNIQUE,
-        `photo1` TEXT,
-        `photo2` TEXT,
-        `photo3`TEXT,
+        `photo` TEXT,
         `route_id` int NOT NULL,
         CONSTRAINT `fk_route` FOREIGN KEY (`route_id`) REFERENCES `route`(id)
     );

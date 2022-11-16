@@ -79,9 +79,12 @@ class AddRouteController extends AbstractController
             $errors[] = 'L\'id ne doit pas dépasser' . ' ' . self::MAX_LENGTH . ' ' . 'caractères.';
         }
 
+
         if (strlen($route['description']) > self::MAX_LENGTH) {
             $errors[] = 'La description ne doit pas dépasser' . ' ' . self::MAX_LENGTH . ' ' . 'caractères.';
         }
+
+
 
         return $errors;
     }
@@ -93,27 +96,73 @@ class AddRouteController extends AbstractController
         $routeManager = new RouteManager();
         $route = $routeManager->selectOneById($id);
 
+
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $route = array_map('trim', $_POST);
+
             $errors = $this->verifempty($route);
             $errors = $this->verifyLength($route);
+
             if (strlen($route['rapport']) > self::MAX_LENGTH) {
                 $errors[] = 'Le compte rendu ne doit pas dépasser' . ' ' . self::MAX_LENGTH . ' ' . 'caractères.';
             }
 
 
+
             if (empty($errors)) {
                 $route['id'] = $id;
                 $routeManager->update($route);
-                $routeManager->insertphoto($route);
+                /* $routeManager->insertphoto($photo);  */
+
                 header('location: /admin/modif-route?id=' . $id);
                 return null;
             }
         }
 
-        return $this->twig->render('Admin/EditRouteForm.html.twig', [
-            'route' => $route,
-            'errors' => $errors,
-        ]);
+
+        return $this->twig->render(
+            'Admin/EditRouteForm.html.twig',
+            [
+                'route' => $route,
+                'errors' => $errors
+            ]
+        );
+
+
+        /*  private function uploadPhoto()
+    {
+        $errors = [];
+        var_dump($_FILES);
+        exit();
+        $files = array_filter($_FILES['photo']['name']);
+        var_dump($_FILES);
+        exit();
+        $fileExtension = pathinfo($_FILES['photo']['name']);
+        $fileExtension = $fileExtension['extension'];
+        $uploadFile = 'uploads/' . uniqid('', true) . '.' . $fileExtension;
+        $extension = pathinfo($_FILES['photo']['name'], PATHINFO_EXTENSION);
+        $authorizedExtensions = ['jpg', 'gif', 'png', 'webp'];
+        $maxFileSize = 1000000;
+
+        $total_count = count($_FILES['photo']['name']);
+
+        for ($i = 0; $i < $total_count; $i++) {
+            $uploadFile = $_FILES['photo']['tmp_name'][$i];
+
+            if ((!in_array($extension, $authorizedExtensions))) {
+                $errors[] = 'Veuillez sélectionner une image de type Jpg ou Gif, Webp ou Png !';
+            }
+
+            if (file_exists($_FILES['photo']['tmp_name']) && filesize($_FILES['photo']['tmp_name']) > $maxFileSize) {
+                $errors[] = "Votre fichier doit faire moins de 1M !";
+            }
+            return $errors;
+
+        }
+        if (empty($errors)) {
+            move_uploaded_file($_FILES['photo']['tmp_name'], $uploadFile);
+        }
+    } */
     }
 }

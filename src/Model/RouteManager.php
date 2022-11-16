@@ -80,22 +80,16 @@ class RouteManager extends AbstractManager
     public function insertphoto(array $photo)
     {
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE2 . " (
-            `photo1`,
-            `photo2`,
-            `photo3`,
+            `photo`,
             `route_id`
             )
             VALUES (
-                :photo1,
-                :photo2,
-                :photo3,
+                :photo,
                 :route_id
                 )");
 
         $statement->bindValue('route_id', $photo['id'], PDO::PARAM_STR);
-        $statement->bindValue('photo1', $photo['photo1'], PDO::PARAM_STR);
-        $statement->bindValue('photo2', $photo['photo2'], PDO::PARAM_STR);
-        $statement->bindValue('photo3', $photo['photo3'], PDO::PARAM_STR);
+        $statement->bindValue('photo', $photo['photo'], PDO::PARAM_STR);
 
         return $statement->execute();
     }
