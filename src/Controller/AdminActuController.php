@@ -66,15 +66,15 @@ class AdminActuController extends AbstractController
             $actuality = array_map('trim', $_POST);
 
             if (empty($actuality['title'])) {
-                $errors[] = 'Le prénom est obligatoire';
+                $errors[] = 'Veuillez renseigner un titre';
             }
 
             if (strlen($actuality['title']) > self::MAX_LENGTH) {
-                $errors[] = 'Le prénom doit être inférieur à ' . self::MAX_LENGTH . ' caractères';
+                $errors[] = 'Le titre doit faire moins de ' . self::MAX_LENGTH . ' caractères';
             }
 
             if (empty($actuality['content'])) {
-                $errors[] = 'Le prénom est obligatoire';
+                $errors[] = 'Veuillez renseigner une actualité';
             }
 
             if (empty($errors)) {
