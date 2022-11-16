@@ -16,11 +16,7 @@
 			<div class="cardh pb-2">
 				<div class="container">
 					<div class="row">
-						{% if "now"|date("Y-m-d") < route.date|date('Y-m-d') %}
-							<div class="card p-2 rounded-3 mt-3 border-danger shadow">
-							{% else %}
-								<div class="card p-2 rounded-3 mt-3 shadow">
-								{% endif %}
+								<div class="card p-2 rounded-3 mt-3 shadow {{ "now"|date("Y-m-d") < route.date|date('Y-m-d') ? ' border-danger' : '' }}">
 								<div class="container text-center">
 
 									<div class="row row-cols-1 row-cols-sm-1 row-cols-md-3">
@@ -47,7 +43,9 @@
 											</div>
 										</div>
 										<div class="col">
-											{{ "now"|date("Y-m-d") < route.date|date('Y-m-d') ? '<div class="justify-content-center text-light font-weight-bolder bg-danger tool-font">A venir</div> ': '' }}
+											{% if "now"|date("Y-m-d") < route.date|date('Y-m-d') %}
+												<div class="badge text-bg-danger fs-5 tool-font">A venir</div>
+											{% endif %}
 											<div class="row justify-content-center pt-5 tool-font "><img class="card-img-top" src="/assets/images/calendar.svg" alt="calendar icon"></div>
 											<div class="row justify-content-center pt-2 tool-font fs-4">{{route.date}}</div>
 											<div class="row justify-content-center pt-2 tool-font fs-4 pb-4">{{route.time}}</div>
