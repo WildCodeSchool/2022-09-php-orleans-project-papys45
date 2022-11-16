@@ -1,6 +1,8 @@
 {% extends "layoutAdmin.html.twig" %}
 
-{% block stylesheet %}{% endblock %}
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/adminRegistration.css">
+{% endblock %}
 
 {% block content %}
 
@@ -9,7 +11,7 @@
 			<h1 class="admin-registration-title text-danger text-center fs-1 mt-5">Ajouter participant</h1>
 			<form action="" method="POST">
 				<label></label>
-				<select name="member_id">
+				<select class="form-select form-select-lg mb-3" name="member_id">
 					{% for member in members %}
 						<option value="{{member.id}}">{{member.firstname}}
 							{{member.lastname}}</option>
@@ -17,7 +19,8 @@
 					<input type="hidden" value="{{route.id}}" name="route_id">
 				</option>
 			</select>
-			<button>Valider</button>
+			<button class="btn btn-danger">Valider</button>
 		</form>
+
 	</div>
 </div>{% endblock %}
