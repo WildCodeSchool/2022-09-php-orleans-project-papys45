@@ -16,17 +16,4 @@ class AdminRegistrationController extends AbstractController
             ['registrations' => $registrations]
         );
     }
-    public function add(): string
-    {
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $registration = array_map('trim', $_POST);
-
-            $registrationManager = new RegistrationManager();
-            $registrationManager->insert($registration);
-
-            header('Location:/admin/add-registration?id=');
-            return '';
-        }
-        return $this->twig->render('Admin/addRegistration.html.twig');
-    }
 }
