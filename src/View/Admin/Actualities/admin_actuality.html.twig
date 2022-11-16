@@ -28,7 +28,7 @@
 					<tbody>
 						{% for actuality in actualities %}
 							<tr>
-								<td class="col-md-3 fw-bold">{{ actuality.title }}</td>
+								<td class="col-md-3">{{ actuality.title }}</td>
 								<td class="col-md-6">{{ actuality.content }}</td>
 								<td>
 									<a href="/admin/actualites/editer?id={{ actuality.id }}" class="actu-btn btn btn-outline-warning btn-sm">Editer</a>
@@ -43,5 +43,4 @@
 			</div>
 		</div>
 	</div>
-</div>{% endblock %}
-{% block javascript %}{% endblock %}
+</div>{% endblock %}{% block javascript %}{% endblock %}
