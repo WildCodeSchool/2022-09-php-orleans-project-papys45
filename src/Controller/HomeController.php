@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Model\ActualityManager;
 use App\Controller\AbstractController;
+use App\Model\MemberManager;
 
 class HomeController extends AbstractController
 {
@@ -16,6 +17,9 @@ class HomeController extends AbstractController
         $actualityManager = new ActualityManager();
         $actualities = $actualityManager->selectAll('title');
 
-        return $this->twig->render('Home/index.html.twig', ['actualities' => $actualities]);
+        $memberManager = new MemberManager();
+        $president = $memberManager->selectOneByRole('president');
+
+        return $this->twig->render('Home/index.html.twig', ['actualities' => $actualities, 'president' => $president]);
     }
 }

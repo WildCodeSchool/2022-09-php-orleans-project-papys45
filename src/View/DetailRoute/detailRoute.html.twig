@@ -92,67 +92,78 @@
 			</div>
 
 			{# Add register members here later#}
+			<div class="col-md-1 order-md-2 custom-border-left custom-border-bottom"></div>
+
+			<div class="col-4 order-md-3 d-none d-md-block">
+				<div>
+					<h3 class="text-center pb-4 text-danger display-6">Déja inscrit</h3>
+				</div>
+
+				<div class=" d-flex row py-1 wrap">
+					{% for registration in registrations %}
+						<img src="{{registration.photo is empty? '/assets/images/default.svg' : '/upload/'~photo}}" class="w-25 rounded-circle memberpic" alt="{{registration.firstname}}" title="{{registration.firstname}} {{registration.lastname}} "/>
+					{% endfor %}
+				</div>
+			</div>
 		</div>
 	</div>
+</div>
 
-	<div class="container py-5">
+<div class="container py-5">
 
-		<div class="row pt-4">
+	<div class="row pt-4">
 
-			<div class="col-md-7">
+		<div class="col-md-7">
 
-				<div class="row pe-5 shadow-sm text-center">
-					<p>{{route.description}}
-					</p>
-				</div>
-			</div>
-
-			<div class="col-md-1"></div>
-
-			{% if "now"|date("Y-m-d") < route.date|date('Y-m-d') %}
-				<div class="col-md-4">
-					<div class="row">
-						<form>
-							<fieldset>
-								<legend>Inscrivez-vous à cette sortie</legend>
-								<label for="exampleDataList" class="form-label">Tapez votre nom</label>
-								<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Ecrivez votre nom ici">
-								<datalist id="datalistOptions">
-									<option value=""></option>
-								</datalist>
-								<button type="submit" class="btn btn-danger mt-2">S'inscrire</button>
-							</fieldset>
-						</form>
-					</div>
-				</div>
-	{% endif %}
+			<div class="row pe-5 shadow-sm text-center">
+				<p>{{route.description}}
+				</p>
 			</div>
 		</div>
 
-	<h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
-		Parcours
-	</h2>
-	<div class="container pb-5 shadow">
-		<iframe src="https://www.visugpx.com/{{ route.gpx }}?iframe" id="ivisugpx" scrolling="no"></iframe>
+		<div class="col-md-1"></div>
+
+		{% if "now"|date("Y-m-d") < route.date|date('Y-m-d') %}
+			<div class="col-md-4">
+				<div class="row">
+					<form>
+						<fieldset>
+							<legend>Inscrivez-vous à cette sortie</legend>
+							<label for="exampleDataList" class="form-label">Tapez votre nom</label>
+							<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Ecrivez votre nom ici">
+							<datalist id="datalistOptions">
+								<option value=""></option>
+							</datalist>
+							<button type="submit" class="btn btn-danger mt-2">S'inscrire</button>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		{% endif %}
 	</div>
+</div>
 
 
-	{% if "now"|date("Y-m-d") > route.date|date('Y-m-d') %}
-		<div class="container">
+<h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
+	Parcours
+</h2>
+<div class="container pb-5 shadow">
+	<iframe src="https://www.visugpx.com/{{ route.gpx }}?iframe" id="ivisugpx" scrolling="no"></iframe>
+</div>
+{% if "now"|date("Y-m-d") > route.date|date('Y-m-d') %}
+	<div class="container">
 
-			<h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
-				Compte rendu
-			</h2>
+		<h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
+			Compte rendu
+		</h2>
 
-			<div class="container pb-5">
-				<div class="card shadow">
-					<div class="card-body">
-						<p class="card-text px-4 py-2">
-							{{route.rapport}}</p>
-					</div>
+		<div class="container pb-5">
+			<div class="card shadow">
+				<div class="card-body">
+					<p class="card-text px-4 py-2">
+						{{route.rapport}}</p>
 				</div>
 			</div>
 		</div>
-
 	{% endif %}
 {% endblock %}

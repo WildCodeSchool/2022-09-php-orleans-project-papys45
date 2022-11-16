@@ -1,4 +1,4 @@
-<footer class="footer contactFooter d-flex flex-wrap justify-content-between align-items-center bg-dark text-light py-3">
+<footer class="footer contactFooter d-flex flex-wrap justify-content-between align-items-center bg-dark text-light py-3 mt-auto">
 	<p class="source col-md-4 mb-0 px-2 d-none d-sm-block">Image: atlascompany</p>
 	<p class="copyright col-md-4 mb-0 d-flex align-items-center justify-content-center px-2 fs-5">
 		WILDERS
@@ -6,13 +6,6 @@
 	<ul class="links nav col-md-4 justify-content-end">
 		<li class="nav-item">
 			<a href="#" class="nav-link text-light px-2">Mentions Légales</a>
-		</li>
-		<li class="nav-item">
-			{% if user %}
-				<a href="/admin/logout" class="nav-link text-light d-none d-lg-block px-2">Se déconnecter</a>
-			{% else %}
-				<a href="/admin/login" class="nav-link text-light d-none d-lg-block px-2">Administrateur</a>
-			{% endif %}
 		</li>
 	</ul>
 </footer>

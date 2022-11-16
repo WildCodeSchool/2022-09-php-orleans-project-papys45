@@ -29,7 +29,7 @@ class MemberManager extends AbstractManager
 
     public function selectOneByRole(string $role): array|false
     {
-        $statement = $this->pdo->prepare("SELECT `role` FROM " . self::TABLE . " WHERE role=:role");
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE role=:role");
         $statement->bindValue('role', $role, \PDO::PARAM_STR);
 
         $statement->execute();

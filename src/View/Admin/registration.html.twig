@@ -1,0 +1,58 @@
+{% extends 'layoutAdmin.html.twig' %}
+
+{% block stylesheet %}{% endblock %}
+
+{% block content %}
+	<div class="container mt-5">
+		<div class="row d-flex justify-content-center">
+			<div class="col-10">
+				<h1 class="adminMembersTitle text-danger text-center fs-1 mt-5">Selection participant</h1>
+
+				<table class="table table-striped table-hover">
+					<thead>
+						<tr class="">
+							<th scope="col">Prénom</th>
+							<th scope="col">Nom</th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for registration in registrations %}
+							<tr>
+								<td class="col-md-2">{{ registration.firstname }}</td>
+								<td class="col-md-2">{{ registration.lastname }}</td>
+								<td>
+									<button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Modal{{registration.member_id}}">
+										Supprimer
+									</button>
+									<div class="modal fade" tabindex="-1" id="Modal{{registration.member_id}}">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title">Avertissement</h5>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													<p>Veuillez confirmer la désinscription de
+														{{registration.firstname}}
+														{{registration.lastname}}</p>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+													<form action="" method="post">
+														<input type="hidden" name="id" value="{{ registration.member_id }}">
+														<button class="btn btn-outline-danger btn-sm" method="post">Supprimer</button>
+													</form>
+												</div>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}
