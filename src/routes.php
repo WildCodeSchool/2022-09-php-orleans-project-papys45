@@ -10,7 +10,7 @@ return [
     '' => ['HomeController', 'index',],
     'contact' => ['FormController', 'index', ['message']],
     'admin/membres/edit' => ['AdminMemberController', 'edit', ['id', 'message']],
-    'admin/membres' => ['AdminMemberController', 'index',['message']],
+    'admin/membres' => ['AdminMemberController', 'index', ['message']],
     'admin/membres/delete' => ['AdminMemberController', 'delete'],
     'admin/login' => ['AdminLoginController', 'login',],
     'admin/logout' => ['AdminLoginController', 'logout',],
@@ -30,4 +30,5 @@ return [
     'admin/route' => ['AdminRouteController', 'index'],
     'admin/deleteRoute' => ['AdminRouteController', 'delete'],
     'admin/add-route' => ['AddRouteController', 'add',],
+    'admin/modif-route' => ['AddRouteController', 'edit', ['id']],
 ];
