@@ -11,39 +11,41 @@
 				<h1 class="officeTitle text-danger text-center mt-5">LE BUREAU</h1>
 				<div class="detailOffice mt-5 d-flex flex-wrap justify-content-center align-items-center">
 					{% for member in members|filter(member => member.role != 'member') -%}
-							<div class="officeCard card border-0 mx-4">
-								<img src="/upload/{{member.photo}}" class="card-img-top d-flex rounded-circle" alt="photo d'un membre du bureau">
-								<div class="card-body">
-									<p class="officeContent card-text text-center m-0 p-0 fw-bold">{{ member.firstname }}
-										{{ member.lastname }}</p>
-									<p class="officeContent card-text text-center m-0 p-0 fw-bold text-danger">{{ member.role }}</p>
-									<p class="officeContent card-text text-center m-0 p-0">
-										{% set difference = date( now | date() ).diff(date(member.dateOfBirth)) %}
-										{% set years = difference.y %}
-										{{ years }}
-										ans</p>
-								</div>
+						<div class="officeCard card border-0 mx-4">
+							<img src="{{ member.photo is empty ? '/assets/images/default.svg' : '/upload/' ~ member.photo }}" class="card-img-top d-flex rounded-circle" alt="photo d'un membre du bureau">
+							<div class="card-body">
+								<p class="officeContent card-text text-center m-0 p-0 fw-bold fs-6">{{ member.firstname }}</p>
+								<p class="officeContent card-text text-center m-0 p-0 fw-bold fs-6">{{ member.lastname }}</p>
+								<p class="officeContent card-text text-center m-0 p-0 fw-bold text-danger">{{ constant('App\\Controller\\AdminMemberController::ROLES')[member.role] }}</p>
+								<p class="officeContent card-text text-center m-0 p-0">
+									{% set difference = date( now | date() ).diff(date(member.dateOfBirth)) %}
+									{% set years = difference.y %}
+									{{ years }}
+									ans</p>
 							</div>
+						</div>
 					{% endfor %}
 				</div>
 
 				<h2 class="membersTitle text-danger text-center fs-1 mt-5">Les membres actifs</h1>
 				<div class=" detailMembers mt-5 d-flex flex-wrap justify-content-center align-items-center">
+
 					{% for member in members|filter(member => member.role == 'member') -%}
-					
-							<div class="membersCard card border-0 mx-4">
-								<img src="/upload/{{member.photo}}" class="card-img-top d-flex rounded-circle " alt="photo d'un membre actif">
-								<div class="card-body">
-									<p class="officeContent card-text text-center m-0 p-0 fw-bold">{{ member.firstname }}
-										{{ member.lastname }}</p>
-									<p class="officeContent card-text text-center m-0 p-0">
-										{% set difference = date( now | date() ).diff(date(member.dateOfBirth)) %}
-										{% set years = difference.y %}
-										{{ years }}
-										ans</p>
-								</div>
+
+						<div class="membersCard card border-0 mx-4">
+							<img src="{{ member.photo is empty ? '/assets/images/default.svg' : '/upload/' ~ member.photo }}" class="card-img-top d-flex rounded-circle " alt="photo d'un membre actif">
+
+							<div class="card-body">
+								<p class="officeContent card-text text-center m-0 p-0 fs-6 fw-bold">{{ member.firstname }}</p>
+								<p class="officeContent card-text text-center m-0 p-0 fs-6 fw-bold">{{ member.lastname }}</p>
+								<p class="officeContent card-text text-center m-0 p-0">
+									{% set difference = date( now | date() ).diff(date(member.dateOfBirth)) %}
+									{% set years = difference.y %}
+									{{ years }}
+									ans</p>
 							</div>
-				
+						</div>
+
 					{% endfor %}
 				</div>
 
