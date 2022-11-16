@@ -26,8 +26,8 @@ class RegistrationManager extends AbstractManager
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
             " (`member_id`,`route_id`) 
         VALUES (:member_id, :route_id)");
-        $statement->bindValue('member_id', $registration['member_id'], PDO::PARAM_STR);
-        $statement->bindValue('route_id', $registration['route_id'], PDO::PARAM_STR);
+        $statement->bindValue('member_id', $registration['member_id'], PDO::PARAM_INT);
+        $statement->bindValue('route_id', $registration['route_id'], PDO::PARAM_INT);
 
         $statement->execute();
         return (int)$this->pdo->lastInsertId();

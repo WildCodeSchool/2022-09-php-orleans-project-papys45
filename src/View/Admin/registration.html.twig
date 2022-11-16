@@ -6,8 +6,10 @@
 	<div class="container mt-5">
 		<div class="row d-flex justify-content-center">
 			<div class="col-10">
-				<h1 class="adminMembersTitle text-danger text-center fs-1 mt-5">Selection participant</h1>
-
+				<h1 class="admin-registration-title text-danger text-center fs-1 mt-5">Selection participant
+				</h1>
+				<div>Sortie du
+					{{route.date|date("d/m/Y")}}</div>
 				<table class="table table-striped table-hover">
 					<thead>
 						<tr class="">
@@ -19,8 +21,8 @@
 					<tbody>
 						{% for registration in registrations %}
 							<tr>
-								<td class="col-md-2">{{ registration.firstname }}</td>
-								<td class="col-md-2">{{ registration.lastname }}</td>
+								<td>{{ registration.firstname }}</td>
+								<td>{{ registration.lastname }}</td>
 								<td>
 									<button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Modal{{registration.member_id}}">
 										Supprimer
@@ -52,6 +54,10 @@
 						{% endfor %}
 					</tbody>
 				</table>
+			</div>
+			<div class="d-flex align-items-center justify-content-around ">
+				<a href="/admin/route" class="btn btn-outline-secondary mt-2">Retour</a>
+				<a href="/admin/inscription/ajouter?id={{route.id}}" class="btn btn-danger align-self-right">Ajouter</a>
 			</div>
 		</div>
 	</div>

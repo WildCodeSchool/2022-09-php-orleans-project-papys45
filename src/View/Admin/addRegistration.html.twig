@@ -1,0 +1,23 @@
+{% extends "layoutAdmin.html.twig" %}
+
+{% block stylesheet %}{% endblock %}
+
+{% block content %}
+
+	<div class="container mt-5">
+		<div class="row d-flex justify-content-center">
+			<h1 class="admin-registration-title text-danger text-center fs-1 mt-5">Ajouter participant</h1>
+			<form action="" method="POST">
+				<label></label>
+				<select name="member_id">
+					{% for member in members %}
+						<option value="{{member.id}}">{{member.firstname}}
+							{{member.lastname}}</option>
+					{% endfor %}
+					<input type="hidden" value="{{route.id}}" name="route_id">
+				</option>
+			</select>
+			<button>Valider</button>
+		</form>
+	</div>
+</div>{% endblock %}
