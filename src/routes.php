@@ -30,6 +30,8 @@ return [
     'admin/route' => ['AdminRouteController', 'index'],
     'admin/deleteRoute' => ['AdminRouteController', 'delete'],
     'admin/add-route' => ['AddRouteController', 'add',],
+    'admin/modif-route' => ['AddRouteController', 'edit', ['id']],
     'admin/inscription' => ['AdminRegistrationController', 'index', ['id']],
+    'admin/photo/delete' => ['PhotoController', 'delete',['id', 'routeId']],
     'admin/inscription/ajouter' => ['AdminRegistrationController', 'add', ['id']],
 ];
