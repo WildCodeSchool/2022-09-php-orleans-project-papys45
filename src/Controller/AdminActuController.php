@@ -79,7 +79,7 @@ class AdminActuController extends AbstractController
 
             if (empty($errors)) {
                 $actualityManager->update($actuality);
-                header('location: /admin/actualites/editer?id=' . $id . '&message=success');
+                header('location: /admin/actualites?id=' . $id . '&message=success');
 
                 return '';
             }
