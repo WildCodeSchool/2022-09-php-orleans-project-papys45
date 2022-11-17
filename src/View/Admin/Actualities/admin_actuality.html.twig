@@ -34,7 +34,24 @@
 									<a href="/admin/actualites/editer?id={{ actuality.id }}" class="actu-btn btn btn-outline-warning btn-sm">Editer</a>
 								</td>
 								<td>
-									<a href="#" class="actu-btn btn btn-outline-danger btn-sm" href="#">Supprimer</a>
+									<button type="button" class="actu-btn btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Modal{{actuality.id}}">Supprimer</button>
+
+                                    <div class="modal fade" tabindex="-1" id="Modal{{actuality.id}}">
+										<div class="modal-dialog">
+											<div class="modal-content">
+												<div class="modal-header">
+													<h5 class="modal-title">Avertissement</h5>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body">
+													<p>Veuillez confirmer la suppression de
+														{{actuality.title}}</p>
+												</div>
+												<div class="modal-footer">
+													<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+													<form action="/admin/actualites/supprimer" method="post">
+														<input type="hidden" name="id" value="{{ actuality.id }}">
+														<button class="btn btn-outline-danger btn-sm" method="post">Supprimer</button>
 								</td>
 							</tr>
 						{% endfor %}
