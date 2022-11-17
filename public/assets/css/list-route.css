@@ -21,9 +21,10 @@
 }
 
 .icon {
-    display: block;
-    max-width: 3rem;
+    max-width: 2rem;
     height: auto;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .title-font {
@@ -47,17 +48,48 @@
     filter: invert(23%) sepia(95%) saturate(1510%) hue-rotate(331deg) brightness(107%) contrast(93%);
 }
 
+.txt {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.badge {
+    padding-block-start: 1.5px;
+    padding-block-end: 1px;
+    padding-inline: 4px;
+}
+
+
+@keyframes shaking {
+    0%{
+        transform : rotate(-0.5deg);
+        transform : skewX(-0.5deg);
+    }
+    50% {
+        transform : rotate(0.5deg);
+        transform : skewX(0.5deg);
+    }
+    75% {
+        transform : skewX(-0.5deg);
+    }
+    100% {
+        transform : rotate(-0.5deg);
+        transform : skewX(0deg);
+    }
+}
 
 
 .card {
-    transform: scale(1);
-    transition: .3s ease-in-out;
     box-shadow: 0px 5px 10px rgb(94, 94, 94);
 }
 .card:hover {
-    transform: scale(0.9);
-    box-shadow: 0px 5px 50px rgb(26, 26, 26);
+    box-shadow: 0px 5px 20px rgb(26, 26, 26);
+    animation: shaking 0.2s;
+    
 }
+
 
 
 
