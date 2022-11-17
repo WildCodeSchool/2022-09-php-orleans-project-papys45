@@ -20,4 +20,15 @@ class RegistrationManager extends AbstractManager
 
         return $statement->fetchAll();
     }
+
+    public function deleteByRouteId(int $routeId, int $memberId): void
+    {
+        $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE .
+            " WHERE route_id=:routeId
+       AND member_id=:memberId ");
+
+        $statement->bindValue('routeId', $routeId, \PDO::PARAM_INT);
+        $statement->bindValue('memberId', $memberId, \PDO::PARAM_INT);
+        $statement->execute();
+    }
 }
