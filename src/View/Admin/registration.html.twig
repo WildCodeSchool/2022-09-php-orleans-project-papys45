@@ -41,7 +41,6 @@
 													<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
 													<form action="/admin/inscription/supprimer?idRoute={{route.id}}" method="post">
 														<input type="hidden" name="member_id" value="{{ registration.member_id }}">
-														<input type="hidden" name="route_id" value="{{route.id}}">
 														<button class="btn btn-outline-danger btn-sm" method="post">Supprimer</button>
 													</form>
 												</div>
