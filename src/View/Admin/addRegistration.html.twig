@@ -1,0 +1,31 @@
+{% extends "layoutAdmin.html.twig" %}
+
+{% block stylesheet %}
+	<link rel="stylesheet" href="/assets/css/adminRegistration.css">
+{% endblock %}
+
+{% block content %}
+
+	<div class="container mt-5">
+		<div class="row d-flex justify-content-center">
+			<h1 class="admin-registration-title text-danger text-center fs-1 mt-5">Ajouter participant</h1>
+			<div class="d-flex justify-content-between text-end my-4">
+				<a href="/admin/inscription?id={{route.id}}" class="btn btn-danger mt-2 align-self-left">Retour</a>
+			</div>
+			<div>Sortie du
+				{{route.date|date("d/m/Y")}}</div>
+			<form action="" method="POST">
+				<label></label>
+				<select select class="form-select form-select-sm" aria-label=".form-select-sm example" name="member_id">
+					{% for member in members %}
+						<option value="{{member.id}}">{{member.firstname}}
+							{{member.lastname}}</option>
+					{% endfor %}
+					<input type="hidden" value="{{route.id}}" name="route_id">
+				</option>
+			</select>
+			<button class="btn btn-danger my-4 ">Valider</button>
+		</form>
+
+	</div>
+</div>{% endblock %}
