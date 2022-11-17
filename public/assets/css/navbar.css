@@ -27,7 +27,7 @@
         color: rgb(212, 166, 168);
         transform: scale(1);
     }
-    100% {
+    80% {
         color : rgba(216, 98, 104);
         transform: scale(1.05);
     }
