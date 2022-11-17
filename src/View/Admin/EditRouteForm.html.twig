@@ -89,18 +89,17 @@
 				<label for="uploadImg" class="col-sm-2 col-form-label">Envoyez vos photos :</label>
 				<div class="col-sm-10">
 					<div class="input-group mb-3">
-                    <label class="input-group-text" for="photo01">Photo 1</label>
+						<label class="input-group-text" for="photo01">Photo 1</label>
 						<input type="file" class="form-control" id="photo1" name="photo[]" multiple>
 					</div>
-{#                     <div class="input-group mb-3">
-                    <label class="input-group-text" for="photo02">Photo 2</label>
-						<input type="file" class="form-control" id="photo2" name="photo">
+					<div class="d-flex flex-wrap wrap gap-2">
+						{% for index, photo in photos %}
+							<div class="d-grid">
+								<img src="/uploads/{{ photo }}" class="rounded groupPhoto" alt="une photo de sortie">
+								<a href="/admin/photo/delete?id={{index}}&routeId={{route.route_id }}" class="btn btn-outline-danger btn-sm ">Supprimer</a>
+							</div>
+						{% endfor %}
 					</div>
-                    <div class="input-group mb-3">
-                    <label class="input-group-text" for="photo03">Photo 3</label>
-						<input type="file" class="form-control" id="photo3" name="photo">
-					</div> #}
-
 				</div>
 			</div>
 			<div class="row mb-3">
@@ -114,4 +113,4 @@
 			</div>
 		</form>
 	</div>
-</div>{% endblock %}
+{% endblock %}

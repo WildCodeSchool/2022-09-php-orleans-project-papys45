@@ -102,14 +102,18 @@ class AddRouteController extends AbstractController
         $resultUpload = [];
         $routeManager = new RouteManager();
         $photoManager = new PhotoManager();
-        $route = $routeManager->selectOneById($id);
+        $routeWithPhotos = $photoManager->selectOneByIdWithPhoto($id);
+        $route = $routeWithPhotos[0];
+        $photos = array_column($routeWithPhotos, 'photo', 'id');
 
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST)) {
             $route = array_map('trim', $_POST);
 
-            $resultUpload = $this->uploadPhoto();
-            $errors = $resultUpload[0];
+            if (!empty($_FILES)) {
+                $resultUpload = $this->uploadPhoto();
+                $errors = $resultUpload[0];
+                $photoManager->insertPhoto($resultUpload[1], $id);
+            }
 
             $errors = array_merge($this->verifempty($route), $errors);
             $errors = array_merge($this->verifyLength($route), $errors);
@@ -119,9 +123,8 @@ class AddRouteController extends AbstractController
             }
 
             if (empty($errors)) {
-                $route['id'] = $id;
                 $routeManager->update($route);
-                $photoManager->insertPhoto($resultUpload[1], $id);
+
 
                 header('location: /admin/modif-route?id=' . $id . '&message=success');
                 return null;
@@ -133,7 +136,8 @@ class AddRouteController extends AbstractController
             'Admin/EditRouteForm.html.twig',
             [
                 'route' => $route,
-                'errors' => $errors
+                'errors' => $errors,
+                'photos' => $photos
             ]
         );
     }
