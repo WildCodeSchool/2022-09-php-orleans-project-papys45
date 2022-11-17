@@ -118,10 +118,6 @@ class AddRouteController extends AbstractController
             $errors = array_merge($this->verifempty($route), $errors);
             $errors = array_merge($this->verifyLength($route), $errors);
 
-            if (strlen($route['rapport']) > self::MAX_LENGTH) {
-                $errors[] = 'Le compte rendu ne doit pas dépasser' . ' ' . self::MAX_LENGTH . ' ' . 'caractères.';
-            }
-
             if (empty($errors)) {
                 $routeManager->update($route);
 

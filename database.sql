@@ -120,7 +120,7 @@ CREATE TABLE
         `difficulty` INT NOT NULL,
         `gpx` VARCHAR(255),
         `description` VARCHAR(255),
-        `rapport` VARCHAR(255)
+        `rapport` TEXT
     );
 
 INSERT INTO
