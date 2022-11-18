@@ -2,10 +2,11 @@
 
 namespace App\Controller;
 
-use App\Controller\AbstractController;
+use App\Model\PhotoManager;
 use App\Model\RouteManager;
 use App\Model\MemberManager;
 use App\Model\RegistrationManager;
+use App\Controller\AbstractController;
 
 class RouteController extends AbstractController
 {
@@ -23,15 +24,14 @@ class RouteController extends AbstractController
 
     public function showRoute(int $id): string
     {
-        $itemRouteManager = new RouteManager();
-        $route = $itemRouteManager->selectOneById($id);
-
-        $registrationManager = new RegistrationManager();
-        $registrations = $registrationManager->selectByRouteId($id);
+        $photoManager = new PhotoManager();
+        $routeWithPhotos = $photoManager->selectOneByIdWithPhoto($id);
+        $route = $routeWithPhotos[0];
+        $photos = array_column($routeWithPhotos, 'photo');
 
         return $this->twig->render(
             'DetailRoute/detailRoute.html.twig',
-            ['route' => $route, 'registrations' => $registrations]
+            ['route' => $route, 'photos' => $photos]
         );
     }
 }

@@ -101,7 +101,7 @@
 
 				<div class=" d-flex row py-1 wrap">
 					{% for registration in registrations %}
-						<img src="{{registration.photo is empty? '/assets/images/default.svg' : '/upload/'~photo}}" class="w-25 rounded-circle memberpic" alt="{{registration.firstname}}" title="{{registration.firstname}} {{registration.lastname}} "/>
+						<img src="{{registration.photo is empty? '/assets/images/default.svg' : '/uploads/'~photo}}" class="w-25 rounded-circle memberpic" alt="{{registration.firstname}}" title="{{registration.firstname}} {{registration.lastname}} "/>
 					{% endfor %}
 				</div>
 			</div>
@@ -153,17 +153,26 @@
 {% if "now"|date("Y-m-d") > route.date|date('Y-m-d') %}
 	<div class="container">
 
-		<h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
-			Compte rendu
-		</h2>
+		<div class="row">
+			{% for index, photo in photos %}
+				<div class="pb-2 d-flex">
+					<img src="uploads/{{ photo }}" class=" rounded gallery1" alt="photo d'une sortie"/>
+				</div>
+			{% endfor %}
+		</div>
+		<div class="container">
 
-		<div class="container pb-5">
-			<div class="card shadow">
-				<div class="card-body">
-					<p class="card-text px-4 py-2">
-						{{route.rapport}}</p>
+			<h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
+				Compte rendu
+			</h2>
+
+			<div class="container pb-5">
+				<div class="card shadow">
+					<div class="card-body">
+						<p class="card-text px-4 py-2">
+							{{route.rapport}}</p>
+					</div>
 				</div>
 			</div>
-		</div>
-	{% endif %}
-{% endblock %}
+		{% endif %}
+	{% endblock %}

@@ -1,0 +1,4 @@
+.groupPhoto {
+    --heightPhoto:100px;
+    height: var(--heightPhoto);
+}
