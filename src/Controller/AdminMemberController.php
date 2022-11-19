@@ -15,7 +15,7 @@ class AdminMemberController extends AbstractController
     public const MAX_MAIL_LENGTH = 255;
     public const MAX_FILE_SIZE = 1000000;
     public const AUTH_EXTENSION = ['jpg', 'png', 'jpeg'];
-    public const UPLOAD_DIR = 'upload/';
+    public const UPLOAD_DIR = 'uploads/';
     public const ROLES = [
         'president' => 'Président',
         'vice' => 'Vice-président',

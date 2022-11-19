@@ -21,6 +21,7 @@ class RegistrationManager extends AbstractManager
         return $statement->fetchAll();
     }
 
+
     public function deleteByRouteId(int $routeId, int $memberId): void
     {
         $statement = $this->pdo->prepare("DELETE FROM " . self::TABLE .
@@ -30,5 +31,17 @@ class RegistrationManager extends AbstractManager
         $statement->bindValue('routeId', $routeId, \PDO::PARAM_INT);
         $statement->bindValue('memberId', $memberId, \PDO::PARAM_INT);
         $statement->execute();
+    }
+
+    public function insert(array $registration): int
+    {
+        $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE .
+            " (`member_id`,`route_id`) 
+        VALUES (:member_id, :route_id)");
+        $statement->bindValue('member_id', $registration['member_id'], PDO::PARAM_INT);
+        $statement->bindValue('route_id', $registration['route_id'], PDO::PARAM_INT);
+
+        $statement->execute();
+        return (int)$this->pdo->lastInsertId();
     }
 }
