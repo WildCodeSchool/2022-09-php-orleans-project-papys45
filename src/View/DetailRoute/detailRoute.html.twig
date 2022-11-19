@@ -14,37 +14,27 @@
 			{{'Détails de la sortie à venir'|upper}}
 		</h1>
 	{% endif %}
-	<div class="container-fluid dateD">
-		<img src="../assets/images/cyclist.svg" alt="cyclist icon" class="iconband">
-		<img src="../assets/images/cyclist.svg" alt="cyclist icon" class="iconband">
-		<img src="../assets/images/cyclist.svg" alt="cyclist icon" class="iconband">
-		<img src="../assets/images/cyclist.svg" alt="cyclist icon" class="iconband">
-		<img src="../assets/images/cyclist.svg" alt="cyclist icon" class="iconband">
-		<img src="../assets/images/cyclist.svg" alt="cyclist icon" class="iconband">
-		<img src="../assets/images/cyclist.svg" alt="cyclist icon" class="iconband">
-		<img src="../assets/images/cyclist.svg" alt="cyclist icon" class="iconband">
-		<img src="../assets/images/cyclist.svg" alt="cyclist icon" class="iconband">
 
-		<div class="container text-center pt-4 pb-5 fs-6 tool-font">
+	<div class="container-fluid text-center pt-4 pb-3 fs-6 tool-font bg-danger">
 
-			<div class="row row-flex">
+		<div class="row row-flex">
 
-				<div class="col-6">
-					<img class="date" src="/assets/images/calendar.svg" alt="calendar icon">
-					<p class="fs-2">{{route.date|date("d/m/Y")}}</p>
-				</div>
-
-				<div class="col-6">
-					<img class="date" src="/assets/images/clock.svg" alt="clock icon">
-					<p class="fs-2">{{route.time|date('H\\hi')}}</p>
-				</div>
+			<div class="col-6 pt-3">
+				<img class="date" src="/assets/images/calendar.svg" alt="calendar icon">
+				<p class="fs-2 text-white">{{route.date|date("d/m/Y")}}</p>
 			</div>
 
-
+			<div class="col-6 pt-3">
+				<img class="date" src="/assets/images/clock.svg" alt="clock icon">
+				<p class="fs-2 text-white">{{route.time|date('H\\hi')}}</p>
+			</div>
 		</div>
+
+
 	</div>
 
-	<div class="container fs-3">
+
+	<div class="container fs-3 mt-5">
 		<div class="row pt-4">
 			<div class="col-md-7 order-md-1 ps-3">
 
@@ -133,23 +123,6 @@
 
 		<div class="col-md-1"></div>
 
-		{% if "now"|date("Y-m-d") < route.date|date('Y-m-d') %}
-			<div class="col-md-4">
-				<div class="row">
-					<form>
-						<fieldset>
-							<legend>Inscrivez-vous à cette sortie</legend>
-							<label for="exampleDataList" class="form-label">Tapez votre nom</label>
-							<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Ecrivez votre nom ici">
-							<datalist id="datalistOptions">
-								<option value=""></option>
-							</datalist>
-							<button type="submit" class="btn btn-danger mt-2">S'inscrire</button>
-						</fieldset>
-					</form>
-				</div>
-			</div>
-		{% endif %}
 	</div>
 </div>
 
