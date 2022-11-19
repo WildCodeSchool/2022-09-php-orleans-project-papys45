@@ -74,15 +74,13 @@ p {
     filter: invert(64%) sepia(72%) saturate(3828%) hue-rotate(351deg) brightness(101%) contrast(98%);
 }
 
-.icon-red, {
+.icon-red {
     filter: invert(23%) sepia(95%) saturate(1510%) hue-rotate(331deg) brightness(107%) contrast(93%);
 }
 
 .date {
     filter: invert(99%) sepia(43%) saturate(0%) hue-rotate(55deg) brightness(111%) contrast(101%);
 }
-
-
 
 
 
