@@ -74,9 +74,36 @@ p {
     filter: invert(64%) sepia(72%) saturate(3828%) hue-rotate(351deg) brightness(101%) contrast(98%);
 }
 
-.icon-red {
+.icon-red, {
     filter: invert(23%) sepia(95%) saturate(1510%) hue-rotate(331deg) brightness(107%) contrast(93%);
 }
+
+
+.dateD { 
+    background-color: red;
+    padding-inline: -10px;
+}
+
+.dateD .iconband {
+    animation: fadeout 1s ease;
+}
+
+
+@keyframes fadeout {
+    0%{
+        display: none;
+        opacity: 0;
+        transform: translateX(-700%)
+    }
+    20%{
+        display: none;
+        opacity: 0;
+    }
+
+}
+
+
+
 
 
 @media screen and (min-width: 768px) {
