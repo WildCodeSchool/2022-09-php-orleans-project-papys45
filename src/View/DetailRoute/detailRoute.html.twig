@@ -118,12 +118,7 @@
 		Description
 	</h2>
 	<div class="row py-5 shadow-sm text-center fs-5">
-		<p class="text-start">{{route.description}}
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse culpa aliquid veniam eius beatae labore, eveniet deleniti nemo aspernatur possimus, recusandae, vitae amet. Ab autem doloribus distinctio, rem quasi atque?
-													Veniam vero dolorem quidem quas sapiente suscipit modi ea deleniti sunt sint amet eaque sed, eveniet magni eos sit recusandae soluta. Odit eum error illo, suscipit laboriosam dolorem earum mollitia.
-													Explicabo mollitia voluptate vel eos, nisi exercitationem libero consequuntur pariatur magnam! A minima minus, nostrum neque atque commodi dolores labore quasi harum autem eum maxime saepe est, impedit deserunt reiciendis!
-													Officia exercitationem deleniti reiciendis nemo provident ab aspernatur delectus dolor et! Harum est asperiores qui illum autem in minima quasi ipsum eveniet cumque! Temporibus doloribus assumenda laborum voluptatem quia quod!
-		</p>
+		<p class="text-start">{{route.description}}</p>
 	</div>
 
 
@@ -137,12 +132,12 @@
 	<iframe src="https://www.visugpx.com/{{ route.gpx }}?iframe" id="ivisugpx" scrolling="no"></iframe>
 </div>
 {% if "now"|date("Y-m-d") > route.date|date('Y-m-d') %}
-	<div class="container">
+	<div class="container py-5">
 
 		<div class="row">
 
 			{% for index, photo in photos %}
-				<div class="pb-2 d-flex">
+				<div class="gridImg">
 					<img src="uploads/{{ photo }}" class=" rounded gallery1" alt="photo d'une sortie"/>
 				</div>
 			{% endfor %}
