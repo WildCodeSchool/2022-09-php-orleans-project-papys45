@@ -11,6 +11,8 @@ class AdminActuController extends AbstractController
 
     public function index(): string
     {
+        $this->isAuthorizedToAccess();
+
         $adminActuManager = new ActualityManager();
         $actualities = $adminActuManager->selectAll();
 
@@ -19,6 +21,8 @@ class AdminActuController extends AbstractController
 
     public function add(string $actuality = ''): string
     {
+        $this->isAuthorizedToAccess();
+
         $actuality = [];
         $errors = [];
 
@@ -58,6 +62,8 @@ class AdminActuController extends AbstractController
 
     public function update(int $id, string $actuality = ''): ?string
     {
+        $this->isAuthorizedToAccess();
+
         $errors = [];
         $actualityManager = new ActualityManager();
         $actuality = $actualityManager->selectOneById($id);
@@ -93,6 +99,8 @@ class AdminActuController extends AbstractController
 
     public function delete(): void
     {
+        $this->isAuthorizedToAccess();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
             $actualityManager = new ActualityManager();
