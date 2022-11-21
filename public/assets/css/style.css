@@ -20,5 +20,6 @@ body {
     padding-top: 6rem;
     background: url('../images/BG-Papys45V2.svg');
     background-repeat: no-repeat;
-    background-position: bottom;;
+    background-position: bottom;
+    background-size: cover;
 }
