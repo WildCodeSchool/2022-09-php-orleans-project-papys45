@@ -9,8 +9,3 @@
 .formTitle {
     font-family: var(--title-font); 
 }
-
-.contactFooter {
-    --margin:300px;
-    margin-top: var(--margin) ;
-}
