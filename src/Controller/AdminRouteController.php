@@ -8,6 +8,8 @@ class AdminRouteController extends AbstractController
 {
     public function index(): string
     {
+        $this->isAuthorizedToAccess();
+
         $routeManager = new RouteManager();
         $route = $routeManager->selectAll('date', 'DESC');
 
@@ -16,6 +18,8 @@ class AdminRouteController extends AbstractController
 
     public function delete(): void
     {
+        $this->isAuthorizedToAccess();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
             $routeManager = new RouteManager();

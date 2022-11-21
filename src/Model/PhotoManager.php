@@ -26,7 +26,7 @@ class PhotoManager extends AbstractManager
         $statement = $this->pdo->prepare('SELECT * FROM ' . RouteManager::TABLE . ' AS r 
             LEFT JOIN ' . self::TABLE . ' AS p 
             ON r.id = p.route_id 
-            HAVING r.id=:id');
+            WHERE r.id=:id');
 
         $statement->bindValue('id', $id, PDO::PARAM_INT);
         $statement->execute();
