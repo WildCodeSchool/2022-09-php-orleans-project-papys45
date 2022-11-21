@@ -15,6 +15,9 @@
 
 	<div class="container">
 		<form method="post">
+			{% if message == 'success' %}
+				<div class="alert alert-success text-center" role="alert">Opération réalisée avec succès.</div>
+			{% endif %}
 
 			<ul class="text-center text-danger">
 				{% for error in errors %}
