@@ -44,11 +44,6 @@
 						<textarea class="form-control" name="content" id="content" rows="3" placeholder="Modifier le contenu ici" required>{{ actuality.content ?? '' }}</textarea>
 					</div>
 
-{# {{ myVar is defined and myVar not empty ? myVar : '#button-cart' }} #}
-                      {#  <?php if(isset($contact['subject']) &&  $contact['subject'] === $subject) :?>
-                            selected
-                            <?php endif; ?> #}
-
 					<div class="d-flex align-items-center justify-content-between">
 						<button type="submit" class="btn btn-outline-danger m-3" href="/admin/actualites/editer?id={{ actuality.id }}">Modifier</button>
 					</div>

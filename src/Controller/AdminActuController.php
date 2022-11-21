@@ -56,7 +56,7 @@ class AdminActuController extends AbstractController
         );
     }
 
-    public function update(int $id): ?string
+    public function update(int $id): string
     {
         $errors = [];
         $actualityManager = new ActualityManager();
