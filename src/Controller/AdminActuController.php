@@ -90,7 +90,7 @@ class AdminActuController extends AbstractController
                 return '';
             }
         }
-        
+
         return $this->twig->render('Admin/Actualities/form_actu_edit.html.twig', [
             'errors' => $errors,
             'message' => $message,
