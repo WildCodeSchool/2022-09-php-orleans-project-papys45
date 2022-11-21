@@ -33,6 +33,7 @@ return [
     'admin/modif-route' => ['AddRouteController', 'edit', ['id']],
     'admin/inscription' => ['AdminRegistrationController', 'index', ['id']],
     'admin/photo/delete' => ['PhotoController', 'delete', ['id', 'routeId']],
+    'admin/inscription/supprimer' => ['AdminRegistrationController', 'delete', ['idRoute']],
     'admin/inscription/ajouter' => ['AdminRegistrationController', 'add', ['id']],
     'error' => ['HomeController', 'error'],
 ];

@@ -123,8 +123,8 @@ class AddRouteController extends AbstractController
             $errors = array_merge($this->verifyLength($route), $errors);
 
             if (empty($errors)) {
+                $route['id'] = $id;
                 $routeManager->update($route);
-
 
                 header('location: /admin/modif-route?id=' . $id . '&message=success');
                 return null;

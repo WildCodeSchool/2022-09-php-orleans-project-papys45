@@ -392,7 +392,7 @@ CREATE TABLE
         `member_id` int NOT NULL,
         `route_id` int NOT NULL,
         CONSTRAINT `fk_member` FOREIGN KEY (`member_id`) REFERENCES `member`(id),
-        CONSTRAINT `fk_route1` FOREIGN KEY (`route_id`) REFERENCES `route`(id)
+        CONSTRAINT `fk_route1` FOREIGN KEY (`route_id`) REFERENCES `route`(id) ON DELETE CASCADE
     );
 
 INSERT INTO
