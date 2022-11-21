@@ -9,6 +9,9 @@
 		<div class="row d-flex justify-content-center">
 			<div class="col-10">
 				<h1 class="admin-route-title text-danger text-center fs-1 mt-5">Administration des sorties</h1>
+				{% if message == 'success' %}
+					<div class="alert alert-success text-center" role="alert">La sortie à été supprimée avec succès.</div>
+				{% endif %}
 				<div class="text-end">
 					<a href="/admin/add-route" class="btn btn-danger align-self-right">Ajouter une sortie</a>
 				</div>
