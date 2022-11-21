@@ -1,4 +1,4 @@
--- Active: 1666473831057@@127.0.0.1@3306@papys45
+-- Active: 1665753972491@@127.0.0.1@3306@papys45
 
 -- phpMyAdmin SQL Dump
 
@@ -213,8 +213,7 @@ VALUES (
     ), (
         'C\'est qui ton meilleur ami ?',
         'Mon meilleur ami c\'est GRUMP.'
-    )
-ORDER BY `id` DESC;
+    );
 
 CREATE TABLE
     `member` (

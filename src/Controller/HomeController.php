@@ -15,7 +15,7 @@ class HomeController extends AbstractController
     {
 
         $actualityManager = new ActualityManager();
-        $actualities = $actualityManager->selectAll('title');
+        $actualities = $actualityManager->selectAll('id');
 
         $memberManager = new MemberManager();
         $president = $memberManager->selectOneByRole('president');
