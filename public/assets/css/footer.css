@@ -5,3 +5,8 @@
 .source, .links{
     font-size: 0.75em;
 }
+
+.contactFooter {
+    --margin: 9rem;
+    margin-top: var(--margin) ;
+}
