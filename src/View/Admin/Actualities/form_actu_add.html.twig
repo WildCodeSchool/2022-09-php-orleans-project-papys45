@@ -32,14 +32,14 @@
 				{% endif %}
 				<form action="" method="POST" enctype="multipart/form-data">
 					<div class="form-group m-3">
-						<label class="form-label" for="title">Titre de l'actualité:</label>
-						<input type="text" class="form-control" name="title" id="title" placeholder="Titre de l'actualité" value="{{ actuality.title ?? '' }}" required>
+						<label class="formLabel" for="title">Titre de l'actualité:</label>
+						<input type="text" class="form-control" required name="title" id="title" placeholder="Titre de l'actualité" value="{{actuality.title ?? ''}}">
 					</div>
 
 					<div class="form-group m-3">
 						<label class="formLabel" for="content">Description:
 						</label>
-						<textarea class="form-control formContent" name="content" id="content" rows="3" placeholder="Decrivez ce que contient votre actualité" required>{{ actuality.content ?? '' }}</textarea>
+						<textarea class="form-control formContent" required name="content" id="content" rows="3" placeholder="Decrivez ce que contient votre actualité">{{actuality.content ?? ''}}</textarea>
 					</div>
 
 					<div class="d-flex align-items-center justify-content-between">

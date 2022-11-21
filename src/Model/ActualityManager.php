@@ -25,7 +25,7 @@ class ActualityManager extends AbstractManager
 
     public function selectOneById(int $id): array|false
     {
-        $statement = $this->pdo->prepare("SELECT `id` FROM " . self::TABLE . " WHERE id=:id");
+        $statement = $this->pdo->prepare("SELECT * FROM " . self::TABLE . " WHERE id=:id");
         $statement->bindValue('id', $id, \PDO::PARAM_INT);
         $statement->execute();
 
@@ -34,7 +34,7 @@ class ActualityManager extends AbstractManager
 
     public function update(array $actuality): bool
     {
-        $actuality['id'] = (int) $actuality['id'];
+
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE .
             " SET
         `title` = :title,
