@@ -19,7 +19,7 @@ class AdminRegistrationController extends AbstractController
         $members = $adminMembersManager->selectAll('firstname');
 
         $registrationManager = new RegistrationManager();
-        $registrations = $registrationManager->selectByRouteId($id);
+        $registrations = $registrationManager->selectMembersRegistrered($id);
 
         return $this->twig->render(
             'Admin/registration.html.twig',
@@ -62,7 +62,7 @@ class AdminRegistrationController extends AbstractController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['member_id']);
-            $idRoute = trim($_POST['route_id']);
+
             $registrationManager = new RegistrationManager();
             $registrationManager->deleteByRouteId((int)$idRoute, (int)$id);
 
