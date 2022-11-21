@@ -1,4 +1,4 @@
--- Active: 1665561486420@@127.0.0.1@3306@papys45
+-- Active: 1666473831057@@127.0.0.1@3306@papys45
 
 -- phpMyAdmin SQL Dump
 
@@ -120,7 +120,7 @@ CREATE TABLE
         `difficulty` INT NOT NULL,
         `gpx` VARCHAR(255),
         `description` VARCHAR(255),
-        `rapport` VARCHAR(255)
+        `rapport` TEXT
     );
 
 INSERT INTO
@@ -379,12 +379,20 @@ VALUES (
     );
 
 CREATE TABLE
+    `photo` (
+        `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL UNIQUE,
+        `photo` TEXT,
+        `route_id` int NOT NULL,
+        CONSTRAINT `fk_route` FOREIGN KEY (`route_id`) REFERENCES `route`(id)
+    );
+
+CREATE TABLE
     `registration` (
         `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL UNIQUE,
         `member_id` int NOT NULL,
         `route_id` int NOT NULL,
         CONSTRAINT `fk_member` FOREIGN KEY (`member_id`) REFERENCES `member`(id),
-        CONSTRAINT `fk_route` FOREIGN KEY (`route_id`) REFERENCES `route`(id)
+        CONSTRAINT `fk_route1` FOREIGN KEY (`route_id`) REFERENCES `route`(id) ON DELETE CASCADE
     );
 
 INSERT INTO

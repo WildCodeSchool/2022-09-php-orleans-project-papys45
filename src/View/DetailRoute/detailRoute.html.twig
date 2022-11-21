@@ -135,7 +135,7 @@
 	<div class="container py-5">
 
 		<div class="row">
-
+    
 			{% for index, photo in photos %}
 				<div class="gridImg">
 					<img src="uploads/{{ photo }}" class=" rounded gallery1" alt="photo d'une sortie"/>
@@ -152,9 +152,8 @@
 				<div class="card-body">
 					<p class="card-text px-4 py-2 text-start">
 						{{route.rapport}}</p>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-{% endif %}
-{% endblock %}
+		{% endif %}
+	{% endblock %}
