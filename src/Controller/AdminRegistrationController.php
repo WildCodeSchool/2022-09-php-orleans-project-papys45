@@ -10,6 +10,8 @@ class AdminRegistrationController extends AbstractController
 {
     public function index(int $id): string
     {
+        $this->isAuthorizedToAccess();
+
         $itemRouteManager = new RouteManager();
         $route = $itemRouteManager->selectOneById($id);
 
@@ -31,6 +33,8 @@ class AdminRegistrationController extends AbstractController
 
     public function add($id): string
     {
+        $this->isAuthorizedToAccess();
+
         $itemRouteManager = new RouteManager();
         $route = $itemRouteManager->selectOneById($id);
 

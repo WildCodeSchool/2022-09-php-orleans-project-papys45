@@ -16,6 +16,8 @@ class AddRouteController extends AbstractController
 
     public function add(string $message = ''): ?string
     {
+        $this->isAuthorizedToAccess();
+
         $errors = [];
         $route = [];
 
@@ -101,6 +103,8 @@ class AddRouteController extends AbstractController
 
     public function edit(int $id, string $message = ''): ?string
     {
+        $this->isAuthorizedToAccess();
+
         $errors = [];
         $resultUpload = [];
         $routeManager = new RouteManager();
