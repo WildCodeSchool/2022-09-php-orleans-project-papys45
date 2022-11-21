@@ -1,0 +1,21 @@
+@font-face {
+    font-family: 'Syncopate';
+    src: url("../font/Syncopate/Syncopate-Regular.ttf") format("truetype"),
+        url("../font/Syncopate/Syncopate-Bold.ttf") format("truetype")
+}
+@font-face {
+    font-family: 'Paytone_One';
+    src: url("../font/Paytone_One/PaytoneOne-Regular.ttf") format("truetype")
+}
+@font-face {
+    font-family: 'Telex';
+    src: url("../font/Telex/Telex-Regular.ttf") format("truetype")
+}
+:root {
+    --tool-font: 'Syncopate';
+    --content-font: 'Telex';
+    --title-font: 'Paytone_One';
+}
+body { 
+    padding-top: 6rem;
+}
