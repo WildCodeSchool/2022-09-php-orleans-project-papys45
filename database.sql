@@ -213,7 +213,8 @@ VALUES (
     ), (
         'C\'est qui ton meilleur ami ?',
         'Mon meilleur ami c\'est GRUMP.'
-    );
+    )
+ORDER BY `id` DESC;
 
 CREATE TABLE
     `member` (
