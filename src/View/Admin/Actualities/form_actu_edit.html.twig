@@ -27,11 +27,12 @@
 		<div class="row d-flex justify-content-center">
 			<div class="col-lg-6">
 
-            {% if message == 'success' %}
+				{% if message == 'success' %}
 					<div class="alert alert-success text-center" role="alert">Votre actualité a bien été modifiée.</div>
 				{% endif %}
+
 				<form action="" method="POST">
-                <input type="hidden" value="{{ actuality.id }}" name="id">
+					<input type="hidden" value="{{ actuality.id }}" name="id">
 					<div class="form-group m-3">
 						<label class="form-label" for="title">Titre de l'actualité:</label>
 						<input type="text" class="form-control" name="title" id="title" placeholder="Titre de l'actualité" value="{{ actuality.title ?? '' }}" required>
@@ -53,5 +54,4 @@
 			</form>
 		</div>
 	</div>
-</div>
-{% endblock %}
+</div>{% endblock %}

@@ -22,7 +22,7 @@ class AdminActuController extends AbstractController
         );
     }
 
-    public function add(string $actuality = ''): string
+    public function add(string $message = '', $actuality = ''): string
     {
         $actuality = [];
         $errors = [];
@@ -46,7 +46,7 @@ class AdminActuController extends AbstractController
                 $adminActuManager = new ActualityManager();
                 $adminActuManager->add($actuality);
 
-                header("Location: /admin/actualites?message=success");
+                header("Location: /admin/actualites/ajouter?message=success");
 
                 return '';
             }
@@ -56,12 +56,13 @@ class AdminActuController extends AbstractController
             'Admin/Actualities/form_actu_add.html.twig',
             [
                 'errors' => $errors,
+                'message' => $message,
                 'actuality' => $actuality,
             ]
         );
     }
 
-    public function update(int $id, string $actuality = ''): ?string
+    public function update(int $id, string $message = '', string $actuality = ''): ?string
     {
         $errors = [];
         $actualityManager = new ActualityManager();
@@ -84,19 +85,17 @@ class AdminActuController extends AbstractController
 
             if (empty($errors)) {
                 $actualityManager->update($actuality);
-                header('location: /admin/actualites?id=' . $id . '&message=success');
+                header('location: /admin/actualites/editer?id=' . $id . '&message=success');
 
                 return '';
             }
         }
 
-        return $this->twig->render(
-            'Admin/Actualities/form_actu_edit.html.twig',
-            [
-                'errors' => $errors,
-                'actuality' => $actuality,
-            ]
-        );
+        return $this->twig->render('Admin/Actualities/form_actu_edit.html.twig', [
+            'errors' => $errors,
+            'message' => $message,
+            'actuality' => $actuality,
+        ]);
     }
 
     public function delete(): void
