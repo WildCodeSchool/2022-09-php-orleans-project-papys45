@@ -66,7 +66,7 @@ class AdminActuController extends AbstractController
         );
     }
 
-    public function update(int $id, string $message = '', string $actuality = ''): ?string
+    public function update(int $id, string $message = '', string $actuality = ''): string
     {
         $this->isAuthorizedToAccess();
 
@@ -76,6 +76,10 @@ class AdminActuController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $actuality = array_map('trim', $_POST);
+
+            if (isset($actuality['title'])) {
+                $errors[] = 'Le titre n\'est pas conforme';
+            }
 
             if (empty($actuality['title'])) {
                 $errors[] = 'Veuillez renseigner un titre';
@@ -98,6 +102,7 @@ class AdminActuController extends AbstractController
         }
 
         return $this->twig->render('Admin/Actualities/form_actu_edit.html.twig', [
+            'id' => $id,
             'errors' => $errors,
             'message' => $message,
             'actuality' => $actuality,
