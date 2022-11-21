@@ -1,4 +1,4 @@
--- Active: 1666473831057@@127.0.0.1@3306@papys45
+-- Active: 1665753972491@@127.0.0.1@3306@papys45
 
 -- phpMyAdmin SQL Dump
 
@@ -391,8 +391,8 @@ CREATE TABLE
         `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL UNIQUE,
         `member_id` int NOT NULL,
         `route_id` int NOT NULL,
-        CONSTRAINT `fk_member` FOREIGN KEY (`member_id`) REFERENCES `member`(id),
-        CONSTRAINT `fk_route1` FOREIGN KEY (`route_id`) REFERENCES `route`(id)
+        CONSTRAINT `fk_member` FOREIGN KEY (`member_id`) REFERENCES `member`(id) ON DELETE CASCADE,
+        CONSTRAINT `fk_route1` FOREIGN KEY (`route_id`) REFERENCES `route`(id) ON DELETE CASCADE
     );
 
 INSERT INTO
