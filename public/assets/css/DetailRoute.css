@@ -7,6 +7,9 @@
 
 }
 
+.tool-font {
+    font-family: var(--tool-font);
+}
 
 .card-img-top {
 
@@ -27,7 +30,7 @@
  } 
 
 .icon {
-    max-width: 3rem;
+    max-width: 2rem;
     height: auto;
 }
 
