@@ -54,7 +54,7 @@ class AddRouteController extends AbstractController
             $errors[] = 'La distance doit être positive.';
         }
 
-        if (!is_int($route['distance'])) {
+        if (!intval($route['distance'])) {
             $errors[] = 'La distance doit être un entier.';
         }
 
