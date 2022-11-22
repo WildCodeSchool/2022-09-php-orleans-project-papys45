@@ -398,3 +398,37 @@ CREATE TABLE
 INSERT INTO
     `registration`(`member_id`, `route_id`)
 VALUES (1, 2), (1, 3), (2, 1), (3, 1), (4, 1), (5, 1), (6, 1), (7, 1), (8, 1), (9, 1), (10, 1), (11, 1);
+
+CREATE TABLE
+    `description` (
+        `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL UNIQUE,
+        `text` VARCHAR(255)
+    );
+
+INSERT INTO
+    `description` (`text`)
+VALUES (
+        'Une courte description de la sortie.
+        Passage par la jolie ville de St Cyr en Val, ravitaillement prévu par la femme de Bernard.'
+    ), (
+        'Sortie sous une pluie battante.
+        Pensez à prendre vos gilets de sécurité et les signes de visibilité nécessaires.'
+    ), (
+        'Journée magnifique pour circuler.
+        Températures négatives prévues, pensez à vous couvrir suffisamment pour éviter les coups de froid.'
+    );
+
+CREATE TABLE
+    `report` (
+        `id` int PRIMARY KEY AUTO_INCREMENT NOT NULL UNIQUE,
+        `record` VARCHAR(255)
+    );
+
+INSERT INTO `report` (`record`)
+VALUES (
+        'Une belle journée d\'automne.
+Nous nous sommes arrêtés pour le ravitaillement devant le moulin. Profitant du soleil, nous avons circulé sans encombre.'
+    ), (
+        'La route était difficile.
+        Beaucoup de voitures sur ce tracé et avec la pluie, notre vitesse moyenne en a été diminuée.'
+    );
