@@ -8,12 +8,12 @@
 {% endblock %}
 
 {% block content %}
-	<h1 class="display-4 fw-bold text-danger text-center py-5">
-		{{ "Modifier une sortie"|upper }}</h1>
 
-	<div class="container mt-2">
+	<div class="container mt-5">
 		<div class="d-flex justify-content-center">
 			<div class="col-lg-6">
+				<h1 class="admin-routeedit-title fw-bold text-danger text-center fs-1 mt-5">
+					{{ "Modifier une sortie"|upper }}</h1>
 				<form method="post" enctype="multipart/form-data">
 					{% if message == 'success' %}
 						<div class="alert alert-success text-center" role="alert">Opération réalisée avec succès.</div>
