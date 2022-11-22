@@ -95,7 +95,7 @@ class AdminMemberController extends AbstractController
             $errors[] = 'La date de naissance ne peut pas être dans le futur !';
         }
 
-        if (!$dateOfBirth::getLastErrors()) {
+        if ($dateOfBirth::getLastErrors()) {
             $errors[] = 'La date d\'anniversaire est incorrecte.';
         }
 
