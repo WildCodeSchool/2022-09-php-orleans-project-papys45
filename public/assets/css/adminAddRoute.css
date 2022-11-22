@@ -1,8 +1,12 @@
 .groupPhoto {
-    --heightPhoto:100px;
+    --heightPhoto: 100px;
     height: var(--heightPhoto);
 }
 
-.font-title{
+.font-title {
+    font-family: var(--title-font);
+}
+
+.admin-routeedit-title {
     font-family: var(--title-font);
 }
