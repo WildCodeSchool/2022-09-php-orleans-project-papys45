@@ -4,7 +4,7 @@
 	<link rel="stylesheet" href="/assets/css/actuality.css">
 {% endblock %}
 
-{% block title %}Modifier une actualité
+{% block title %}Modifier une information
 {% endblock %}
 
 {% block content %}
@@ -12,7 +12,7 @@
 	<div class="container mt-5">
 		<div class="row d-flex justify-content-center">
 			<div class="col-lg-8 ">
-				<h1 class="actu-title text-danger text-center fs-1 mt-5">{{ "modifier une actualité"|upper }}</h1>
+				<h1 class="actu-title text-danger text-center fs-1 mt-5">{{ "modifier une information"|upper }}</h1>
 				<ul class="text-center mt-5">
 					{% for error in errors %}
 						<li class="text-danger">
@@ -28,13 +28,13 @@
 			<div class="col-lg-6">
 
 				{% if message == 'success' %}
-					<div class="alert alert-success text-center" role="alert">Votre actualité a bien été modifiée.</div>
+					<div class="alert alert-success text-center" role="alert">Votre information a bien été modifiée.</div>
 				{% endif %}
 
 				<form action="" method="POST" enctype="multipart/form-data">
 					<input type="hidden" value="{{ actuality.id }}" name="id">
 					<div class="form-group m-3">
-						<label class="formLabel" for="title">Titre de l'actualité:</label>
+						<label class="formLabel" for="title">Titre de l'information:</label>
 						<input type="text" class="form-control" name="title" id="title" placeholder="Modifier le titre ici" value="{{ actuality.title ?? ''}}" required/>
 					</div>
 
@@ -47,7 +47,7 @@
 						<button type="submit" class="btn btn-danger m-3" href="/admin/actualites/editer?id={{ actuality.id }}">Modifier</button>
 						<a class="actu-btn btn btn-outline-secondary m-3" href="/admin/actualites">Retour</a>
 					</div>
-          
+
 				</div>
 			</form>
 		</div>
