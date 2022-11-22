@@ -42,7 +42,7 @@
 										<div class="col title-font fs-6 txt mt-2 ms-2"><p class="m-0 col  text-start">{{route.finish}}</p>
 										</div>
 										<div class="col tool-font fs-6 mt-4 text-secondary text-wrap d-flex justify-self-center"><img class="icon col me-1 icon-red opacity-75" src="/assets/images/ravito.svg" alt="cocktail icon">{{'Ravito'|upper}}</div>
-										<div class="col title-font fs-6 txt mt-2 ms-2 mb-md-2"><p class="m-0 col  text-start">{{route.ravito}}</p>
+										<div class="col title-font fs-6 txt mt-2 ms-2 mb-md-2"><p class="m-0 col  text-start">{{route.ravito is empty? 'Sans ravito' : route.ravito}}</p>
 										</div>
 									</div>
 
