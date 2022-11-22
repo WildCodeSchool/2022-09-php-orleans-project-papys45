@@ -4,11 +4,14 @@
 	<link rel="stylesheet" href="/assets/css/adminRoute.css">
 {% endblock %}
 
+{% block title %}Liste des Sorties
+{% endblock %}
+
 {% block content %}
 	<div class="container mt-5">
 		<div class="row d-flex justify-content-center">
 			<div class="col-10">
-				<h1 class="admin-route-title text-danger text-center fs-1 mt-5">Administration des sorties</h1>
+				<h1 class="admin-route-title text-danger text-center fs-1 mt-5">{{ "administration des sorties"|upper }}</h1>
 				{% if message == 'success' %}
 					<div class="alert alert-success text-center" role="alert">La sortie à été supprimée avec succès.</div>
 				{% endif %}
@@ -40,7 +43,8 @@
 									<a class="btn btn-outline-warning btn-sm" href="/admin/inscription?id={{route.id}}">Participant</a>
 								</td>
 								<td>
-									<a href="/admin/modif-route?id={{route.id}}" class="btn btn-outline-warning btn-sm">Editer</a>
+									<a href="/admin/modif-route?id={{route.id}}" class="btn btn-outline-warning btn-sm">Modifier
+									</a>
 								</td>
 								<td>
 									<button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Modal{{route.id}}">

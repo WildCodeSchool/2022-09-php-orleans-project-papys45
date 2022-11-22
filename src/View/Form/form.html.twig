@@ -3,13 +3,15 @@
 {% block stylesheet %}
 	<link rel="stylesheet" href="/assets/css/form.css">
 {% endblock %}
+{% block title %}Formulaire de contact
+{% endblock %}
 
 {% block content %}
 
 	<div class="container mt-5">
 		<div class="row d-flex justify-content-center">
 			<div class="col-lg-8 ">
-				<h1 class="formTitle text-danger text-center fs-1 mt-5">FORMULAIRE DE CONTACT</h1>
+				<h1 class="formTitle text-danger text-center fs-1 mt-5">{{ "formulaire de contact"|upper }}</h1>
 				<ul class="text-center mt-5">
 					{% for error in errors %}
 						<li class="text-danger">
@@ -44,7 +46,7 @@
 					</div>
 					<div class="form-group mt-2">
 						<label class="formLabel" for="message">Votre message :</label>
-						<textarea class="form-control formContent" name="message" id="message" rows="3" placeholder="Ecrivez votre message ici ..." required>{{ contact.message ?? '' }}</textarea>
+						<textarea class="form-control formContent" name="message" id="message" rows="3" placeholder="Ecrivez votre message ici ..." required>{{ contact.message ?? '' |nl2br }}</textarea>
 					</div>
 					<button type="submit" class="btn btn-danger mt-2">Envoyez</button>
 				</form>

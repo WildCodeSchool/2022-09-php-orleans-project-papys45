@@ -13,7 +13,7 @@
 }
 
 .officeCard {
-    --officeCardWidth: 150px;
+    --officeCardWidth: 200px;
     width: var(--officeCardWidth);
 }
 
