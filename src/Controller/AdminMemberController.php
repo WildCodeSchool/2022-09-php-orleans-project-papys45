@@ -87,11 +87,15 @@ class AdminMemberController extends AbstractController
     private function controlDateOfBirth(string $memberDateOfBirth): array
     {
         $errors = [];
-        $dateOfBirth = new DateTime();
+        $dateOfBirth = $now = new DateTime();
         $date = explode("-", $memberDateOfBirth);
         $dateOfBirth->setDate(intval($date[0]), intval($date[1]), intval($date[2]));
 
-        if (!$dateOfBirth::getLastErrors()) {
+        if ($dateOfBirth >= $now) {
+            $errors[] = 'La date de naissance ne peut pas être dans le futur !';
+        }
+
+        if ($dateOfBirth::getLastErrors()) {
             $errors[] = 'La date d\'anniversaire est incorrecte.';
         }
 
