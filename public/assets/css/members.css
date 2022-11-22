@@ -21,3 +21,9 @@
     --membersCardWidth: 100px;
     width: var(--membersCardWidth);
 }
+
+.memberPhoto{
+    object-fit: cover;
+        aspect-ratio: 1/1;
+
+}
