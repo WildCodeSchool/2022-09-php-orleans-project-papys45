@@ -12,10 +12,13 @@ class AddRouteController extends AbstractController
     public const UPLOAD_DIR = 'uploads/';
     public const MAX_FILE_SIZE = 1000000;
     public const AUTH_EXTENSION = ['jpg', 'png', 'jpeg'];
+    public const DIFFICULTIES = [1 => 'Facile', 2 => 'Moyen', 3 => 'Difficile'];
 
 
-    public function add(): ?string
+    public function add(string $message = ''): ?string
     {
+        $this->isAuthorizedToAccess();
+
         $errors = [];
         $route = [];
 
@@ -27,10 +30,18 @@ class AddRouteController extends AbstractController
                 $routeManager = new RouteManager();
                 $routeManager->insert($route);
 
-                header('Location: /admin/add-route');
+                header('Location: /admin/add-route?message=success');
             }
         }
-        return $this->twig->render('Admin/AddRouteForm.html.twig', ['errors' => $errors, 'route' => $route]);
+        return $this->twig->render(
+            'Admin/AddRouteForm.html.twig',
+            [
+                'errors' => $errors,
+                'route' => $route,
+                'message' => $message,
+                'difficulties' => self::DIFFICULTIES,
+            ]
+        );
     }
 
 
@@ -96,8 +107,10 @@ class AddRouteController extends AbstractController
         return $errors;
     }
 
-    public function edit(int $id): ?string
+    public function edit(int $id, string $message = ''): ?string
     {
+        $this->isAuthorizedToAccess();
+
         $errors = [];
         $resultUpload = [];
         $routeManager = new RouteManager();
@@ -119,8 +132,8 @@ class AddRouteController extends AbstractController
             $errors = array_merge($this->verifyLength($route), $errors);
 
             if (empty($errors)) {
+                $route['id'] = $id;
                 $routeManager->update($route);
-
 
                 header('location: /admin/modif-route?id=' . $id . '&message=success');
                 return null;
@@ -133,7 +146,9 @@ class AddRouteController extends AbstractController
             [
                 'route' => $route,
                 'errors' => $errors,
-                'photos' => $photos
+                'photos' => $photos,
+                'message' => $message,
+                'difficulties' => self::DIFFICULTIES,
             ]
         );
     }

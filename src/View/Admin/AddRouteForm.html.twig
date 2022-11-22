@@ -1,20 +1,23 @@
 {% extends "layoutAdmin.html.twig" %}
 
-{% block title %}Les Papys 45 - Ajout d'une sortie
-{% endblock %}
 
 {% block stylesheet %}
 	<link rel="stylesheet" href="/assets/css/adminAddRoute.css">
 {% endblock %}
 
 {% block content %}
+{% block title %}Ajouter une sortie
+{% endblock %}
 
 
 	<h1 class="display-4 fw-bold text-danger text-center py-5">
-		AJOUTER UNE SORTIE</h1>
+		{{ "ajouter une sortie"|upper }}</h1>
 
 	<div class="container">
 		<form method="post">
+			{% if message == 'success' %}
+				<div class="alert alert-success text-center" role="alert">Opération réalisée avec succès.</div>
+			{% endif %}
 
 			<ul class="text-center text-danger">
 				{% for error in errors %}

@@ -10,13 +10,13 @@
 {% block content %}
 	<header class="header d-flex justify-content-end align-items-end">
 		<div class="m-5">
-			<h1 class="text-light">LES PAPYS 45</h1>
+			<h1 class="text-light">{{ "les papys 45"|upper }}</h1>
 			<h2 class="text-light">Association cycliste</h2>
 		</div>
 	</header>
-	<div class="row pt-5">
+	<div class="row pt-5 mx-0">
 		<div class="speech d-flex flex-column align-items-center container mt-5">
-			<h2 class="text-danger fs-1 d-none d-sm-block">ACTUALITES</h2>
+			<h2 class="text-danger fs-1 d-none d-sm-block">INFORMATIONS</h2>
 		</div>
 	</div>
 	{% include 'Home/_news.html.twig' %}
@@ -24,7 +24,7 @@
 
 	<div class="speech d-flex flex-column align-items-center container my-5 ">
 		<h2 class="text-danger fs-1 d-none d-sm-block mt-5">LE MOT DU PRESIDENT</h2>
-		<div class="story col-10 col-md-8 col-lg-6 mt-5 position-relative pt-3 shadow">
+		<div class="story col-10 col-md-8 col-lg-6 mt-5 pt-3 bg-white shadow">
 			<div class="image position-relative">
 				<img class="rounded-circle float-sm-left img-fluid position-absolute top-0 start-0 translate-middle shadow" src="{{ president.photo is empty ? '/assets/images/default.svg' : '/uploads/' ~ president.photo }}" alt="Président">
 			</div>

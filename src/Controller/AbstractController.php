@@ -31,4 +31,12 @@ abstract class AbstractController
         $this->user = isset($_SESSION['user_id']) ? $userManager->selectOneById($_SESSION['user_id']) : false;
         $this->twig->addGlobal('user', $this->user);
     }
+
+    public function isAuthorizedToAccess()
+    {
+        if (!isset($_SESSION['user_id'])) {
+            header('HTTP/1.1 401 Unauthorized');
+            header('Location: /error?code=401');
+        }
+    }
 }
