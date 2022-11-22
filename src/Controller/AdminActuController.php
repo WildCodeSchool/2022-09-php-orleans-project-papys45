@@ -9,7 +9,7 @@ class AdminActuController extends AbstractController
 {
     public const MAX_LENGTH = 255;
 
-    public function index(): string
+    public function index(string $message = ''): string
     {
         $this->isAuthorizedToAccess();
 
@@ -19,7 +19,8 @@ class AdminActuController extends AbstractController
         return $this->twig->render(
             'Admin/Actualities/admin_actuality.html.twig',
             [
-                'actualities' => $actualities
+                'actualities' => $actualities,
+                'message' => $message,
             ]
         );
     }

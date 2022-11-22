@@ -58,10 +58,9 @@
 				<label for="difficulty" class="col-sm-2 col-form-label">Modifier la difficulté :</label>
 				<div class="col-sm-10">
 					<select class="form-select" name="difficulty" id="difficulty">
-						<option value="0" selected>Ouvrez le menu de sélection</option>
-						<option value="1">Facile</option>
-						<option value="2">Moyen</option>
-						<option value="3">Difficile</option>
+						{% for difficultyKey, difficulty in difficulties %}
+							<option value="{{ difficultyKey }}" {% if route.difficulty is defined and route.difficulty is same as difficultyKey %} selected {% endif %}>{{difficulty}}</option>
+						{% endfor %}
 					</select>
 				</div>
 			</div>
