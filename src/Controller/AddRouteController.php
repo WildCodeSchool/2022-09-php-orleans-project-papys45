@@ -26,6 +26,7 @@ class AddRouteController extends AbstractController
             $route = array_map('trim', $_POST);
             $errors = array_merge($this->verifempty($route), $errors);
             $errors = array_merge($this->verifyLength($route), $errors);
+            $errors = array_merge($this->verifOther($route), $errors);
 
             if (empty($errors)) {
                 $routeManager = new RouteManager();
@@ -45,7 +46,24 @@ class AddRouteController extends AbstractController
         );
     }
 
+    private function verifOther(array $route): array
+    {
+        $errors = [];
 
+        if ($route['distance'] < 0) {
+            $errors[] = 'La distance doit être positive.';
+        }
+
+        if (!is_int($route['distance'])) {
+            $errors[] = 'La distance doit être un entier.';
+        }
+
+        if (!key_exists($route['difficulty'], self::DIFFICULTIES)) {
+            $errors[] = 'La difficulté n\'est pas conforme.';
+        }
+
+        return $errors;
+    }
 
     private function verifempty(array $route)
     {
@@ -65,9 +83,6 @@ class AddRouteController extends AbstractController
         }
         if (empty($route['distance'])) {
             $errors[] = 'La distance est  obligatoire.';
-        }
-        if ($route['difficulty'] === '0') {
-            $errors[] = 'La difficulté est obligatoire.';
         }
         if (empty($route['gpx'])) {
             $errors[] = 'L\'id est obligatoire.';
@@ -129,6 +144,7 @@ class AddRouteController extends AbstractController
 
             $errors = array_merge($this->verifempty($route), $errors);
             $errors = array_merge($this->verifyLength($route), $errors);
+            $errors = array_merge($this->verifOther($route), $errors);
 
             if (empty($errors)) {
                 $route['id'] = $id;
