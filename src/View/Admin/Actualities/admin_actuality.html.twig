@@ -22,6 +22,9 @@
 					<thead>
 						<tr>
 							<th scope="col" class="col-md-4">Titre de l'actualité</th>
+							{% if message == 'success' %}
+								<div class="alert alert-success text-center" role="alert">Opération réalisée avec succès.</div>
+							{% endif %}
 							<th scope="col" class="col-md-4">Contenu</th>
 						</tr>
 					</thead>
@@ -36,7 +39,7 @@
 								<td>
 									<button type="button" class="actu-btn btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Modal{{actuality.id}}">Supprimer</button>
 
-                                    <div class="modal fade" tabindex="-1" id="Modal{{actuality.id}}">
+									<div class="modal fade" tabindex="-1" id="Modal{{actuality.id}}">
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
@@ -52,12 +55,17 @@
 													<form action="/admin/actualites/supprimer" method="post">
 														<input type="hidden" name="id" value="{{ actuality.id }}">
 														<button class="btn btn-outline-danger btn-sm" method="post">Supprimer</button>
+													</td>
+												</tr>
+											{% endfor %}
+										</tbody>
+									</table>
 								</td>
 							</tr>
-						{% endfor %}
+						</div>
 					</tbody>
-				</table>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>{% endblock %}{% block javascript %}{% endblock %}
+	{% endblock %}
+	{% block javascript %}{% endblock %}
