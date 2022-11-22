@@ -24,8 +24,9 @@ class AddRouteController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $route = array_map('trim', $_POST);
-            $errors = $this->verifempty($route);
-            $errors = $this->verifyLength($route);
+            $errors = array_merge($this->verifempty($route), $errors);
+            $errors = array_merge($this->verifyLength($route), $errors);
+
             if (empty($errors)) {
                 $routeManager = new RouteManager();
                 $routeManager->insert($route);
@@ -78,8 +79,6 @@ class AddRouteController extends AbstractController
     {
 
         $errors = [];
-
-        $errors = $this->verifEmpty($route);
 
         if (strlen($route['start']) > self::MAX_LENGTH) {
             $errors[] = 'Le lieu de départ ne doit pas dépasser' . ' ' . self::MAX_LENGTH . ' ' . 'caractères.';
