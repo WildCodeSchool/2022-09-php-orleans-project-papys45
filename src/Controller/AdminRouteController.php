@@ -6,14 +6,14 @@ use App\Model\RouteManager;
 
 class AdminRouteController extends AbstractController
 {
-    public function index(): string
+    public function index(string $message = ''): string
     {
         $this->isAuthorizedToAccess();
 
         $routeManager = new RouteManager();
         $route = $routeManager->selectAll('date', 'DESC');
 
-        return $this->twig->render('AdminRoute/adminRoute.html.twig', ['routes' => $route]);
+        return $this->twig->render('AdminRoute/adminRoute.html.twig', ['routes' => $route, 'message' => $message]);
     }
 
     public function delete(): void
@@ -25,7 +25,7 @@ class AdminRouteController extends AbstractController
             $routeManager = new RouteManager();
             $routeManager->delete((int)$id);
 
-            header('Location: /admin/route');
+            header('Location: /admin/route?message=success');
         }
     }
 }

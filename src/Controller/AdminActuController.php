@@ -9,7 +9,7 @@ class AdminActuController extends AbstractController
 {
     public const MAX_LENGTH = 255;
 
-    public function index(): string
+    public function index(string $message = ''): string
     {
         $this->isAuthorizedToAccess();
 
@@ -19,7 +19,8 @@ class AdminActuController extends AbstractController
         return $this->twig->render(
             'Admin/Actualities/admin_actuality.html.twig',
             [
-                'actualities' => $actualities
+                'actualities' => $actualities,
+                'message' => $message,
             ]
         );
     }
@@ -76,10 +77,6 @@ class AdminActuController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $actuality = array_map('trim', $_POST);
-
-            if (isset($actuality['title'])) {
-                $errors[] = 'Le titre n\'est pas conforme';
-            }
 
             if (empty($actuality['title'])) {
                 $errors[] = 'Veuillez renseigner un titre';
