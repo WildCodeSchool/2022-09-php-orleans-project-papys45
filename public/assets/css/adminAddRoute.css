@@ -2,3 +2,7 @@
     --heightPhoto:100px;
     height: var(--heightPhoto);
 }
+
+.font-title{
+    font-family: var(--title-font);
+}
