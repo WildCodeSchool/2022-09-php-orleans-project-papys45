@@ -12,6 +12,7 @@ class AddRouteController extends AbstractController
     public const UPLOAD_DIR = 'uploads/';
     public const MAX_FILE_SIZE = 1000000;
     public const AUTH_EXTENSION = ['jpg', 'png', 'jpeg'];
+    public const DIFFICULTIES = [1 => 'Facile', 2 => 'Moyen', 3 => 'Difficile'];
 
 
     public function add(string $message = ''): ?string
@@ -34,7 +35,12 @@ class AddRouteController extends AbstractController
         }
         return $this->twig->render(
             'Admin/AddRouteForm.html.twig',
-            ['errors' => $errors, 'route' => $route, 'message' => $message]
+            [
+                'errors' => $errors,
+                'route' => $route,
+                'message' => $message,
+                'difficulties' => self::DIFFICULTIES,
+            ]
         );
     }
 
@@ -141,7 +147,8 @@ class AddRouteController extends AbstractController
                 'route' => $route,
                 'errors' => $errors,
                 'photos' => $photos,
-                'message' => $message
+                'message' => $message,
+                'difficulties' => self::DIFFICULTIES,
             ]
         );
     }
