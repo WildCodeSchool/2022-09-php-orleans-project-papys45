@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-	<div class="container mt-5">
+	<div class="container-fluid mt-5">
 		<div class="row d-flex justify-content-center">
 			<div class="col-10">
 				<h1 class="officeTitle text-danger text-center mt-5">LE BUREAU</h1>
@@ -16,7 +16,7 @@
 							<div class="card-body">
 								<p class="officeContent card-text text-center m-0 p-0 fw-bold fs-6">{{ member.firstname }}</p>
 								<p class="officeContent card-text text-center m-0 p-0 fw-bold fs-6">{{ member.lastname }}</p>
-								<p class="officeContent card-text text-center m-0 p-0 fw-bold text-danger">{{ constant('App\\Controller\\AdminMemberController::ROLES')[member.role] }}</p>
+								<p class="officeContent card-text text-center m-0 p-0 fw-bold fs-6 text-danger">{{ constant('App\\Controller\\AdminMemberController::ROLES')[member.role] }}</p>
 								<p class="officeContent card-text text-center m-0 p-0">
 									{% set difference = date( now | date() ).diff(date(member.dateOfBirth)) %}
 									{% set years = difference.y %}
