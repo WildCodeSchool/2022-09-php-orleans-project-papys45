@@ -108,6 +108,7 @@ class AdminMemberController extends AbstractController
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $member = array_map('trim', $_POST);
             $errors = array_merge($this->verification($member), $errors);
+            $errors = array_merge($this->verifEmpty($member), $errors);
             $errors = array_merge($this->controlDateOfBirth($member['dateOfBirth']), $errors);
             $errors = array_merge($this->roleVerification($member['role']), $errors);
 
@@ -151,9 +152,11 @@ class AdminMemberController extends AbstractController
             $uploadResult = $this->uploadFile();
             $errors = $uploadResult[0];
             $member['photo'] = $uploadResult[1];
+            $errors = array_merge($this->verification($member), $errors);
+            $errors = array_merge($this->verifEmpty($member), $errors);
 
             if ($lastRole != $member['role']) {
-                $errors = array_merge($this->roleVerification($member['role']));
+                $errors = array_merge($this->roleVerification($member['role']), $errors);
             }
 
             if (
@@ -219,8 +222,6 @@ class AdminMemberController extends AbstractController
     {
         $errors = [];
 
-        $errors = $this->verifEmpty($member, $errors);
-
         if (strlen($member['firstname']) > self::MAX_FIRSTNAME_LENGTH) {
             $errors[] = 'Le prénom doit être inférieur à ' . self::MAX_FIRSTNAME_LENGTH . ' caractères';
         }
@@ -244,14 +245,15 @@ class AdminMemberController extends AbstractController
         return $errors;
     }
 
-    private function verifEmpty(array $member, array $errors): array
+    private function verifEmpty(array $member): array
     {
+        $errors = [];
         if (empty($member['firstname'])) {
             $errors[] = 'Le prénom est obligatoire';
         }
 
         if (empty($member['lastname'])) {
-            $errors[] = 'Le prénom est obligatoire';
+            $errors[] = 'Le nom est obligatoire';
         }
 
         if (empty($member['role'])) {
