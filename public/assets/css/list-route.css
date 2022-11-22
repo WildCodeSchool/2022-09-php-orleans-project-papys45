@@ -1,4 +1,4 @@
-.display-4{
+.fs-1{
     font-family: var(--title-font);
 }
 
@@ -21,10 +21,11 @@
 }
 
 .icon {
-    max-width: 2rem;
+    max-width: 1.5rem;
     height: auto;
     justify-content: flex-start;
     align-items: flex-start;
+    vertical-align: text-top;
 }
 
 .title-font {
