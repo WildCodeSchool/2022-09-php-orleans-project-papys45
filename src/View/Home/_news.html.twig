@@ -13,7 +13,7 @@
 							<img src="/assets/images/actu{{loop.index0 % 3}}.png" class="d-block w-100" alt="une image en lien avec le vélo">
 							<div class="carousel-caption d-md-block bg-danger rounded">
 								<h3 class="carousel_title">{{ actuality.title }}</h3>
-								<p class="carousel_content px-2">{{ actuality.content }}</p>
+								<p class="carousel_content px-2">{{ actuality.content|nl2br }}</p>
 							</div>
 						</div>
 					{% endfor %}
