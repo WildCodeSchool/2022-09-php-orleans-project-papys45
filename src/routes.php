@@ -27,7 +27,7 @@ return [
     'admin/actualites/editer' => ['AdminActuController', 'update', ['id', 'message']],
     'admin/actualites/ajouter' => ['AdminActuController', 'add', ['message']],
     'admin/actualites/supprimer' => ['AdminActuController', 'delete'],
-    'admin/route' => ['AdminRouteController', 'index'],
+    'admin/route' => ['AdminRouteController', 'index', ['message']],
     'admin/deleteRoute' => ['AdminRouteController', 'delete'],
     'admin/add-route' => ['AddRouteController', 'add', ['message']],
     'admin/modif-route' => ['AddRouteController', 'edit', ['id', 'message']],
