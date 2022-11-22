@@ -25,14 +25,12 @@
 							{% if message == 'success' %}
 								<div class="alert alert-success text-center" role="alert">Opération réalisée avec succès.</div>
 							{% endif %}
-							<th scope="col" class="col-md-4">Contenu</th>
 						</tr>
 					</thead>
 					<tbody>
 						{% for actuality in actualities %}
 							<tr>
-								<td class="col-md-3">{{ actuality.title }}</td>
-								<td class="col-md-6">{{ actuality.content }}</td>
+								<td class="col-md-9">{{ actuality.title }}</td>
 								<td>
 									<a href="/admin/actualites/editer?id={{ actuality.id }}" class="btn btn-outline-warning btn-sm">Modifier
 									</a>
