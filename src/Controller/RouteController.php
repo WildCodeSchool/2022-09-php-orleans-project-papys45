@@ -24,14 +24,15 @@ class RouteController extends AbstractController
 
     public function showRoute(int $id): string
     {
-        $photoManager = new PhotoManager();
-        $routeWithPhotos = $photoManager->selectOneByIdWithPhoto($id);
-        $route = $routeWithPhotos[0];
-        $photos = array_column($routeWithPhotos, 'photo');
+        $registrationManager = new RegistrationManager();
+        $members = $registrationManager->selectMembersRegistrered($id);
+
+        $itemManager = new RouteManager();
+        $route = $itemManager->selectOneById($id);
 
         return $this->twig->render(
             'DetailRoute/detailRoute.html.twig',
-            ['route' => $route, 'photos' => $photos]
+            ['route' => $route, 'members' => $members]
         );
     }
 }

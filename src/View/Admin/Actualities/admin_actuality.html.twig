@@ -4,7 +4,7 @@
 	<link rel="stylesheet" href="/assets/css/actuality.css">
 {% endblock %}
 
-{% block title %}PAPYS45 - ADMIN ACTUALITES
+{% block title %}Liste des Actualités
 {% endblock %}
 
 {% block content %}
@@ -12,7 +12,7 @@
 	<div class="actu-container container mt-5">
 		<div class="row d-flex justify-content-center">
 			<div class="col-10">
-				<h1 class="actu-title text-center fs-1 mt-5 text-danger">{{ "administration - actualités"|upper }}</h1>
+				<h1 class="actu-title text-center fs-1 mt-5 text-danger">{{ "administration des actualités"|upper }}</h1>
 
 				<div class="text-end">
 					<a href="/admin/actualites/ajouter" class="actu-btn btn btn-danger align-self-right">Ajouter</a>
@@ -22,6 +22,9 @@
 					<thead>
 						<tr>
 							<th scope="col" class="col-md-4">Titre de l'actualité</th>
+							{% if message == 'success' %}
+								<div class="alert alert-success text-center" role="alert">Opération réalisée avec succès.</div>
+							{% endif %}
 							<th scope="col" class="col-md-4">Contenu</th>
 						</tr>
 					</thead>
@@ -31,12 +34,13 @@
 								<td class="col-md-3">{{ actuality.title }}</td>
 								<td class="col-md-6">{{ actuality.content }}</td>
 								<td>
-									<a href="/admin/actualites/editer?id={{ actuality.id }}" class="actu-btn btn btn-outline-warning btn-sm">Editer</a>
+									<a href="/admin/actualites/editer?id={{ actuality.id }}" class="btn btn-outline-warning btn-sm">Modifier
+									</a>
 								</td>
 								<td>
 									<button type="button" class="actu-btn btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#Modal{{actuality.id}}">Supprimer</button>
 
-                                    <div class="modal fade" tabindex="-1" id="Modal{{actuality.id}}">
+									<div class="modal fade" tabindex="-1" id="Modal{{actuality.id}}">
 										<div class="modal-dialog">
 											<div class="modal-content">
 												<div class="modal-header">
@@ -52,12 +56,17 @@
 													<form action="/admin/actualites/supprimer" method="post">
 														<input type="hidden" name="id" value="{{ actuality.id }}">
 														<button class="btn btn-outline-danger btn-sm" method="post">Supprimer</button>
+													</td>
+												</tr>
+											{% endfor %}
+										</tbody>
+									</table>
 								</td>
 							</tr>
-						{% endfor %}
+						</div>
 					</tbody>
-				</table>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>{% endblock %}{% block javascript %}{% endblock %}
+	{% endblock %}
+	{% block javascript %}{% endblock %}

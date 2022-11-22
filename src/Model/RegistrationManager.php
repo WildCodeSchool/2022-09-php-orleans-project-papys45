@@ -44,4 +44,15 @@ class RegistrationManager extends AbstractManager
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
     }
+
+    public function selectMembersRegistrered(int $id)
+    {
+        $statement = $this->pdo->prepare('SELECT * FROM ' . self::TABLE .
+            ' AS r INNER JOIN ' . MemberManager::TABLE . ' AS m ON r.route_id=:id  WHERE m.id=r.member_id');
+
+        $statement->bindValue('id', $id, PDO::PARAM_INT);
+        $statement->execute();
+
+        return $statement->fetchall();
+    }
 }

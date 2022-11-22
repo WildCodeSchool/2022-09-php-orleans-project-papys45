@@ -27,11 +27,8 @@ class AdminMemberController extends AbstractController
 
     public function index(string $message = ''): string
     {
-        if (!$this->user) {
-            header('HTTP/1.1 401 Unauthorized');
+        $this->isAuthorizedToAccess();
 
-            return $this->twig->render('Error/error.html.twig');
-        }
         $memberManager = new MemberManager();
         $members = $memberManager->selectAll('firstname');
 
@@ -40,6 +37,8 @@ class AdminMemberController extends AbstractController
 
     public function delete(): string
     {
+        $this->isAuthorizedToAccess();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
             $memberManager = new MemberManager();
@@ -101,11 +100,8 @@ class AdminMemberController extends AbstractController
 
     public function add(string $message = ''): string
     {
-        if (!$this->user) {
-            header('HTTP/1.1 401 Unauthorized');
+        $this->isAuthorizedToAccess();
 
-            return $this->twig->render('Error/error.html.twig');
-        }
         $errors = [];
         $member = [];
 
@@ -142,6 +138,8 @@ class AdminMemberController extends AbstractController
 
     public function edit(int $id, string $message = ''): ?string
     {
+        $this->isAuthorizedToAccess();
+
         $errors = [];
         $memberManager = new MemberManager();
         $member = $memberManager->selectOneById($id);

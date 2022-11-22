@@ -9,21 +9,26 @@ class AdminActuController extends AbstractController
 {
     public const MAX_LENGTH = 255;
 
-    public function index(): string
+    public function index(string $message = ''): string
     {
+        $this->isAuthorizedToAccess();
+
         $adminActuManager = new ActualityManager();
         $actualities = $adminActuManager->selectAll();
 
         return $this->twig->render(
             'Admin/Actualities/admin_actuality.html.twig',
             [
-                'actualities' => $actualities
+                'actualities' => $actualities,
+                'message' => $message,
             ]
         );
     }
 
-    public function add(string $actuality = ''): string
+    public function add(string $message = '', $actuality = ''): string
     {
+        $this->isAuthorizedToAccess();
+
         $actuality = [];
         $errors = [];
 
@@ -46,7 +51,7 @@ class AdminActuController extends AbstractController
                 $adminActuManager = new ActualityManager();
                 $adminActuManager->add($actuality);
 
-                header("Location: /admin/actualites?message=success");
+                header("Location: /admin/actualites/ajouter?message=success");
 
                 return '';
             }
@@ -56,13 +61,16 @@ class AdminActuController extends AbstractController
             'Admin/Actualities/form_actu_add.html.twig',
             [
                 'errors' => $errors,
+                'message' => $message,
                 'actuality' => $actuality,
             ]
         );
     }
 
-    public function update(int $id, string $actuality = ''): ?string
+    public function update(int $id, string $message = '', string $actuality = ''): string
     {
+        $this->isAuthorizedToAccess();
+
         $errors = [];
         $actualityManager = new ActualityManager();
         $actuality = $actualityManager->selectOneById($id);
@@ -84,23 +92,24 @@ class AdminActuController extends AbstractController
 
             if (empty($errors)) {
                 $actualityManager->update($actuality);
-                header('location: /admin/actualites?id=' . $id . '&message=success');
+                header('location: /admin/actualites/editer?id=' . $id . '&message=success');
 
                 return '';
             }
         }
 
-        return $this->twig->render(
-            'Admin/Actualities/form_actu_edit.html.twig',
-            [
-                'errors' => $errors,
-                'actuality' => $actuality,
-            ]
-        );
+        return $this->twig->render('Admin/Actualities/form_actu_edit.html.twig', [
+            'id' => $id,
+            'errors' => $errors,
+            'message' => $message,
+            'actuality' => $actuality,
+        ]);
     }
 
     public function delete(): void
     {
+        $this->isAuthorizedToAccess();
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id = trim($_POST['id']);
             $actualityManager = new ActualityManager();
