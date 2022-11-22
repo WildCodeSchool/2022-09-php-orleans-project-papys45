@@ -8,12 +8,12 @@
 {% endblock %}
 
 {% block content %}
-	<h1 class="display-4 fw-bold text-danger text-center py-5">
-		{{ "Modifier une sortie"|upper }}</h1>
 
-	<div class="container mt-2">
+	<div class="container mt-5">
 		<div class="d-flex justify-content-center">
 			<div class="col-lg-6">
+				<h1 class="admin-routeedit-title fw-bold text-danger text-center fs-1 mt-5">
+					{{ "Modifier une sortie"|upper }}</h1>
 				<form method="post" enctype="multipart/form-data">
 					{% if message == 'success' %}
 						<div class="alert alert-success text-center" role="alert">Opération réalisée avec succès.</div>
@@ -26,24 +26,24 @@
 					</ul>
 
 
-					<label for="date" class="fw-bold mt-2">Date de la sortie :</label>
+					<label for="date" class="fw-bold mt-3">Date de la sortie :</label>
 					<input type="date" placeholder="Choisir une date" required class=" form-control text-center" name="date" id="date" value="{{ route.date|date("Y-m-d") }}"/>
 
 
-					<label class="fw-bold mt-2" for="time">Heure de la sortie :</label>
+					<label class="fw-bold mt-3" for="time">Heure de la sortie :</label>
 					<input type="time" class="form-control text-center" required id="time" name="time" value="{{route.time|date('H:i')}}">
 
-					<label for="start" class="fw-bold mt-2">Lieu de départ :</label>
+					<label for="start" class="fw-bold mt-3">Lieu de départ :</label>
 					<input type="text" class="form-control" required id="start" name="start" placeholder="Ecrivez l'adresse de départ ici" value="{{route.start}}">
 
 
 					<label for="finish" class="fw-bold mt-2">Lieu d'arrivée :</label>
 					<input type="text" class="form-control" required id="finish" name="finish" placeholder="Ecrivez l'addresse d'arrivée ici" value="{{route.finish}}">
 
-					<label for="ravito" class="fw-bold mt-2">Lieu du ravito :</label>
+					<label for="ravito" class="fw-bold mt-3">Lieu du ravito :</label>
 					<input type="text" class="form-control" id="ravito" name="ravito" placeholder="Ecrivez l'addresse du ravito ici" value="{{route.ravito ?? ''}}">
 
-					<label for="difficulty" class="fw-bold mt-2">Modifier la difficulté :</label>
+					<label for="difficulty" class="fw-bold mt-3">Modifier la difficulté :</label>
 					<select class="form-select" name="difficulty" id="difficulty">
 						{% for difficultyKey, difficulty in difficulties %}
 							<option value="{{ difficultyKey }}" {% if route.difficulty is defined and route.difficulty is same as difficultyKey %} selected {% endif %}>{{difficulty}}</option>
@@ -51,20 +51,20 @@
 					</select>
 
 
-					<label for="distance" class="fw-bold mt-2">Distance de la sortie :</label>
+					<label for="distance" class="fw-bold mt-3">Distance de la sortie :</label>
 					<input type="number" class="form-control" required id="distance" name="distance" placeholder="ex : 80" value="{{route.distance}}">
 
-					<label for="gpx" class="fw-bold mt-2 pr-1">Modifier la carte :</label>
+					<label for="gpx" class="fw-bold mt-3 pr-1">Modifier la carte :</label>
 					<div class="input-group mb-3">
 						<span class="input-group-text" id="gpx">https://www.visugpx.com/</span>
 						<input type="text" required class="form-control" id="gpx" name="gpx" value="{{route.gpx}}">
 					</div>
 
 
-					<label for="descritpion" class="fw-bold mt-2">Description de la sortie :</label>
+					<label for="descritpion" class="fw-bold mt-3">Description de la sortie :</label>
 					<textarea class="form-control" placeholder="Ecrivez ici..." id="descritpion" name="description">{{route.description ?? ''}}</textarea>
 
-					<label for="uploadImg" class="fw-bold mt-2">Ajoutez vos photos :</label>
+					<label for="uploadImg" class="fw-bold mt-3">Ajoutez vos photos :</label>
 					<div class="input-group mb-3">
 						<input type="file" class="form-control" id="photo1" name="photo[]" multiple>
 					</div>
@@ -79,7 +79,7 @@
 						{% endfor %}
 					</div>
 
-					<label for="rapport" class="fw-bold mt-2">Compte rendu :</label>
+					<label for="rapport" class="fw-bold mt-3">Compte rendu :</label>
 					<textarea class="form-control" placeholder="Ecrivez ici..." id="rapport" name="rapport">{{route.rapport ?? ''}}</textarea>
 
 					<div class="d-flex justify-content-between text-end py-3">
