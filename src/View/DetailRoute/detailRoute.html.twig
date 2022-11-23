@@ -135,12 +135,12 @@
 
 		<div class="row">
 			{% for index, photo in photos %}
-				<div class="d-flex flex-wrap wrap gap-2 w-25 h-25">
+				<div class="col-4 g-2">
 					<img src="uploads/{{ photo }}" class=" rounded gallery1" alt="photo d'une sortie"/>
 				</div>
 			{% endfor %}
 		</div>
-    
+
 		<h2 class="fs-1 fw-bold text-danger text-center pt-5 pb-2">
 			Compte rendu
 		</h2>
@@ -150,9 +150,8 @@
 				<div class="card-body">
 					<p class="card-text px-4 py-2 text-start">
 						{{route.rapport|nl2br}}</p>
-					</div>
 				</div>
 			</div>
 		</div>
-	{% endif %}
-{% endblock %}
+	</div>
+{% endif %}{% endblock %}
