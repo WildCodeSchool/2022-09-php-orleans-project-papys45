@@ -132,7 +132,9 @@ INSERT INTO
         `ravito`,
         `distance`,
         `difficulty`,
-        `gpx`
+        `gpx`,
+        `description`,
+        `rapport`
     )
 VALUES (
         '2022-10-27',
@@ -142,7 +144,10 @@ VALUES (
         '250 avenue du raton',
         80,
         1,
-        '7oy3KJ4XqY'
+        '7oy3KJ4XqY',
+        'Une courte description de la sortie.
+        Passage par la jolie ville de St Cyr en Val, ravitaillement prévu par la femme de Bernard.',
+        ''
     );
 
 INSERT INTO
@@ -154,7 +159,9 @@ INSERT INTO
         `ravito`,
         `distance`,
         `difficulty`,
-        `gpx`
+        `gpx`,
+        `description`,
+        `rapport`
     )
 VALUES (
         '2022-10-28',
@@ -164,7 +171,11 @@ VALUES (
         '48 faubourg du bourg, Olivet',
         100,
         2,
-        '7oy3KJ4XqY'
+        '7oy3KJ4XqY',
+        'Sortie sous une pluie battante.
+Pensez à prendre vos gilets de sécurité et les signes de visibilité nécessaires.',
+        'Une belle journée d\'automne.
+Nous nous sommes arrêtés pour le ravitaillement devant le moulin. Profitant du soleil, nous avons circulé sans encombre.'
     );
 
 INSERT INTO
@@ -176,7 +187,9 @@ INSERT INTO
         `ravito`,
         `distance`,
         `difficulty`,
-        `gpx`
+        `gpx`,
+        `description`,
+        `rapport`
     )
 VALUES (
         '2023-01-03',
@@ -186,7 +199,11 @@ VALUES (
         '48 rue de la rue, Chécy',
         20,
         3,
-        '7oy3KJ4XqY'
+        '7oy3KJ4XqY',
+        'Journée magnifique pour circuler.
+Températures négatives prévues, pensez à vous couvrir suffisamment pour éviter les coups de froid.',
+        'La route était difficile.
+Beaucoup de voitures sur ce tracé et avec la pluie, notre vitesse moyenne en a été diminuée.'
     );
 
 CREATE TABLE
