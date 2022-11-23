@@ -10,7 +10,7 @@
 	<div class="container-fluid mt-2">
 		<div class="row d-flex justify-content-center">
 			<div class="col-10">
-				<h1 class="officeTitle text-danger text-center mt-5">{{ "le bureau"|upper }}</h1>
+				<h1 class="officeTitle text-danger text-center fs-1 mt-5">{{ "le bureau"|upper }}</h1>
 				<div class="detailOffice mt-5 d-flex flex-wrap justify-content-center align-items-center">
 					{% for member in members|filter(member => member.role != 'member') -%}
 						<div class="officeCard card border-0 mx-4">

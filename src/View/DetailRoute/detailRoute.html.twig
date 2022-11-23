@@ -8,9 +8,9 @@
 {% block content %}
 
 	{% if "now"|date("Y-m-d") > route.date|date('Y-m-d') %}
-		<h1 class="fs-1 fw-bold text-danger text-center py-5">{{'Détails de la sortie passée'|upper}}</h1>
+		<h1 class="fs-1 fw-bold text-danger text-center mt-5 mb-5">{{'Détails de la sortie passée'|upper}}</h1>
 	{% else %}
-		<h1 class="fs-1 fw-bold text-danger text-center py-5">
+		<h1 class="fs-1 fw-bold text-danger text-center mt-5 mb-5">
 			{{'Détails de la sortie à venir'|upper}}
 		</h1>
 	{% endif %}
