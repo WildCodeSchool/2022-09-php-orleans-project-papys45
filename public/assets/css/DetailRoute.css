@@ -34,7 +34,7 @@
     height: auto;
 }
 
-p {
+.txtp {
     font-family: var(--content-font);
 }
 
