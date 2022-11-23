@@ -105,7 +105,7 @@
 
 				<div class=" d-flex row py-1 wrap">
 					{% for member in members %}
-						<img src="{{member.photo is empty? '/assets/images/default.svg' : '/uploads/'~photo}}" class="w-25 rounded-circle memberpic" alt="{{member.firstname}}" title="{{member.firstname}} {{member.lastname}} "/>
+						<img src="{{member.photo is empty? '/assets/images/default.svg' : '/uploads/' ~ member.photo}}" class="w-25 rounded-circle memberpic" alt="{{member.firstname}}" title="{{member.firstname}} {{member.lastname}} "/>
 					{% endfor %}
 				</div>
 			</div>
@@ -113,19 +113,19 @@
 	</div>
 </div>
 
-
-<div class="container-fluid">
-	<h2 class="fs-1 fw-bold text-danger text-center pt-5 pb-2">
-		Description
-	</h2>
-		<div class="card shadow-sm mx-5">
+{% if route.description is not empty %}
+	<div class="container">
+		<h2 class="fs-1 fw-bold text-danger text-center pt-5 pb-2">
+			Description
+		</h2>
+		<div class="card shadow-sm mx-md-5">
 			<div class="card-body rounded">
 				<p class="txtp card-text py-2 text-start">
 					{{route.description|nl2br}}</p>
 			</div>
 		</div>
-</div>
-
+	</div>
+{% endif %}
 
 <h2 class="fs-1 fw-bold text-danger text-center pt-5 pb-2">
 	Parcours
@@ -138,6 +138,9 @@
 
 		<div class="row">
 			{% if photos[0] is not empty %}
+			<h2 class="fs-1 fw-bold text-danger text-center pt-5 pb-2">
+				Photos
+			</h2>
 				{% for photo in photos %}
 					<div class="col-4 g-2">
 						<img src="uploads/{{ photo }}" class="rounded gallery1" alt="photo d'une sortie"/>
@@ -145,18 +148,18 @@
 				{% endfor %}
 			{% endif %}
 		</div>
-
-		<h2 class="fs-1 fw-bold text-danger text-center pt-5 pb-2">
-			Compte rendu
-		</h2>
-	</div>
-		<div class="container-fluid">
-			<div class="card shadow-sm mx-5">
+		{% if route.rapport is not empty %}
+			<h2 class="fs-1 fw-bold text-danger text-center pt-5 pb-2">
+				Compte rendu
+			</h2>
+		</div>
+		<div class="container">
+			<div class="card shadow-sm mx-md-5">
 				<div class="card-body rounded">
 					<p class="txtp card-text px-4 py-2 text-start">
 						{{route.rapport|nl2br}}</p>
 				</div>
 			</div>
 		</div>
-
+	{% endif %}
 {% endif %}{% endblock %}
