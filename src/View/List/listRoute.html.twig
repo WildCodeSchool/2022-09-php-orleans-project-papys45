@@ -12,7 +12,7 @@
 	<div class="mb-5">
 		{% for route in routes %}
 
-			<div class="cardh pb-2">
+			<div class="cardh pb-2 mx-3 mx-md-0">
 				<div class="container">
 					<div class="row">
 						<div class="card p-2 rounded-3 mt-3 shadow {{ "now"|date("y-m-d") < route.date|date('y-m-d') ? ' border-danger' : 'opacity-50' }}">
