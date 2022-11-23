@@ -7,8 +7,8 @@ use App\Controller\AbstractController;
 
 class AdminActuController extends AbstractController
 {
-    public const MAX_LENGTH = 255;
-    public const MIN_LENGTH = 140;
+    public const MAX_LENGTH = 80;
+    public const MAX_LENGTH_CONTENT = 140;
 
     public function index(string $message = ''): string
     {
@@ -44,8 +44,8 @@ class AdminActuController extends AbstractController
                 $errors[] = 'Le titre doit faire moins de ' . self::MAX_LENGTH . ' caractères';
             }
 
-            if (strlen($actuality['content']) > self::MIN_LENGTH) {
-                $errors[] = 'Le contenu ne doit pas dépasser ' . self::MIN_LENGTH . ' caractères';
+            if (strlen($actuality['content']) > self::MAX_LENGTH_CONTENT) {
+                $errors[] = 'Le contenu ne doit pas dépasser ' . self::MAX_LENGTH_CONTENT . ' caractères';
             }
 
             if (empty($actuality['content'])) {
@@ -91,8 +91,8 @@ class AdminActuController extends AbstractController
                 $errors[] = 'Le titre doit faire moins de ' . self::MAX_LENGTH . ' caractères';
             }
 
-            if (strlen($actuality['content']) > self::MIN_LENGTH) {
-                $errors[] = 'Le contenu ne doit pas dépasser ' . self::MIN_LENGTH . ' caractères';
+            if (strlen($actuality['content']) > self::MAX_LENGTH_CONTENT) {
+                $errors[] = 'Le contenu ne doit pas dépasser ' . self::MAX_LENGTH_CONTENT . ' caractères';
             }
 
             if (empty($actuality['content'])) {
