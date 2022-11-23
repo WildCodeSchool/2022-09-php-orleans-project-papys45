@@ -8,25 +8,25 @@
 {% block content %}
 
 	{% if "now"|date("Y-m-d") > route.date|date('Y-m-d') %}
-		<h1 class="display-4 fw-bold text-danger text-center py-5">{{'Détails de la sortie passée'|upper}}</h1>
+		<h1 class="fs-1 fw-bold text-danger text-center mt-5 mb-5">{{'Détails de la sortie passée'|upper}}</h1>
 	{% else %}
-		<h1 class="display-4 fw-bold text-danger text-center py-5">
+		<h1 class="fs-1 fw-bold text-danger text-center mt-5 mb-5">
 			{{'Détails de la sortie à venir'|upper}}
 		</h1>
 	{% endif %}
 
-	<div class="container-fluid text-center pt-4 pb-3 fs-6 tool-font bg-danger">
+	<div class="container-fluid text-center pt-4 pb-1 fs-6 tool-font bg-danger">
 
 		<div class="row row-flex">
 
 			<div class="col-6 pt-3">
 				<img class="date" src="/assets/images/calendar.svg" alt="calendar icon">
-				<p class="fs-2 text-white">{{route.date|date("d/m/Y")}}</p>
+				<p class="txtp fs-3 text-white">{{route.date|date("d/m/Y")}}</p>
 			</div>
 
 			<div class="col-6 pt-3">
 				<img class="date" src="/assets/images/clock.svg" alt="clock icon">
-				<p class="fs-2 text-white">{{route.time|date('H\\hi')}}</p>
+				<p class="txtp fs-3 text-white">{{route.time|date('H\\hi')}}</p>
 			</div>
 		</div>
 
@@ -34,78 +34,78 @@
 	</div>
 
 
-	<div class="container fs-3 mt-5">
+	<div class="container fs-3 mt-2">
 		<div class="row pt-4">
 			<div class="col-md-7 order-md-1 ps-3">
 
 				<div>
-					<h3 class="display-4 text-center pb-4 text-danger">Points important</h3>
+					<h3 class="fs-1 text-center text-danger me-5 pe-5">Points importants</h3>
 				</div>
 
 				<div class="row flex-row pt-5 ">
 					<div class="d-flex">
-						<img class="icon" src="/assets/images/pin.svg" alt="pin icon">
-						<p class="mt-3 ms-3 title-font fs-4 badge bg-danger text-wrap">Lieu de départ :</p>
+						<div class="col tool-font fs-4 mt-2 text-secondary d-flex justify-items-center align-items-center"><img class="icon col me-2 icon-red opacity-75" src="/assets/images/pin.svg" alt="pin icon">{{'Départ'|upper}}</div>
 					</div>
 					<div class="col-10">
-						<p class="ms-5">{{route.start}}</p>
+						<div class="col title-font fs-5 txt mt-2 ms-2">
+							<p class="txtp ms-5 col fs-4 text-start">{{route.start}}</p>
+						</div>
 					</div>
 				</div>
 
 				<div class="row flex-row pt-2">
 					<div class="d-flex">
-						<img class="icon" src="/assets/images/flag.svg" alt="flag icon">
-						<p class="mt-3 ms-3 title-font fs-4 badge bg-danger text-wrap">Lieu de d'arrivée :</p>
+						<div class="col tool-font fs-4 mt-4 d-flex justify-items-center align-items-center text-secondary"><img class="icon col me-2 icon-red opacity-75" src="/assets/images/flag.svg" alt="arrived flag icon">{{'Arrivée'|upper}}</div>
 					</div>
 					<div class="col-10">
-						<p class="ms-5">{{route.finish}}</p>
+						<div class="col title-font fs-5 mt-2 ms-2">
+							<p class="txtp ms-5 col fs-4 text-start">{{route.finish}}</p>
+						</div>
 					</div>
 				</div>
 				<div class="row flex-row pt-2">
 					<div class="d-flex">
-						<img class="icon" src="/assets/images/ravito.svg" alt="ravito icon">
-						<p class="mt-3 ms-3 title-font fs-4 badge bg-danger text-wrap">Ravito :</p>
+						<div class="col tool-font fs-4 mt-4 text-secondary d-flex justify-self-center align-items-end"><img class="icon col me-2 icon-red opacity-75 " src="/assets/images/ravito.svg" alt="cocktail icon">{{'Ravito'|upper}}</div>
 					</div>
 					<div class="col-10">
-						<p class="ms-5">{{route.ravito}}</p>
+						<div class="col title-font fs-5 mt-2 ms-2 mb-md-2">
+							<p class="txtp ms-5 col fs-4 text-start">{{route.ravito}}</p>
+						</div>
 					</div>
 				</div>
-				<div class="row flex-row pt-3">
+				<div class="row flex-row pt-2">
 					<div class="d-flex">
-						<img class="icon flex-start" src="/assets/images/distance.svg" alt="distance icon">
-						<p class="mt-3 ms-3 title-font fs-4 badge bg-danger text-wrap">Distance :</p>
+						<div class="col tool-font fs-4 mt-4 text-secondary d-flex justify-self-center"><img class="icon col me-2 icon-red opacity-75" src="/assets/images/distance.svg" alt="cocktail icon">{{'Distance'|upper}}</div>
 					</div>
-					<div class="col-10 fs-2">
-						<p class="ms-5">{{route.distance}}
-							KM</p>
+					<div class="col title-font fs-5 ms-2">
+						<p class="txtp ms-5 col fs-4 text-start">{{route.distance}}KM</p>
 					</div>
 				</div>
 				<div class="row flex-row pt-3">
-					<div class="col-2 text-center">
+					<div class="row flex-row pt-3 d-flex">
 						{% if  constant('App\\Controller\\RouteController::EASY_ROUTE') is same as route.difficulty %}<img class="card-img icon-green" src="/assets/images/mountain.svg" alt="green mountain icon">
 							{% elseif constant('App\\Controller\\RouteController::MEDIUM_ROUTE') is same as route.difficulty %}<img class="card-img icon-orange" src="/assets/images/mountain.svg" alt="orange mountain icon">
 							{% else %}<img class="card-img icon-red" src="/assets/images/mountain.svg" alt="red mountain icon">
 						{% endif %}
 
 					</div>
-					<div class="col-10 fs-2 pt-3">
-						<p>Difficulté
-							{{route.difficulty}}</p>
+					<div class="col-10 fs-5 pt-3">
+						<div>Difficulté
+							{{route.difficulty}}</div>
 					</div>
 				</div>
 			</div>
 
-			{# Add register members here later#}
 			<div class="col-md-1 order-md-2 custom-border-left custom-border-bottom"></div>
 
 			<div class="col-4 order-md-3 d-none d-md-block bgRegister">
 				<div>
-					<h3 class="text-center pb-4 text-danger display-4">Déja inscrit</h3>
+					<h3 class="text-center pb-4 text-danger fs-1">Déja inscrits</h3>
 				</div>
 
 				<div class=" d-flex row py-1 wrap">
 					{% for member in members %}
-						<img src="{{member.photo is empty? '/assets/images/default.svg' : '/uploads/'~photo}}" class="w-25 rounded-circle memberpic" alt="{{member.firstname}}" title="{{member.firstname}} {{member.lastname}} "/>
+						<img src="{{member.photo is empty? '/assets/images/default.svg' : '/uploads/' ~ member.photo}}" class="w-25 rounded-circle memberpic" alt="{{member.firstname}}" title="{{member.firstname}} {{member.lastname}} "/>
 					{% endfor %}
 				</div>
 			</div>
@@ -113,46 +113,53 @@
 	</div>
 </div>
 
-
-<div class="container py-3">
-	<h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
-		Description
-	</h2>
-	<div class="row py-5 shadow-sm text-center fs-5">
-		<p class="text-start">{{route.description|nl2br}}</p>
+{% if route.description is not empty %}
+	<div class="container">
+		<h2 class="fs-1 fw-bold text-danger text-center pt-5 pb-2">
+			Description
+		</h2>
+		<div class="card shadow-sm mx-md-5">
+			<div class="card-body rounded">
+				<p class="txtp card-text py-2 text-start">
+					{{route.description|nl2br}}</p>
+			</div>
+		</div>
 	</div>
-</div>
+{% endif %}
 
-
-<h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
+<h2 class="fs-1 fw-bold text-danger text-center pt-5 pb-2">
 	Parcours
 </h2>
-<div class="container pb-5 shadow">
+<div class="container pb-0 px-0 shadow bg-white">
 	<iframe src="https://www.visugpx.com/{{ route.gpx }}?iframe" id="ivisugpx" scrolling="no"></iframe>
 </div>
 {% if "now"|date("Y-m-d") > route.date|date('Y-m-d') %}
 	<div class="container py-5">
 
 		<div class="row">
-    
-			{% for index, photo in photos %}
-				<div class="gridImg">
-					<img src="uploads/{{ photo }}" class=" rounded gallery1" alt="photo d'une sortie"/>
-				</div>
-			{% endfor %}
-		</div>
-    
-		<h2 class="display-3 fw-bold text-danger text-center pt-5 pb-2">
-			Compte rendu
-		</h2>
-
-		<div class="container pb-5">
-			<div class="card shadow">
-				<div class="card-body">
-					<p class="card-text px-4 py-2 text-start">
-						{{route.rapport|nl2br}}</p>
+			{% if photos[0] is not empty %}
+			<h2 class="fs-1 fw-bold text-danger text-center pt-5 pb-2">
+				Photos
+			</h2>
+				{% for photo in photos %}
+					<div class="col-4 g-2">
+						<img src="uploads/{{ photo }}" class="rounded gallery1" alt="photo d'une sortie"/>
 					</div>
+				{% endfor %}
+			{% endif %}
+		</div>
+		{% if route.rapport is not empty %}
+			<h2 class="fs-1 fw-bold text-danger text-center pt-5 pb-2">
+				Compte rendu
+			</h2>
+		</div>
+		<div class="container">
+			<div class="card shadow-sm mx-md-5">
+				<div class="card-body rounded">
+					<p class="txtp card-text px-4 py-2 text-start">
+						{{route.rapport|nl2br}}</p>
 				</div>
 			</div>
-		{% endif %}
-	{% endblock %}
+		</div>
+	{% endif %}
+{% endif %}{% endblock %}

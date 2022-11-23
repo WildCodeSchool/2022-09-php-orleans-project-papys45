@@ -8,86 +8,63 @@
 {% endblock %}
 
 {% block content %}
-	<h1 class="display-4 fw-bold text-danger text-center py-5">
-		{{ "Modifier une sortie"|upper }}</h1>
-	<div class="container">
-		<form method="post" enctype="multipart/form-data">
-			{% if message == 'success' %}
-				<div class="alert alert-success text-center" role="alert">Opération réalisée avec succès.</div>
-			{% endif %}
 
-			<ul class="text-center text-danger">
-				{% for error in errors %}
-					<li>{{error}}</li>
-				{% endfor %}
-			</ul>
+	<div class="container mt-5">
+		<div class="d-flex justify-content-center">
+			<div class="col-lg-6">
+				<h1 class="admin-routeedit-title fw-bold text-danger text-center fs-1 mt-5">
+					{{ "Modifier une sortie"|upper }}</h1>
+				<form method="post" enctype="multipart/form-data">
+					{% if message == 'success' %}
+						<div class="alert alert-success text-center" role="alert">Opération réalisée avec succès.</div>
+					{% endif %}
+
+					<ul class="text-center text-danger">
+						{% for error in errors %}
+							<li>{{error}}</li>
+						{% endfor %}
+					</ul>
 
 
-			<div class="row mb-3 datepicker">
-				<label for="date" class="col-sm-2 col-form-label">Date de la sortie :</label>
-				<div class="col-sm-10">
+					<label for="date" class="fw-bold mt-3">Date de la sortie :</label>
 					<input type="date" placeholder="Choisir une date" required class=" form-control text-center" name="date" id="date" value="{{ route.date|date("Y-m-d") }}"/>
-				</div>
-			</div>
-			<div class="row mb-3">
-				<label class="col-sm-2 col-form-label" for="time">Heure de la sortie :</label>
-				<div class="col-sm-10">
-					<input type="time" class="form-control text-center" required id="time" name="time" value="{{route.time|date('H:i')}}">
-				</div>
-			</div>
 
-			<div class="row mb-3">
-				<label for="start" class="col-sm-2 col-form-label">Lieu de départ :</label>
-				<div class="col-sm-10">
+
+					<label class="fw-bold mt-3" for="time">Heure de la sortie :</label>
+					<input type="time" class="form-control text-center" required id="time" name="time" value="{{route.time|date('H:i')}}">
+
+					<label for="start" class="fw-bold mt-3">Lieu de départ :</label>
 					<input type="text" class="form-control" required id="start" name="start" placeholder="Ecrivez l'adresse de départ ici" value="{{route.start}}">
-				</div>
-			</div>
-			<div class="row mb-3">
-				<label for="finish" class="col-sm-2 col-form-label">Lieu d'arrivée :</label>
-				<div class="col-sm-10">
+
+
+					<label for="finish" class="fw-bold mt-2">Lieu d'arrivée :</label>
 					<input type="text" class="form-control" required id="finish" name="finish" placeholder="Ecrivez l'addresse d'arrivée ici" value="{{route.finish}}">
-				</div>
-			</div>
-			<div class="row mb-3">
-				<label for="ravito" class="col-sm-2 col-form-label">Lieu du ravito :</label>
-				<div class="col-sm-10">
+
+					<label for="ravito" class="fw-bold mt-3">Lieu du ravito :</label>
 					<input type="text" class="form-control" id="ravito" name="ravito" placeholder="Ecrivez l'addresse du ravito ici" value="{{route.ravito ?? ''}}">
-				</div>
-			</div>
-			<div class="row mb-3">
-				<label for="difficulty" class="col-sm-2 col-form-label">Modifier la difficulté :</label>
-				<div class="col-sm-10">
+
+					<label for="difficulty" class="fw-bold mt-3">Modifier la difficulté :</label>
 					<select class="form-select" name="difficulty" id="difficulty">
 						{% for difficultyKey, difficulty in difficulties %}
 							<option value="{{ difficultyKey }}" {% if route.difficulty is defined and route.difficulty is same as difficultyKey %} selected {% endif %}>{{difficulty}}</option>
 						{% endfor %}
 					</select>
-				</div>
-			</div>
-			<div class="row mb-3">
-				<label for="distance" class="col-sm-2 col-form-label">Distance de la sortie :</label>
-				<div class="col-sm-10">
+
+
+					<label for="distance" class="fw-bold mt-3">Distance de la sortie :</label>
 					<input type="number" class="form-control" required id="distance" name="distance" placeholder="ex : 80" value="{{route.distance}}">
-				</div>
-			</div>
-			<div class="row mb-3">
-				<label for="gpx" class="col-sm-2 col-form-label pr-1">Modifier la carte :</label>
-				<div class="col-sm-10">
+
+					<label for="gpx" class="fw-bold mt-3 pr-1">Modifier la carte :</label>
 					<div class="input-group mb-3">
 						<span class="input-group-text" id="gpx">https://www.visugpx.com/</span>
 						<input type="text" required class="form-control" id="gpx" name="gpx" value="{{route.gpx}}">
 					</div>
-				</div>
-			</div>
-			<div class="row mb-3">
-				<label for="descritpion" class="col-sm-2 col-form-label">Description de la sortie :</label>
-				<div class="col-sm-10">
+
+
+					<label for="descritpion" class="fw-bold mt-3">Description de la sortie :</label>
 					<textarea class="form-control" placeholder="Ecrivez ici..." id="descritpion" name="description">{{route.description ?? ''}}</textarea>
-				</div>
-			</div>
-			<div class="row mb-3">
-				<label for="uploadImg" class="col-sm-2 col-form-label">Ajoutez vos photos :</label>
-				<div class="col-sm-10">
+
+					<label for="uploadImg" class="fw-bold mt-3">Ajoutez vos photos :</label>
 					<div class="input-group mb-3">
 						<input type="file" class="form-control" id="photo1" name="photo[]" multiple>
 					</div>
@@ -101,18 +78,16 @@
 							{% endif %}
 						{% endfor %}
 					</div>
-				</div>
-			</div>
-			<div class="row mb-3">
-				<label for="rapport" class="col-sm-2 col-form-label">Compte rendu :</label>
-				<div class="col-sm-10">
+
+					<label for="rapport" class="fw-bold mt-3">Compte rendu :</label>
 					<textarea class="form-control" placeholder="Ecrivez ici..." id="rapport" name="rapport">{{route.rapport ?? ''}}</textarea>
-				</div>
+
+					<div class="d-flex justify-content-between text-end py-3">
+						<button type="submit" class="btn btn-danger">Modifier la sortie</button>
+						<a href="/admin/route" class="btn btn-outline-secondary py-2">Retour</a>
+					</div>
+				</form>
 			</div>
-			<div class="d-flex justify-content-between text-end py-5">
-				<a href="/admin/route" class="btn btn-outline-secondary mt-2 align-self-left">Retour</a>
-				<button type="submit" class="btn btn-danger">Modifier la sortie</button>
-			</div>
-		</form>
+		</div>
 	</div>
 {% endblock %}

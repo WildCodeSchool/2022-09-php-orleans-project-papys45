@@ -38,13 +38,13 @@
 								<td>{{ constant('App\\Controller\\AdminMemberController::ROLES')[member.role] }}</td>
 								<td>{{ member.mail }}</td>
 								<td>
-									<a href="/admin/membres/edit?id={{ member.id }}" class="btn btn-outline-warning btn-sm">Modifier
+									<a href="/admin/membres/edit?id={{ member.id }}" class="btn btn-outline-primary btn-sm">Modifier
 									</a>
 
 								</td>
 								<td>
 									<button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal{{ member.id}}">
-										supprimer
+										Supprimer
 									</button>
 									<div class="modal fade" id="exampleModal{{ member.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 										<div class="modal-dialog">
