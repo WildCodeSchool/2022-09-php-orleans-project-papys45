@@ -105,7 +105,7 @@
 
 				<div class=" d-flex row py-1 wrap">
 					{% for member in members %}
-						<img src="{{member.photo is empty? '/assets/images/default.svg' : '/uploads/'~photo}}" class="w-25 rounded-circle memberpic" alt="{{member.firstname}}" title="{{member.firstname}} {{member.lastname}} "/>
+						<img src="{{member.photo is empty? '/assets/images/default.svg' : '/uploads/' ~ member.photo}}" class="w-25 rounded-circle memberpic" alt="{{member.firstname}}" title="{{member.firstname}} {{member.lastname}} "/>
 					{% endfor %}
 				</div>
 			</div>
