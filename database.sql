@@ -173,9 +173,9 @@ VALUES (
         2,
         '7oy3KJ4XqY',
         'Sortie sous une pluie battante.
-        Pensez à prendre vos gilets de sécurité et les signes de visibilité nécessaires.',
+Pensez à prendre vos gilets de sécurité et les signes de visibilité nécessaires.',
         'Une belle journée d\'automne.
-        Nous nous sommes arrêtés pour le ravitaillement devant le moulin. Profitant du soleil, nous avons circulé sans encombre.'
+Nous nous sommes arrêtés pour le ravitaillement devant le moulin. Profitant du soleil, nous avons circulé sans encombre.'
     );
 
 INSERT INTO
@@ -201,9 +201,9 @@ VALUES (
         3,
         '7oy3KJ4XqY',
         'Journée magnifique pour circuler.
-        Températures négatives prévues, pensez à vous couvrir suffisamment pour éviter les coups de froid.',
+Températures négatives prévues, pensez à vous couvrir suffisamment pour éviter les coups de froid.',
         'La route était difficile.
-        Beaucoup de voitures sur ce tracé et avec la pluie, notre vitesse moyenne en a été diminuée.'
+Beaucoup de voitures sur ce tracé et avec la pluie, notre vitesse moyenne en a été diminuée.'
     );
 
 CREATE TABLE
