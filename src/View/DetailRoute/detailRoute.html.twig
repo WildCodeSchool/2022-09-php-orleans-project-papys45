@@ -114,45 +114,49 @@
 </div>
 
 
-<div class="container py-3">
+<div class="container-fluid">
 	<h2 class="fs-1 fw-bold text-danger text-center pt-5 pb-2">
 		Description
 	</h2>
-	<div class="row py-5 shadow-sm text-center fs-5">
-		<p class="txtp text-start">{{route.description|nl2br}}</p>
-	</div>
+		<div class="card shadow-sm mx-5">
+			<div class="card-body rounded">
+				<p class="txtp card-text py-2 text-start">
+					{{route.description|nl2br}}</p>
+			</div>
+		</div>
 </div>
 
 
 <h2 class="fs-1 fw-bold text-danger text-center pt-5 pb-2">
 	Parcours
 </h2>
-<div class="container pb-5 shadow bg-white">
+<div class="container pb-0 px-0 shadow bg-white">
 	<iframe src="https://www.visugpx.com/{{ route.gpx }}?iframe" id="ivisugpx" scrolling="no"></iframe>
 </div>
 {% if "now"|date("Y-m-d") > route.date|date('Y-m-d') %}
 	<div class="container py-5">
 
 		<div class="row">
-
-			{% for index, photo in photos %}
-				<div class="gridImg">
-					<img src="uploads/{{ photo }}" class=" rounded gallery1" alt="photo d'une sortie"/>
-				</div>
-			{% endfor %}
+			{% if photos[0] is not empty %}
+				{% for photo in photos %}
+					<div class="col-4 g-2">
+						<img src="uploads/{{ photo }}" class="rounded gallery1" alt="photo d'une sortie"/>
+					</div>
+				{% endfor %}
+			{% endif %}
 		</div>
 
 		<h2 class="fs-1 fw-bold text-danger text-center pt-5 pb-2">
 			Compte rendu
 		</h2>
-
-		<div class="container pb-5">
-			<div class="card shadow">
-				<div class="card-body">
+	</div>
+		<div class="container-fluid">
+			<div class="card shadow-sm mx-5">
+				<div class="card-body rounded">
 					<p class="txtp card-text px-4 py-2 text-start">
 						{{route.rapport|nl2br}}</p>
 				</div>
 			</div>
 		</div>
-	</div>
+
 {% endif %}{% endblock %}

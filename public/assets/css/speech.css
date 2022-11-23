@@ -9,6 +9,10 @@
     line-height: 2;
 }
 
+.image {
+    bottom: 15px;
+}
+
 .image img {
     width: 90px;
     height: 90px;

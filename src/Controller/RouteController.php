@@ -30,9 +30,13 @@ class RouteController extends AbstractController
         $itemManager = new RouteManager();
         $route = $itemManager->selectOneById($id);
 
+        $photoManager = new PhotoManager();
+        $photos = $photoManager->selectOneByIdWithPhoto($id);
+        $photos = array_column($photos, 'photo');
+
         return $this->twig->render(
             'DetailRoute/detailRoute.html.twig',
-            ['route' => $route, 'members' => $members]
+            ['route' => $route, 'members' => $members, 'photos' => $photos]
         );
     }
 }
