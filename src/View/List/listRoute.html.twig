@@ -6,7 +6,7 @@
 
 {% block content %}
 
-	<h1 class="fs-1 fw-bold text-danger text-center py-5">
+	<h1 class="fs-1 fw-bold text-danger text-center mt-5 mb-5">
 		LISTE DES SORTIES</h1>
 
 	<div class="mb-5">
@@ -41,14 +41,16 @@
 										<div class="col tool-font fs-6 mt-4  text-wrap d-flex justify-items-center align-items-center text-secondary"><img class="icon col me-1 icon-red opacity-75" src="/assets/images/flag.svg" alt="arrived flag icon">{{'Arrivée'|upper}}</div>
 										<div class="col title-font fs-6 txt mt-2 ms-2"><p class="m-0 col  text-start">{{route.finish}}</p>
 										</div>
-										<div class="col tool-font fs-6 mt-4 text-secondary text-wrap d-flex justify-self-center"><img class="icon col me-1 icon-red opacity-75" src="/assets/images/ravito.svg" alt="cocktail icon">{{'Ravito'|upper}}</div>
+										<div class="col tool-font fs-6 mt-4 text-secondary text-wrap d-flex justify-self-center align-items-center"><img class="icon col me-1 icon-red opacity-75" src="/assets/images/ravito.svg" alt="cocktail icon">{{'Ravito'|upper}}</div>
 										<div class="col title-font fs-6 txt mt-2 ms-2"><p class="m-0 col  text-start">{{route.ravito is empty? 'Sans ravito' : route.ravito}}</p>
 										</div>
 									</div>
 
 									<div class="col">
 										{% if "now"|date("Y-m-d") < route.date|date('Y-m-d') %}
-											<div class="badge text-bg-danger fs-5 tool-font mt-3">{{'a venir'|upper}}</div>
+											<div class="badge text-bg-danger fs-5 tool-font mt-3">{{'à venir'|upper}}</div>
+										{% else %}
+											<div class="badge text-bg-secondary fs-5 tool-font mt-3">{{'terminé'|upper}}</div>
 										{% endif %}
 										<div class="row justify-content-center pt-4 tool-font"><img class="card-img-top" src="/assets/images/calendar.svg" alt="calendar icon"></div>
 										<div class="row justify-content-center pt-2 tool-font fs-4">{{route.date|date('d/m/Y')}}</div>

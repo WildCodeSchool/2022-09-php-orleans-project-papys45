@@ -8,9 +8,9 @@
 {% block content %}
 
 	{% if "now"|date("Y-m-d") > route.date|date('Y-m-d') %}
-		<h1 class="fs-1 fw-bold text-danger text-center py-5">{{'Détails de la sortie passée'|upper}}</h1>
+		<h1 class="fs-1 fw-bold text-danger text-center mt-5 mb-5">{{'Détails de la sortie passée'|upper}}</h1>
 	{% else %}
-		<h1 class="fs-1 fw-bold text-danger text-center py-5">
+		<h1 class="fs-1 fw-bold text-danger text-center mt-5 mb-5">
 			{{'Détails de la sortie à venir'|upper}}
 		</h1>
 	{% endif %}
@@ -21,12 +21,12 @@
 
 			<div class="col-6 pt-3">
 				<img class="date" src="/assets/images/calendar.svg" alt="calendar icon">
-				<p class="fs-3 text-white">{{route.date|date("d/m/Y")}}</p>
+				<p class="txtp fs-3 text-white">{{route.date|date("d/m/Y")}}</p>
 			</div>
 
 			<div class="col-6 pt-3">
 				<img class="date" src="/assets/images/clock.svg" alt="clock icon">
-				<p class="fs-3 text-white">{{route.time|date('H\\hi')}}</p>
+				<p class="txtp fs-3 text-white">{{route.time|date('H\\hi')}}</p>
 			</div>
 		</div>
 
@@ -48,7 +48,7 @@
 					</div>
 					<div class="col-10">
 						<div class="col title-font fs-5 txt mt-2 ms-2">
-							<p class="ms-5 col fs-4 text-start">{{route.start}}</p>
+							<p class="txtp ms-5 col fs-4 text-start">{{route.start}}</p>
 						</div>
 					</div>
 				</div>
@@ -59,7 +59,7 @@
 					</div>
 					<div class="col-10">
 						<div class="col title-font fs-5 mt-2 ms-2">
-							<p class="ms-5 col fs-4 text-start">{{route.finish}}</p>
+							<p class="txtp ms-5 col fs-4 text-start">{{route.finish}}</p>
 						</div>
 					</div>
 				</div>
@@ -69,7 +69,7 @@
 					</div>
 					<div class="col-10">
 						<div class="col title-font fs-5 mt-2 ms-2 mb-md-2">
-							<p class="ms-5 col fs-4 text-start">{{route.ravito}}</p>
+							<p class="txtp ms-5 col fs-4 text-start">{{route.ravito}}</p>
 						</div>
 					</div>
 				</div>
@@ -78,7 +78,7 @@
 						<div class="col tool-font fs-4 mt-4 text-secondary d-flex justify-self-center"><img class="icon col me-2 icon-red opacity-75" src="/assets/images/distance.svg" alt="cocktail icon">{{'Distance'|upper}}</div>
 					</div>
 					<div class="col title-font fs-5 ms-2">
-						<p class="ms-5 col fs-4 text-start">{{route.distance}}KM</p>
+						<p class="txtp ms-5 col fs-4 text-start">{{route.distance}}KM</p>
 					</div>
 				</div>
 				<div class="row flex-row pt-3">
@@ -95,7 +95,7 @@
 					</div>
 				</div>
 			</div>
-
+      
 			<div class="col-md-1 order-md-2 custom-border-left custom-border-bottom"></div>
 
 			<div class="col-4 order-md-3 d-none d-md-block bgRegister">
@@ -119,7 +119,7 @@
 		Description
 	</h2>
 	<div class="row py-5 shadow-sm text-center fs-5">
-		<p class="text-start">{{route.description|nl2br}}</p>
+		<p class="txtp text-start">{{route.description|nl2br}}</p>
 	</div>
 </div>
 
@@ -141,7 +141,7 @@
 				</div>
 			{% endfor %}
 		</div>
-    
+
 		<h2 class="fs-1 fw-bold text-danger text-center pt-5 pb-2">
 			Compte rendu
 		</h2>
@@ -149,11 +149,10 @@
 		<div class="container pb-5">
 			<div class="card shadow">
 				<div class="card-body">
-					<p class="card-text px-4 py-2 text-start">
+					<p class="txtp card-text px-4 py-2 text-start">
 						{{route.rapport|nl2br}}</p>
-					</div>
 				</div>
 			</div>
 		</div>
-	{% endif %}
-{% endblock %}
+	</div>
+{% endif %}{% endblock %}
