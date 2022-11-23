@@ -87,7 +87,8 @@ class AdminMemberController extends AbstractController
     private function controlDateOfBirth(string $memberDateOfBirth): array
     {
         $errors = [];
-        $dateOfBirth = $now = new DateTime();
+        $dateOfBirth = new DateTime();
+        $now = new DateTime();
         $date = explode("-", $memberDateOfBirth);
         $dateOfBirth->setDate(intval($date[0]), intval($date[1]), intval($date[2]));
 
@@ -95,7 +96,7 @@ class AdminMemberController extends AbstractController
             $errors[] = 'La date de naissance ne peut pas être dans le futur !';
         }
 
-        if ($dateOfBirth::getLastErrors()) {
+        if ($dateOfBirth::getLastErrors()['warning_count']) {
             $errors[] = 'La date d\'anniversaire est incorrecte.';
         }
 
@@ -158,6 +159,7 @@ class AdminMemberController extends AbstractController
             $member['photo'] = $uploadResult[1];
             $errors = array_merge($this->verification($member), $errors);
             $errors = array_merge($this->verifEmpty($member), $errors);
+            $errors = array_merge($this->controlDateOfBirth($member['dateOfBirth']), $errors);
 
             if ($lastRole != $member['role']) {
                 $errors = array_merge($this->roleVerification($member['role']), $errors);
